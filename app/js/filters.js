@@ -78,3 +78,26 @@ four51.app.filter('paginate', function() {
 		return input.slice(start);
 	}
 });
+
+//CUSTOM ROBYN PROMO FILTERS
+
+four51.app.filter('freeproducthide', ['User', function(User) {
+	var freeProductID = null;
+	User.get(function(u) {
+		angular.forEach(u.CustomFields, function(f) {
+			if (f.Name == "FreeProductAPI_ID") {
+				freeProductID = (f.DefaultValue && f.DefaultValue != '') ? f.DefaultValue : null;
+			}
+		})
+	});
+
+	return function(lineitems) {
+		var results = [];
+		angular.forEach(lineitems, function(li) {
+			if (li.Product.InteropID.indexOf(freeProductID) == -1) {
+				results.push(li);
+			}
+		});
+		return results;
+	}
+}]);

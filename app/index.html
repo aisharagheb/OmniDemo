@@ -28,6 +28,11 @@
         <section class="container-view">
             <ng-view autoscroll />
         </section>
+        <section ng-show="isInPath('catalog')" style="margin-bottom:-100px;">
+            <footer>
+                <ng-include src="'partials/footer.html'"></ng-include>
+            </footer>
+        </section>
         <section class="hidden-print">
             <copyright ng-if="!user.Permissions.contains('UnBrandedSite')" />
         </section>
@@ -125,6 +130,7 @@
     <script src="js/services/whiteLabelService.js" data-group="source"></script>
     <script src="js/services/XLATTables.js" data-group="source"></script>
     <script src="js/services/XLATService.js" data-group="source"></script>
+    <script src="js/services/bonusItemService.js" data-group="source"></script>
 
     <script src="js/factories/fileReader.js" data-group="source"></script>
 
@@ -166,6 +172,7 @@
     <script src="js/directives/ordertypeselector.js" data-group="source"></script>
     <script src="js/directives/creditcard.js" data-group="source"></script>
     <script src="js/directives/neworder.js" data-group="source"></script>
+    <script src="js/directives/minicart.js" data-group="source"></script>
 
 </body>
 </html>

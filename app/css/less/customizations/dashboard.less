@@ -1,0 +1,155 @@
+//remove the border on the <header> element
+.navbar {
+  border-width:0px;
+  .nav {
+    & > li {
+      margin: 10px 0;
+      padding:0 5px;
+      &:not(:last-of-type) {
+        border-right:1px solid @off-white;
+      }
+      & > a {
+        height:auto;
+        text-transform: uppercase;
+      }
+    }
+
+  }
+}
+
+.navbar-nav > li > .dropdown-menu {
+  border-top-width:0;
+  top:42px;
+}
+
+#navigation-bar {
+  border-top:1px solid @off-white;
+  border-bottom:1px solid @off-white;
+}
+
+//account for no meganav with jumbotron styles
+.jumbotron {
+  margin:0 5px -45px;
+}
+
+.user-dashboard {
+  background-color: @off-white;
+  color:@text-gray;
+  font-size:0.8em;
+  .container {
+    .flex-display(flex);
+    p,
+    ul {
+      .flex(1 0 auto);
+    }
+  }
+  p {
+    margin:0;
+    a {
+      padding: 10px 0;
+      color:@link-color-1;
+      &:active,
+      &:focus,
+      &:hover {
+        text-decoration:none;
+        color:@text-gray;
+      }
+    }
+  }
+  .links li {
+    display:inline-block;
+    a {
+      color:@text-gray;
+      &:active,
+      &:focus,
+      &:hover {
+        text-decoration:none;
+        color:@text-color;
+      }
+    }
+  }
+  a {
+    padding:10px;
+  }
+}
+
+.primary-dashboard {
+  background-color:#fff;
+  padding:40px 0;
+  .container {
+    .flex-display(flex);
+    .logo a{
+      display:block;
+      img {
+        max-width:100%;
+      }
+    }
+  }
+}
+
+//** phone & tablet portrait
+@media (max-width: @screen-sm-max) {
+  .primary-dashboard,
+  .user-dashboard {
+    padding-left:5px;
+    padding-right:5px;
+    .container {
+      .flex-flow(column nowrap);
+    }
+  }
+  .user-dashboard p {
+    text-align:center;
+  }
+  .links {
+    .flex-display(flex);
+    .flex-flow(row nowrap);
+    li {
+      .flex(1 0 auto);
+      a {
+        display:block;
+        text-align:center;
+      }
+    }
+  }
+  .primary-dashboard {
+    .logo a{
+      padding-bottom:20px;
+      img {
+        margin:0 auto;
+      }
+    }
+    .minicart-container {
+      .minicart {
+        max-width:300px;
+        margin:20px auto 0;
+        float:none;
+      }
+    }
+  }
+}
+
+//** tablet landscape & desktop
+@media (min-width: @screen-md-min) {
+  .user-dashboard {
+    .container {
+      .flex-flow(row nowrap);
+    }
+    .links {
+      text-align:right;
+    }
+  }
+  .primary-dashboard {
+    .container {
+      .flex-flow(row nowrap);
+      .logo {
+        .flex(1);
+      }
+      .search {
+        .flex(2);
+      }
+      .minicart-container {
+        .flex(2);
+      }
+    }
+  }
+}
