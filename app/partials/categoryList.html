@@ -21,7 +21,13 @@
                             <div class="empty" ng-show="!c.Image.URL">
                                 <span class="fa empty"><i class="fa fa-camera"></i></span>
                             </div>
-                            <h5 ng-bind-html="c.Name" />
+                            <h5 ng-bind-html="c.Name | categoryNames" />
+                            <div ng-show="isActive('catalog')" class="category-list-tree">
+                                <categorylisttree tree='c.SubCategories' current='currentCategory'/>
+                                <a ng-href="catalog/{{c.InteropID}}">
+                                    <b>Show More...</b>
+                                </a>
+                            </div>
                         </a>
                     </div>
                 </li>

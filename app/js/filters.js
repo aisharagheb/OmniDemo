@@ -101,3 +101,10 @@ four51.app.filter('freeproducthide', ['User', function(User) {
 		return results;
 	}
 }]);
+
+four51.app.filter('categoryNames', function() {
+	return function(value) {
+		var result = value.split('||')[0];
+		return result;
+	}
+});

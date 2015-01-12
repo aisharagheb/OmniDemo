@@ -10595,3 +10595,20 @@ footer section .link-list ng-include a:before {
     padding: 30px 15px;
   }
 }
+.category-list-tree {
+  text-align: left;
+}
+.category-list-tree > a {
+  padding: 0;
+  text-align: left;
+}
+.category-list-tree ul li {
+  width: 100%;
+}
+.category-list-tree ul li a {
+  padding: 0;
+  text-align: left;
+}
+.category-list-tree ul li > ul {
+  padding-left: 10px;
+}
