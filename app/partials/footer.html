@@ -1,4 +1,4 @@
-<section>
+<!--<section>
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -9,7 +9,24 @@
                 <p class="lead">Extra</p>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus felis id tristique faucibus. Phasellus luctus tortor at turpis dignissim.</p>
             </div>
-            <div class="col-md-6">
+
+        </div>
+    </div>
+</section>-->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <p class="lead"><i class="fa fa-link"></i> Links</p>
+                <div class="link-list">
+                    <ng-include src="'partials/Messages/links.html'"></ng-include>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <p class="lead"><i class="fa fa-phone-square"></i> Contact</p>
+                <ng-include src="'partials/Messages/contact-info.html'"></ng-include>
+            </div>
+            <div class="col-md-4">
                 <p class="lead"><i class="fa fa-pencil"></i> Newsletter</p>
                 <p class="text-muted">Sign up to Our Newsletter & get attractive Offers Daily Updates Available</p>
                 <form target="_blank" action="http://beta.mynewsletterbuilder.com/tools/ext_subscribe" method="post" name="subscriber_form">
@@ -28,22 +45,6 @@
                         </span>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <p class="lead"><i class="fa fa-link"></i> Links</p>
-                <div class="link-list">
-                    <ng-include src="'partials/Messages/links.html'"></ng-include>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <p class="lead"><i class="fa fa-phone-square"></i> Contact</p>
-                <ng-include src="'partials/Messages/contact-info.html'"></ng-include>
             </div>
         </div>
     </div>
