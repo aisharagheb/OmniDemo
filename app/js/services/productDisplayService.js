@@ -61,6 +61,31 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
 		lineItem.UnitPrice = priceBreak.Price;
 	}
 	function productViewScope(scope){
+        if (scope.LineItem.Product.StaticSpecGroups && scope.LineItem.Product.StaticSpecGroups.images){
+            scope.GalleryLightboxImages = [];
+            angular.forEach(scope.LineItem.Product.StaticSpecGroups.images.Specs, function(s) {
+                if (s.Name.indexOf('image') > -1) {
+                    scope.GalleryLightboxImages.push(s);
+                }
+            })
+        }
+
+        if (scope.LineItem.Product.Description && scope.LineItem.Product.Description.indexOf('id="tags"') > -1) {
+            scope.productTags = [];
+            var description = $(scope.LineItem.Product.Description);
+            angular.forEach(description, function(section) {
+               if ($(section).attr('id') == 'tags') {
+                   angular.forEach($(section).children(), function(span) {
+                       var text = $(span).text();
+                       scope.productTags.push(text);
+                   });
+               }
+            });
+        } else {
+            scope.productTags = false;
+        }
+
+
 		scope.lineItemErrors = [];
 		scope.$watch("LineItem", function(){
 			scope.setAddToOrderErrors();

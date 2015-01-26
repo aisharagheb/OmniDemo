@@ -18,7 +18,7 @@
                             <div class="row lineitem-row">
                                 <div class="col-xs-5">
                                     <a ng-href="{{'cart/' + lineitem.Product.InteropID + '/' + $index}}">
-                                        <p class="text-muted">{{lineitem.Product.Name}}</p>
+                                        <p class="text-muted" ng-bind-html="lineitem.Product.Name"></p>
                                     </a>
                                 </div>
                                 <div class="col-xs-2">

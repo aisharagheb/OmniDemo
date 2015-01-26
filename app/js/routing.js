@@ -30,7 +30,7 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
         when('/cart', { templateUrl: 'partials/cartView.html', controller: 'CartViewCtrl'}).
         when('/checkout', { templateUrl: 'partials/checkOutView.html', controller: 'CheckOutViewCtrl' }).
 		when('/checkout/:id', { templateUrl: 'partials/checkOutView.html', controller: 'CheckOutViewCtrl' }).
-		when('/cart/:productInteropID/:lineItemIndex', { templateUrl: concatProductView, controller: 'LineItemEditCtrl'}).
+		when('/cart/:productInteropID/:lineItemIndex', { templateUrl: 'partials/DEV-PDT.html', controller: 'LineItemEditCtrl'}).
 		when('/cart/:id', { templateUrl: 'partials/cartView.html', controller: 'CartViewCtrl' }).
 		when('/login', { templateUrl: 'partials/controls/login.html', controller: 'LoginCtrl' }).
 		when('/search', { templateUrl: 'partials/searchView.html', controller: 'ProductSearchCtrl' }).

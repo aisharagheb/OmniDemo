@@ -1,0 +1,38 @@
+.gallery-display {
+  cursor: zoom-in;
+}
+.express-gallery-lightbox {
+  background-color:rgba(0,0,0,0.5);
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  padding:10px;
+  z-index:2000;
+  .well {
+    border:none;
+  }
+  img {
+    margin:5px auto;
+    max-width:100%;
+  }
+  i {
+    cursor: pointer;
+  }
+}
+.express-gallery-panel {
+  .panel-footer {
+    .thumbnail {
+      cursor: pointer;
+      background-color:#fff;
+      border:1px solid #ddd;
+      &.active {
+        border-color:@robyn-blue;
+      }
+      img {
+        margin-bottom:0;
+      }
+    }
+  }
+}

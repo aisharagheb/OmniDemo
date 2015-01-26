@@ -1,0 +1,227 @@
+<script>
+    var customSpecFormCtrl = function($scope) {
+        $scope.selectorImages = null;
+        $scope.themeStoragePath = 'http://www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/express/product_images/';
+        $scope.colorImages = [
+            $scope.themeStoragePath + 'FB1-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'FL1-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'FL2-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'FW1-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'FW2-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'FW3-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'G1-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'MB1-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'MB1b-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'MW1-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'MW2-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'MW3-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'MW4-bust-color-copy.jpg',
+            $scope.themeStoragePath + 'MW5-bust-color.jpg',
+            $scope.themeStoragePath + 'MW6-bust-color.jpg'
+        ];
+        $scope.bwImages = [
+            $scope.themeStoragePath + 'FB1-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'FL1-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'FL2-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'FW1-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'FW2-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'FW3-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'G1-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'MB1-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'MB1b-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'MW1-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'MW2-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'MW3-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'MW4-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'MW5-bust-bw-copy.jpg',
+            $scope.themeStoragePath + 'MW6-bust-bw.jpg'
+        ];
+        
+        $scope.$watch('Variant.Specs.Color.Value', function(n,o) {
+            if (n) {
+                if (n != o) {
+                    $scope.setImageSpecs();
+                    $scope.selectedImage = null;
+                }
+                switch(n) {
+                    case('Black And White') :
+                        $scope.selectorImages = $scope.bwImages;
+                        break;
+                    case('Color') :
+                        $scope.selectorImages = $scope.colorImages;
+                        break;
+                    default :
+                        $scope.selectorImages = null;
+                }
+            } else {
+                $scope.selectorImages = null;
+            }
+        });
+
+        $scope.setImageSpecs = function(imgUrl) {
+            if (imgUrl) {
+                var specValue = imgUrl.replace($scope.themeStoragePath, '');
+                if (specValue.indexOf('-color-') > -1) {
+                    $scope.Variant.Specs.Image1.Value = null;
+                    $scope.Variant.Specs.Image2.Value = specValue;
+                } else {
+                    $scope.Variant.Specs.Image2.Value = null;
+                    $scope.Variant.Specs.Image1.Value = specValue;
+                }
+            } else {
+                $scope.Variant.Specs.Image1.Value = null;
+                $scope.Variant.Specs.Image2.Value = null;
+            }
+        }
+    }
+</script>
+
+<section class="specform-default" ng-controller="customSpecFormCtrl">
+    <!-- BREADCRUMB!-->
+    <productnav editvariant="true" product="Product" variant="Variant" />
+    <!-- SPEC FORM IMAGE PANEL!-->
+    <div class="col-md-4" ng-hide="!Variant.PreviewUrl">
+        <div class="panel panel-default">
+            <loadingindicator ng-show="loadingImage" />
+            <div class="panel-body">
+                <figure>
+                    <img class="product-image-large img-responsive" ng-src="{{Variant.PreviewUrl}}" imageonload />
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div ng-class="{'col-xs-12': !Variant.PreviewUrl, 'col-md-7 col-md-offset-1': Variant.PreviewUrl }">
+        <!-- SPEC FORM PANEL! --->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><span ng-show="Variant.PreviewUrl">{{'Edit' | r | xlat}} </span>{{Variant.ExternalID || 'Create New' | xlat}}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customselectionfield customfield="Variant.Specs.AdSizeSelection"></customselectionfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customselectionfield customfield="Variant.Specs.Color"></customselectionfield>
+                    </div>
+                </div>
+                <div class="row" ng-show="selectorImages" ng-init="selectedImage = null">
+                    <div class="col-xs-12" ng-class="{'col-md-7':isInPath('new/edit')}">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-3 col-md-2"  ng-repeat="img in selectorImages">
+                                <figure style="max-height:100px; border:5px solid #ddd; overflow:hidden; margin-bottom:10px;" ng-click="$parent.selectedImage = img; setImageSpecs(img)">
+                                    <img style="max-width:150%; position:relative; left:-20%; top:0;" ng-src="{{img}}" alt=""/>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5" ng-show="selectedImage">
+                        <figure>
+                            <img style="max-width:100%; margin:0 auto;" ng-src="{{selectedImage}}" alt=""/>
+                        </figure>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customtextfield customfield="Variant.Specs.Headline1"></customtextfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customtextfield customfield="Variant.Specs.Headline2"></customtextfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customtextfield customfield="Variant.Specs.CustomCopy"></customtextfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customtextfield customfield="Variant.Specs.V00BulletHeading"></customtextfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customselectionfield customfield="Variant.Specs.V00Bullet1"></customselectionfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customselectionfield customfield="Variant.Specs.V00Bullet2"></customselectionfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customselectionfield customfield="Variant.Specs.V00Bullet3"></customselectionfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customselectionfield customfield="Variant.Specs.V00Bullet4"></customselectionfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customtextfield customfield="Variant.Specs.V04StreetAddress"></customtextfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customtextfield customfield="Variant.Specs.V06City"></customtextfield>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 col-md-2">
+                        <customtextfield customfield="Variant.Specs.V07State"></customtextfield>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 col-md-2">
+                        <customtextfield customfield="Variant.Specs.V08ZipCode"></customtextfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        <customphonefield mask="(999)-999-9999" label="Phone" spec1="Variant.Specs.V09Phone1AC" spec2="Variant.Specs.V09Phone1EX" spec3="Variant.Specs.V09Phone1NUM" ></customphonefield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customtextfield customfield="Variant.Specs.WebAddress"></customtextfield>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="panel-footer">
+                <button ng-show="Variant.InteropID" class="btn btn-default" type="button" ng-click="saveasnew(true)"><i ng-show="variantErrors.length > 0" class="fa fa-warning"> </i>{{'Save As New' | r | xlat}}</button>
+                <button class="btn btn-primary pull-right" type="submit" ng-click="save(true)"><i ng-show="variantErrors.length > 0" class="fa fa-warning"> </i>{{'Save' | r | xlat}}</button>
+            </div>
+
+            <div class="navbar-fixed-bottom">
+                <div class="view-error-message" ng-show="showVariantErrors && variantErrors.length">
+                    <ul class="alert-warning">
+                        <li class="text-center">
+							<span class="badge">
+								<i class="fa fa-exclamation-circle fa-inverse"></i>
+								{{variantErrors.length}}
+							</span>
+                        </li>
+                        <li class="text-center">
+                            <ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
+                                <li class="alert-warning" ng-repeat="e in variantErrors">{{e | xlat}}</li>
+                            </ul>
+                        </li>
+                        <li class="text-center">
+                            <a ng-show="variantErrors.length > 1">
+                                <i class="fa fa-caret-down" ng-click="errorSection = 'open'" ng-hide="errorSection == 'open'"></i>
+                                <i class="fa fa-caret-up" ng-click="errorSection = ''" ng-show="errorSection == 'open'"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
