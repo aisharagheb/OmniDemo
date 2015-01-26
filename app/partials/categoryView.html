@@ -5,13 +5,13 @@
                 <span ng-click="toggleNav()"><i class="fa fa-bars" ng-class="{ 'text-info': navStatus.visible }"></i></span>
             </li>
             <li>
-                <span id="451_lbl_curcat" class="text-primary" ng-bind-html="currentCategory.Name || '  {{'Categories' | r | xlat}}'"></span>
+                <span id="451_lbl_curcat" class="text-primary" ng-bind-html="currentCategory.Name ? (currentCategory.Name | categoryNames) : '  {{'Categories' | r | xlat}}'"></span>
             </li>
-            <li class="pull-right">
+            <!--<li class="pull-right">
                 <a href="search">
                     <span><i class="fa fa-search text-primary"></i></span>
                 </a>
-            </li>
+            </li>-->
         </ul>
     </nav>
     <aside class="col-sm-3 col-collapse visible-md visible-lg" ng-if="navStatus.visible">

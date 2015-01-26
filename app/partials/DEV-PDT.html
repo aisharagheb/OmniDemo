@@ -67,8 +67,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h2 id="451qa_prod_name" ng-hide="LineItem.Variant.ExternalID">
-                {{LineItem.Product.Name}}
+            <h2 id="451qa_prod_name" ng-hide="LineItem.Variant.ExternalID" ng-bind-html="LineItem.Product.Name">
             </h2>
             <h2 ng-show="LineItem.Variant.ExternalID">
                 {{LineItem.Variant.ExternalID}}
