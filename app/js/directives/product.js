@@ -7,6 +7,15 @@ four51.app.directive('productlistview', function() {
     return obj;
 });
 
+four51.app.directive('productlistviewAlt', function() {
+    var obj = {
+        restrict: "E",
+        templateUrl:'partials/ProductListViews/productListInlineMinimal.html'
+    };
+
+    return obj;
+});
+
 four51.app.directive('categorylistview', function() {
     var obj = {
         restrict: "E",

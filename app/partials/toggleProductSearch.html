@@ -1,0 +1,52 @@
+<script>
+    module.directive('toggleClass', function() {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                element.bind('click', function() {
+                    element.toggleClass(attrs.toggleClass);
+                });
+            }
+        };
+    });
+
+</script>
+
+<div class="search">
+    <label><small>Product Search</small></label>
+    <label ng-show="contentSearch"><small>Content Search</small></label>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for...">
+        <!--productSearch button-->
+                            <span class="input-group-btn">
+                                <!--<button class="btn btn-blue" type="button"><i class="fa fa-search"></i></button>-->
+                                <!-- Split button -->
+                                    <!--<div class="btn-group">-->
+                                <button type="button" class="btn btn-blue input-group-btn"><i class="fa fa-search"></i></button>
+                                    <button type="button" class="btn btn-blue input-group-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <span class="caret"></span>
+                                    </button>
+                                          <ul class="dropdown-menu" role="menu">
+                                              <li><a href="#" class="contentSearch">Content Search</a></li>
+                                              <li class="divider"></li>
+                                              <li><a href="#">Product Search</a></li>
+                                          </ul>
+                                                                            <!--</div>-->
+                            </span>
+        <!--contentSearch Button-->
+                            <span class="input-group-btn" ng-show="certainThingIsClicked">
+                                <!--<button class="btn btn-blue" type="button"><i class="fa fa-search"></i></button>-->
+                                <!-- Split button -->
+                                    <!--<div class="btn-group">-->
+                                <button type="button" class="btn btn-blue input-group-btn"><i class="fa fa-search"></i></button>
+                                <button type="button" class="btn btn-blue input-group-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <span class="caret"></span>
+                                </button>
+                                          <ul class="dropdown-menu" role="menu">
+                                              <li><a href="#" class="contentSearch">Content Search</a></li>
+                                              <li class="divider"></li>
+                                              <li><a href="#">Product Search</a></li>
+                                          </ul>                                  <!--</div>-->
+                            </span>
+        </div>
+</div>

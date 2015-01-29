@@ -50,4 +50,18 @@ function ($location, $route, $scope, $451, User) {
 	$scope.$on('event:orderUpdate', function(event, order) {
 		$scope.cartCount = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? order.LineItems.length : null : null;
 	});
+
+    $scope.searchType = 'Product Search';
+
+    $scope.customSearch = function(term) {
+        if($scope.searchType == 'Product Search'){
+            $location.path('/search/' + term);
+
+        }
+        else {
+//
+//            this will be content cms thing
+        }
+
+    }
 }]);

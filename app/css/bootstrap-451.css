@@ -6917,6 +6917,13 @@ select.ng-invalid:invalid:invalid:focus {
 }
 .panel-nav {
   font-size: 13px;
+  border: none;
+}
+.panel-nav ul li a {
+    color: #96979d;
+}
+.panel-nav ul li a:hover {
+    color: #333333;
 }
 .panel-nav .panel-body,
 .panel-nav .panel-category-list:not(.no-panels),
@@ -6932,7 +6939,7 @@ select.ng-invalid:invalid:invalid:focus {
 .panel-nav .panel-lineitem > ul,
 .panel-nav .panel-order-history > ul,
 .panel-nav .panel-order-shipping-multiple > ul {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px dashed #dddddd;
 }
 .panel-nav .panel-body > ul > ul > li:first-of-type,
 .panel-nav .panel-category-list:not(.no-panels) > ul > ul > li:first-of-type,
@@ -6943,7 +6950,7 @@ select.ng-invalid:invalid:invalid:focus {
   border-top: none;
 }
 .panel-nav ul li {
-  border-top: 1px solid #dddddd;
+  border-top: 1px dashed #dddddd;
   float: left;
   display: block;
   width: 100%;
@@ -7111,7 +7118,14 @@ select.ng-invalid:invalid:invalid:focus {
 .panel-category-list ul li .well {
   margin: 2px;
   padding: 0;
-  min-height: 245px;
+  min-height: 260px;
+}
+/*added css for category images*/
+.panel-category-list ul li .well img {
+    border: 1px solid #dddddd;
+}
+.panel-category-list ul li .well img:hover {
+    box-shadow: 0px 10px 30px -18px rgba(0,0,0,0.75);
 }
 .panel-category-list ul li .well.image-bg {
   background-repeat: no-repeat;
@@ -7135,6 +7149,18 @@ select.ng-invalid:invalid:invalid:focus {
   font-weight: bold;
   text-shadow: 0 0 5px #FFF;
 }
+
+.gototop {
+
+    bottom: 2px;
+    display: block;
+    height: 58px;
+    overflow: hidden;
+    position: fixed;
+    right: 5px;
+    text-indent: -9999px;
+    width: 58px;}
+
 .panel-category-list ul li .well.image-bg.dark a {
   background-color: rgba(12, 42, 58, 0.6);
 }
@@ -7143,7 +7169,7 @@ select.ng-invalid:invalid:invalid:focus {
   text-shadow: 0 0 5px #0c2a3a;
 }
 .panel-category-list ul li a {
-  padding: .75em;
+  padding: .49em;
   display: block;
   text-align: center;
   text-decoration: none;
@@ -10596,21 +10622,48 @@ footer section .link-list ng-include a:before {
   }
 }
 .category-list-tree {
-  text-align: left;
-}
+     text-align: left;
+ }
 .category-list-tree > a {
-  padding: 0;
-  text-align: left;
+    padding: 0;
+    text-align: left;
 }
 .category-list-tree ul li {
-  width: 100%;
+    width: 100%;
 }
 .category-list-tree ul li a {
-  padding: 0;
-  text-align: left;
+    padding: 0;
+    text-align: left;
 }
 .category-list-tree ul li > ul {
-  padding-left: 10px;
+    padding-left: 10px;
+}
+
+.category-list-tree-sub {
+    text-align: left;
+}
+.category-list-tree-sub > a {
+    padding: 0;
+    text-align: left;
+}
+.category-list-tree-sub ul li {
+    width: 100%;
+}
+.category-list-tree-sub ul li a {
+    padding: 0;
+    text-align: left;
+    padding-left: 40px;
+    color: #96979D;
+}
+.category-list-tree-sub ul li a:hover {
+    padding: 0;
+    text-align: left;
+    padding-left: 40px;
+    color: #333333;
+}
+.category-list-tree-sub ul li > ul {
+    padding-left: 10px;
+    color: #96979D;
 }
 .gallery-display {
   cursor: zoom-in;

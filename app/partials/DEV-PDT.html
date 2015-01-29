@@ -59,12 +59,6 @@
 
 <div class="col-md-7 col-md-offset-1 col-collapse">
     <!-- PRODUCT INFO!-->
-
-    <!--PRODUCT TAGS-->
-    <div ng-repeat="tag in productTags" ng-show="productTags">
-        <a class="label label-default" href="search/{{tag}}">{{tag}}</a>
-    </div>
-
     <div class="row">
         <div class="col-xs-12">
             <h2 id="451qa_prod_name" ng-hide="LineItem.Variant.ExternalID" ng-bind-html="LineItem.Product.Name">
@@ -78,7 +72,19 @@
         </div>
     </div>
     <!-- PRODUCT DESCRIPTION PANEL! --->
-    <div>
+    <tabset ng-if="productTabs">
+        <tab ng-repeat="tab in productTabs" heading="{{tab.Title}}">
+            <div ng-bind-html="tab.Content"></div>
+        </tab>
+        <!--PRODUCT TAGS-->
+        <tab heading="Tags">
+            <div ng-repeat="tag in productTags" ng-show="productTags" style="display: inline-flex; padding:2px;">
+                <a class="label label-default" href="search/{{tag}}"> <i class="fa fa-tag"></i> {{tag}}</a> <br/>
+            </div>
+        </tab>
+    </tabset>
+    <br/>
+    <!--<div>
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title panel-primary">
@@ -92,10 +98,10 @@
                 <p id="451qa_prod_desc" ng-bind-html="trustedDescription(LineItem.Product)" />
                 <p ng-show="LineItem.Variant.Description" ng-bind-html="trustedDescription(LineItem.Variant)" />
             </div>
-            <!-- PRICE SCHEDULE PANEL! --->
+            &lt;!&ndash; PRICE SCHEDULE PANEL! -&ndash;&gt;
             <priceScheduleTable ng-if="!(user.Permissions.contains('HidePricing')) && LineItem.PriceSchedule.PriceBreaks.length > 1" ps='LineItem.PriceSchedule' p='LineItem.Product'/>
         </div>
-    </div>
+    </div>-->
     <!-- STATIC SPECS PANEL! -->
     <staticspecstable ng-show="StaticSpecGroups && user.Permissions.contains('ViewNonCustomizableSpecs')" specgroups="StaticSpecGroups" length="LineItem.Product.StaticSpecLength"/>
     <!-- ORDER PANEL! -->

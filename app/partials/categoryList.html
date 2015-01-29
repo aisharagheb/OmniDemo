@@ -1,9 +1,4 @@
-<div class="panel panel-default" ng-show="currentCategory.SubCategories.length">
-    <div class="panel-heading" >
-        <h3 class="panel-title" >
-            {{'Categories' | r | xlat}}
-        </h3>
-    </div>
+<div class=" " ng-show="currentCategory.SubCategories.length">
     <div class="well" ng-show="productCount > settings.pageSize">
         <pagination page="settings.currentPage" max-size="10" rotate="false" boundary-links="true" total-items="productCount"
                     items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
@@ -21,11 +16,12 @@
                             <div class="empty" ng-show="!c.Image.URL">
                                 <span class="fa empty"><i class="fa fa-camera"></i></span>
                             </div>
-                            <h5 ng-bind-html="c.Name | categoryNames" />
-                            <div ng-show="isActive('catalog')" class="category-list-tree">
+
+                            <h5 class="451_lbl_subcatlist" ng-bind-html="c.Name | categoryNames" />
+                            <div ng-show="isActive('catalog')" class="category-list-tree-sub">
                                 <categorylisttree tree='c.SubCategories' current='currentCategory'/>
                                 <a ng-href="catalog/{{c.InteropID}}">
-                                    <b>Show More...</b>
+                                    <small><b style="color:#96979D;">Shop All</b></small>
                                 </a>
                             </div>
                         </a>

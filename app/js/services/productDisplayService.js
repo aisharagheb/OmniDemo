@@ -85,6 +85,27 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
             scope.productTags = false;
         }
 
+        if (scope.LineItem.Product.Description && scope.LineItem.Product.Description.indexOf('id="tabs"') > -1) {
+            scope.productTabs = [];
+            var description = $(scope.LineItem.Product.Description);
+            angular.forEach(description, function(section) {
+                if ($(section).attr('id') == 'tabs') {
+                    angular.forEach($(section).children(), function(tab) {
+                        var title = $(tab).attr('id');
+                        var content = $(tab).html();
+                        scope.productTabs.push(
+                            {
+                                Title: title,
+                                Content: content
+                            }
+                        );
+                    });
+                }
+            });
+        } else {
+            scope.productTabs = false;
+        }
+
 
 		scope.lineItemErrors = [];
 		scope.$watch("LineItem", function(){

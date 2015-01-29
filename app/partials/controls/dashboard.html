@@ -28,12 +28,23 @@
                 </a>
             </div>
             <div class="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-blue" type="button"><i class="fa fa-search"></i></button>
-                            </span>
-                </div>
+                <form ng-submit="customSearch(searchTerm)">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="searchTerm" placeholder="Search for..."/>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-blue"><i class="fa fa-search"></i> {{searchType}}</button>
+                        <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="caret"></span>
+                        </button>
+                          <ul class="dropdown-menu" role="menu">
+                              <li><a ng-click="searchType = 'Content Search'">Content Search</a></li>
+                              <li class="divider"></li>
+                              <li><a ng-click="searchType = 'Product Search'">Product Search</a></li>
+                          </ul>
+                    </span>
+                    </div>
+                </form>
+
             </div>
             <div class="minicart-container">
                 <minicart></minicart>
