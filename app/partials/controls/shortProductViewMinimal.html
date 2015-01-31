@@ -1,17 +1,17 @@
-<div class="451qa_prod_item row">
-    <div class="col-xs-12 text-center">
-        <a class="thumbnail" href="product/{{LineItem.Product.InteropID}}">
-            <figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" >
-                <img ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}"/>
-            </figure>
-            <div class="empty" ng-hide="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl">
-                <span class="fa empty"><i class="fa fa-camera"></i></span>
-            </div>
-        </a>
-    </div>
-    <div class="col-xs-12 text-left">
+<div class="451qa_prod_item robyn-short-product inline">
+
+    <div class="product-name"><div ng-bind-html="LineItem.Product.Name"></div></div>
+    <a href="product/{{LineItem.Product.InteropID}}">
+        <figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" >
+            <img style="min-height:75px;" ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}"/>
+        </figure>
+        <div class="empty" ng-hide="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl">
+            <span class="fa empty"><i class="fa fa-camera"></i></span>
+        </div>
+    </a>
+    <p class="price"><b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b></p>
+   <!-- <div class="col-xs-12 text-left">
         <div class="panel-body">
-            <h3 ng-bind-html="LineItem.Product.Name"></h3>
             <div>
                 <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
                 <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
@@ -28,7 +28,7 @@
                 </p>
             </div>
             <br/>
-            <a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</a>
+            &lt;!&ndash;<a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</a>&ndash;&gt;
         </div>
-    </div>
+    </div>-->
 </div>

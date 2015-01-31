@@ -11,6 +11,10 @@
 <!--                <li><a href="admin">
                     <i class="fa fa-user"></i> My Account
                 </a></li>-->
+                <li class="hidden-xs hidden-sm spending-account" ng-show="SpendingAccounts[0].Balance">
+                    <span>Spending Account/span><br />{{(SpendingAccounts[0].Balance | currency) || (0 | currency)}}
+                </span>
+                </li>
                 <li><a href="cart">
                     <i class="fa fa-shopping-cart"></i> Shopping Cart
                 </a></li>
@@ -30,13 +34,13 @@
             <div class="search">
                 <form ng-submit="customSearch(searchTerm)">
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="searchTerm" placeholder="Search for..."/>
+                        <input type="text" class="form-control" ng-model="searchTerm" placeholder="{{searchType}}"/>
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-blue"><i class="fa fa-search"></i> {{searchType}}</button>
-                        <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <button type="submit" class="btn btn-blue"><i class="fa fa-search"></i> </button>
+                        <button type="button" class="btn btn-blue dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
                             <span class="caret"></span>
                         </button>
-                          <ul class="dropdown-menu" role="menu">
+                          <ul class="dropdown-menu dropdown-menu-right" role="menu">
                               <li><a ng-click="searchType = 'Content Search'">Content Search</a></li>
                               <li class="divider"></li>
                               <li><a ng-click="searchType = 'Product Search'">Product Search</a></li>

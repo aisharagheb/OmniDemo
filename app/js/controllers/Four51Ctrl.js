@@ -87,4 +87,14 @@ function ($scope, $route, $location, $451, User, Order, Security, OrderConfig, C
 	});
 	$scope.$on("$routeChangeSuccess", init);
     $scope.$on('event:auth-loginRequired', cleanup);
+
+    $scope.goToTop = function() {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+    }
+
+/*    $scope.checkPosition = function() {
+        var position = $(window).scrollTop();
+        return position > 300;
+    }*/
 }]);

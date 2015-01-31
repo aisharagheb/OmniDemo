@@ -14,24 +14,31 @@
             </li>-->
         </ul>
     </nav>
-    <aside class="col-sm-3 col-collapse visible-md visible-lg" ng-if="navStatus.visible">
-        <div class="  panel-nav">
-            <nav class="nav 451qa_sidenav panel-body">
-                <ul>
-                    <categorytree tree='tree' current='currentCategory' />
-                </ul>
-            </nav>
+    <div class="row">
+        <aside class="col-sm-3 visible-md visible-lg" ng-if="navStatus.visible">
+            <div class="panel-nav">
+                <nav class="nav 451qa_sidenav panel-body">
+                    <ul>
+                        <categorytree tree='tree' current='currentCategory' />
+                    </ul>
+                </nav>
+            </div>
+            <div ng-show="!isActive('catalog')">
+                <categorydisplay categoryid="'EX_LatestProducts'"></categorydisplay>
+                <!--<categorydisplay categoryid="'EX_BestProducts'"></categorydisplay>-->
+            </div>
+        </aside>
+        <div ng-class="{ 'col-md-8 col-md-offset-1': navStatus.visible }">
+
+            <categorylistview></categorylistview>
+
+            <loadingindicator ng-show="productLoadingIndicator" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
+            <productlistview ng-show="productListType == 'row'"></productlistview>
+            <productlistview-alt ng-show="productListType == 'inline'"></productlistview-alt>
         </div>
-    </aside>
-    <div class="col-collapse" ng-class="{ 'col-md-8 col-md-offset-1': navStatus.visible }">
-
-        <categorylistview></categorylistview>
-
-		<loadingindicator ng-show="productLoadingIndicator" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
-
-        <div class="btn btn-default" ng-click="productListType = 'row'" ng-class="{'active': productListType == 'row'}"><i class="fa fa-list"></i></div>
-        <div class="btn btn-default" ng-click="productListType = 'inline'" ng-class="{'active': productListType == 'inline'}"><i class="fa fa-th"></i></div>
-        <productlistview ng-show="productListType == 'row'"></productlistview>
-        <productlistview-alt ng-show="productListType == 'inline'"></productlistview-alt>
+    </div>
+    <div ng-show="isActive('catalog')">
+        <categorydisplay-inline categoryid="'EX_LatestProducts'" user="user"></categorydisplay-inline>
+        <!--<categorydisplay-inline categoryid="'EX_BestProducts'" user="user"></categorydisplay-inline>-->
     </div>
 </section>

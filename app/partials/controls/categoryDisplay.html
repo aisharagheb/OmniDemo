@@ -1,0 +1,20 @@
+<div class="category-display-box">
+    <h3>{{category.Name}}</h3>
+    <ul>
+        <li ng-repeat="product in category.products | limitTo:4">
+            <a ng-href="{{'product/' + product.InteropID}}">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <figure>
+                            <img ng-src="{{product.SmallImageUrl}}" />
+                        </figure>
+                    </div>
+                    <div class="col-xs-9">
+                        <p class="lead">{{product.Name}}</p>
+                        <p>{{product.StandardPriceSchedule.PriceBreaks[0].Price | currency}}</p>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>

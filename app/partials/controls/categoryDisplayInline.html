@@ -1,0 +1,19 @@
+<div class="panel panel-default robyn-product-list" ng-show="category.products">
+    <div class="panel-heading">
+        <div class="panel-title">
+            {{category.Name}}
+        </div>
+    </div>
+    <div class="panel-product-list panel-body" ng-show="category.InteropID">
+        <nav class="nav">
+            <loadingindicator ng-show="searchLoading" title="{{'Please wait while we fetch all products' | r | xlat}}" />
+            <ul>
+                <li class="inline minimal" id="451_lst_prod" ng-repeat="product in category.products | limitTo:4" style="max-width:25%;">
+                    <div class="well">
+                        <shortproductviewminimal p="product" user="user" />
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
