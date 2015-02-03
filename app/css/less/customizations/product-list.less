@@ -20,7 +20,7 @@
     margin-right:-10px;
     li{
       padding:0 10px 10px;
-      a {
+      a:not(.btn) {
         padding:0;
       }
     }
@@ -39,6 +39,9 @@
       color:@text-color;
       text-transform: uppercase;
     }
+    .btn-blue {
+      display:inline-block;
+    }
     .price {
       margin-top:20px;
       font-weight:bold;
@@ -54,6 +57,11 @@
     margin:5px 5px 15px;
   }
   .inline {
+    &.alt {
+      @media(min-width:@screen-md-min) {
+        max-width:25%;
+      }
+    }
     .product-name {
       height:80px;
       .flex-display(flex);
@@ -64,6 +72,28 @@
         .flex(0 1 auto);
         .align-self(center);
       }
+    }
+  }
+}
+
+.category-display-box{
+  & > h4 {
+    text-transform: uppercase;
+    padding-bottom:10px;
+    margin-bottom:10px;
+    border-bottom:4px double @off-white;
+  }
+  .lead{
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: @express-blue;
+  }
+  figure{
+    border: 1px solid @off-white;
+    padding: 5px;
+    display:block;
+    img{
+      max-width: 100%;
     }
   }
 }

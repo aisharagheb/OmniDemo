@@ -1,5 +1,5 @@
 <div class="category-display-box">
-    <h3>{{category.Name}}</h3>
+    <h4>{{category.Name}}</h4>
     <ul>
         <li ng-repeat="product in category.products | limitTo:4">
             <a ng-href="{{'product/' + product.InteropID}}">
@@ -10,8 +10,8 @@
                         </figure>
                     </div>
                     <div class="col-xs-9">
-                        <p class="lead">{{product.Name}}</p>
-                        <p>{{product.StandardPriceSchedule.PriceBreaks[0].Price | currency}}</p>
+                        <p class="lead" ng-bind-html="product.Name"></p>
+                        <p class="text-muted">{{product.StandardPriceSchedule.PriceBreaks[0].Price | currency}}</p>
                     </div>
                 </div>
             </a>

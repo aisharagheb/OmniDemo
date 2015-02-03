@@ -88,27 +88,6 @@
             </div>
         </div>
 
-        <!-- PRODUCT DESCRIPTION PANEL! --->
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title panel-primary">
-                    {{'Description' | r | xlat}}
-                </h3>
-            </div>
-            <div class="panel-body" id="451_area_prod_desc">
-                <h4 ng-show="LineItem.Product.ExternalID" class="text-info">
-                    {{'ID' | r | xlat}}: {{LineItem.Product.ExternalID}}
-                </h4>
-                <p ng-bind-html="trustedDescription(LineItem.Product)" />
-                <p ng-show="LineItem.Variant.Description" ng-bind-html="trustedDescription(LineItem.Variant)" />
-            </div>
-            <!-- PRICE SCHEDULE PANEL! --->
-            <priceScheduleTable ng-if="!(user.Permissions.contains('HidePricing')) && LineItem.PriceSchedule.PriceBreaks.length > 1" ps='LineItem.PriceSchedule' p='LineItem.Product'/>
-        </div>
-
-        <!-- STATIC SPECS PANEL! -->
-        <!--<staticspecstable ng-show="StaticSpecGroups && user.Permissions.contains('ViewNonCustomizableSpecs')" specgroups="StaticSpecGroups" length="LineItem.Product.StaticSpecLength"/>-->
-
         <!-- ORDER PANEL! -->
         <form name="addToOrderForm" novalidate="">
             <!--<div class="panel panel-default">-->
@@ -217,9 +196,9 @@
                                 {{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}
                             </span>
                         </button>
-                        <div class="additional-buttons" ng-show="StaticSpecGroups.Download">
-                            <div ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs">
-                                <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-blue"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                        <div class="additional-buttons" ng-show="StaticSpecGroups && user.Permissions.contains('ViewNonCustomizableSpecs')">
+                            <div ng-repeat="spec in StaticSpecGroups.Download.Specs | filterbyspec:LineItem.Specs.State.Value">
+                                <a class="btn btn-blue btn-lg" href="{{spec.FileURL}}"><i class="fa fa-download"></i> Download {{spec.Name}} PDF</a>
                             </div>
                         </div>
                     </div>
@@ -228,7 +207,7 @@
         </form>
 
 
-        <!-- PRODUCT TABS! --->
+        <!-- PRODUCT DESCRIPTION PANEL! --->
         <tabset ng-if="LineItem.Product.productTabs">
             <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}">
                 <div ng-bind-html="tab.Content"></div>
@@ -240,12 +219,29 @@
                 </div>
             </tab>
         </tabset>
+        <div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title panel-primary">
+                        {{'Description' | r | xlat}}
+                    </h3>
+                </div>
+                <div class="panel-body" id="451_area_prod_desc">
+                    <h4 ng-show="LineItem.Product.ExternalID" class="text-info">
+                        {{'ID' | r | xlat}}: {{LineItem.Product.ExternalID}}
+                    </h4>
+                    <p ng-bind-html="trustedDescription(LineItem.Product)" />
+                    <p ng-show="LineItem.Variant.Description" ng-bind-html="trustedDescription(LineItem.Variant)" />
+                </div>
+                <!-- PRICE SCHEDULE PANEL! --->
+                <priceScheduleTable ng-if="!(user.Permissions.contains('HidePricing')) && LineItem.PriceSchedule.PriceBreaks.length > 1" ps='LineItem.PriceSchedule' p='LineItem.Product'/>
+            </div>
+        </div>
 
+        <!-- RELATED PRODUCTS! -->
+        <relatedproducts ng-if="LineItem.Product.RelatedProductsGroupID" relatedgroupid="LineItem.Product.RelatedProductsGroupID" />
     </div>
 </div>
-
-<!-- RELATED PRODUCTS! -->
-<relatedproducts ng-if="LineItem.Product.RelatedProductsGroupID" relatedgroupid="LineItem.Product.RelatedProductsGroupID" user="user"/>
 
 <!-- ERROR MESSAGING! -->
 <div class="navbar-fixed-bottom">

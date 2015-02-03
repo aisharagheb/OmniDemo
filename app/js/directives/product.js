@@ -84,6 +84,7 @@ four51.app.directive('shortproductviewgallery', function() {
 four51.app.directive('relatedproducts', function() {
 	var obj = {
 		scope: {
+            user: '=',
 			relatedgroupid: '='
 		},
 		restrict: 'E',
@@ -125,6 +126,36 @@ four51.app.directive('staticspecstable', function() {
 				return hasChild;
 			}
 		}]
+    };
+
+    return obj;
+});
+
+four51.app.directive('dynamicstaticspecstable', function() {
+    var obj = {
+        scope: {
+            lispecs: '=',
+            specgroups : '=',
+            length: '='
+        },
+        restrict: 'E',
+        templateUrl: 'partials/controls/staticSpecs.html',
+        controller: ['$scope', function($scope){
+            $scope.hasvisiblechild = function(specs){
+                var hasChild = false;
+                angular.forEach(specs, function(item){
+                    if(item.VisibleToCustomer)
+                        hasChild = true;
+                });
+                return hasChild;
+            };
+
+            $scope.$watch('lispecs.Value', function(n,o) {
+                //if (!n) return;
+                if (!n) return;
+                console.log(n);
+            }, true);
+        }]
     };
 
     return obj;

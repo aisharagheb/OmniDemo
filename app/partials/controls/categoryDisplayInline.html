@@ -8,7 +8,7 @@
         <nav class="nav">
             <loadingindicator ng-show="searchLoading" title="{{'Please wait while we fetch all products' | r | xlat}}" />
             <ul>
-                <li class="inline minimal" id="451_lst_prod" ng-repeat="product in category.products | limitTo:4" style="max-width:25%;">
+                <li class="inline minimal alt" id="451_lst_prod" ng-repeat="product in category.products | limitTo:4">
                     <div class="well">
                         <shortproductviewminimal p="product" user="user" />
                     </div>

@@ -24,7 +24,7 @@
 
 #navigation-bar {
   border-top:1px solid @off-white;
-  border-bottom:1px solid @off-white;
+  border-bottom:4px double @off-white;
 }
 
 //account for no meganav with jumbotron styles
@@ -36,12 +36,27 @@
   background-color: @off-white;
   color:@text-gray;
   font-size:0.8em;
+  .spending-account {
+    padding-top:8px;
+    .label-info {
+      background-color:@express-blue;
+      border-radius:0;
+    }
+  }
   .container {
     .flex-display(flex);
     p,
     ul {
       .flex(1 0 auto);
     }
+    @media (max-width:@screen-sm-max) {
+      p {
+        background-color:darken(@off-white, 10);
+        color: #333;
+        padding-bottom:8px;
+      }
+    }
+
   }
   p {
     margin:0;

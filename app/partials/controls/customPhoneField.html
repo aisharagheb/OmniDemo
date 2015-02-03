@@ -1,6 +1,6 @@
 <div class="view-form-icon">
     <div>
-        <label>{{label}}</label>
+        <label ng-bind-html="(customfield.Label || customfield.Name | r)"></label>
         <div>
             <input class="form-control" ui-mask="{{mask}}" ng-model="phoneNumber"></input>
         </div>

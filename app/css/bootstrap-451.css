@@ -10230,6 +10230,103 @@ fieldset[disabled] .btn-blue.active {
   color: #0787c4;
   background-color: #ffffff;
 }
+.btn-gray {
+  color: #96979d;
+  background-color: #f2f2f2;
+  border-color: #e5e5e5;
+  border-radius: 4px;
+}
+.btn-gray:hover,
+.btn-gray:focus,
+.btn-gray:active,
+.btn-gray.active,
+.open .dropdown-toggle.btn-gray {
+  color: #96979d;
+  background-color: #dedede;
+  border-color: #c7c7c7;
+}
+.btn-gray:active,
+.btn-gray.active,
+.open .dropdown-toggle.btn-gray {
+  background-image: none;
+}
+.btn-gray.disabled,
+.btn-gray[disabled],
+fieldset[disabled] .btn-gray,
+.btn-gray.disabled:hover,
+.btn-gray[disabled]:hover,
+fieldset[disabled] .btn-gray:hover,
+.btn-gray.disabled:focus,
+.btn-gray[disabled]:focus,
+fieldset[disabled] .btn-gray:focus,
+.btn-gray.disabled:active,
+.btn-gray[disabled]:active,
+fieldset[disabled] .btn-gray:active,
+.btn-gray.disabled.active,
+.btn-gray[disabled].active,
+fieldset[disabled] .btn-gray.active {
+  background-color: #f2f2f2;
+  border-color: #e5e5e5;
+}
+.btn-gray .badge {
+  color: #f2f2f2;
+  background-color: #96979d;
+}
+.order-cloud-image {
+  background-color: #0787c4;
+}
+.order-cloud {
+  padding: 0 5px;
+}
+.order-cloud figure img {
+  max-width: 100%;
+  margin: 0 auto;
+}
+.order-cloud .form-signin {
+  max-width: 26em;
+  padding: 1em 1em 2em;
+  margin: 2em auto;
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  border-radius: 6px;
+  box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+}
+.order-cloud .form-signin .btn-primary {
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-shadow: 0 -1px 0 #999999;
+  -webkit-transition: all 150ms ease;
+  -moz-transition: all 150ms ease;
+  -o-transition: all 150ms ease;
+  -ms-transition: all 150ms ease;
+  transition: all 150ms ease;
+}
+.order-cloud .form-signin .btn-primary:focus {
+  outline: none;
+}
+.order-cloud .form-signin .btn-primary:active {
+  text-shadow: 0 -1px 0 #444444, 0 0 5px #ffffdd, 0 0 8px #ffffff;
+  box-shadow: 0 1px 0 #666666, 0 1px 0 #444444, 0 1px 1px rgba(0, 0, 0, 0.9);
+  -webkit-transform: translateY(2px);
+  -moz-transform: translateY(2px);
+  -o-transform: translateY(2px);
+  -ms-transform: translateY(2px);
+  transform: translateY(2px);
+  -webkit-animation: none;
+  -moz-animation: none;
+  -o-animation: none;
+  -ms-animation: none;
+  animation: none;
+  outline: none;
+}
+.order-cloud .form-signin .btn-info {
+  margin-top: 15px;
+  padding: 15px;
+}
 .navbar {
   border-width: 0px;
 }
@@ -10251,7 +10348,7 @@ fieldset[disabled] .btn-blue.active {
 }
 #navigation-bar {
   border-top: 1px solid #f2f2f2;
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 4px double #f2f2f2;
 }
 .jumbotron {
   margin: 0 5px -45px;
@@ -10260,6 +10357,13 @@ fieldset[disabled] .btn-blue.active {
   background-color: #f2f2f2;
   color: #96979d;
   font-size: 0.8em;
+}
+.user-dashboard .spending-account {
+  padding-top: 8px;
+}
+.user-dashboard .spending-account .label-info {
+  background-color: #0787c4;
+  border-radius: 0;
 }
 .user-dashboard .container,
 .user-dashboard .container-view {
@@ -10277,6 +10381,14 @@ fieldset[disabled] .btn-blue.active {
   -moz-flex: 1 0 auto;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
+}
+@media (max-width: 991px) {
+  .user-dashboard .container p,
+  .user-dashboard .container-view p {
+    background-color: #d9d9d9;
+    color: #333;
+    padding-bottom: 8px;
+  }
 }
 .user-dashboard p {
   margin: 0;
@@ -10618,11 +10730,29 @@ footer section .link-list ng-include a:before {
   padding-left: 10px;
 }
 .category-list-tree-sub {
+  overflow: hidden;
+  text-align: left;
+  background-color: #f2f2f2;
+}
+.category-list-tree-sub > a:not(.shop-all) {
+  min-height: 100px;
+  max-height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: #333333;
   text-align: left;
 }
-.category-list-tree-sub > a {
-  padding: 0;
-  text-align: left;
+.category-list-tree-sub > a.shop-all {
+  color: #333333;
+  background-color: #fff;
+  margin: 10px;
+  padding: 5px;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+.category-list-tree-sub > a.shop-all:hover {
+  background-color: #0787c4;
+  color: #fff;
 }
 .category-list-tree-sub ul li {
   width: 100%;
@@ -10630,13 +10760,11 @@ footer section .link-list ng-include a:before {
 .category-list-tree-sub ul li a {
   padding: 0;
   text-align: left;
-  padding-left: 40px;
   color: #96979D;
 }
 .category-list-tree-sub ul li a:hover {
   padding: 0;
   text-align: left;
-  padding-left: 40px;
   color: #333333;
 }
 .category-list-tree-sub ul li > ul {
@@ -10657,6 +10785,7 @@ footer section .link-list ng-include a:before {
   color: #333333;
 }
 .panel-category-list .well > a {
+  border: 1px solid #f2f2f2;
   -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   -webkit-transition: box-shadow 200ms ease-in-out;
@@ -10693,6 +10822,7 @@ footer section .link-list ng-include a:before {
   cursor: pointer;
   background-color: #fff;
   border: 1px solid #ddd;
+  margin-bottom: 10px;
 }
 .express-gallery-panel .panel-footer .thumbnail.active {
   border-color: #0787c4;
@@ -10702,6 +10832,68 @@ footer section .link-list ng-include a:before {
 }
 #tags,
 #tabs {
+  display: none;
+}
+.tab-content {
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-top: none;
+  min-height: 200px;
+  color: #96979d;
+}
+.additional-buttons {
+  display: inline-block;
+}
+.additional-buttons div[ng-repeat] {
+  margin-right: 5px;
+  display: inline-block;
+}
+.additional-buttons div[ng-repeat] a.btn {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+#expressProductDescription .tags {
+  display: none;
+}
+#expressProductDescription div.StateDescription {
+  display: none;
+}
+#expressProductDescription div.StateDescription.Generic {
+  display: block;
+}
+#expressProductDescription.English div.StateDescription.Spanish {
+  display: none !important;
+}
+#expressProductDescription.English.California div.StateDescription.California {
+  display: block;
+}
+#expressProductDescription.English.York div.StateDescription.NewYork {
+  display: block;
+}
+#expressProductDescription.English.Massachusetts div.StateDescription.Massachusetts {
+  display: block;
+}
+#expressProductDescription.English.California div.StateDescription.Generic,
+#expressProductDescription.English.York div.StateDescription.Generic,
+#expressProductDescription.English.Massachusetts div.StateDescription.Generic {
+  display: none;
+}
+#expressProductDescription.Spanish div.StateDescription.English {
+  display: none !important;
+}
+#expressProductDescription.Spanish.California div.StateDescription.California {
+  display: block;
+}
+#expressProductDescription.Spanish.York div.StateDescription.NewYork {
+  display: block;
+}
+#expressProductDescription.Spanish.Massachusetts div.StateDescription.Massachusetts {
+  display: block;
+}
+#expressProductDescription.Spanish.California div.StateDescription.Generic,
+#expressProductDescription.Spanish.York div.StateDescription.Generic,
+#expressProductDescription.Spanish.Massachusetts div.StateDescription.Generic {
   display: none;
 }
 .panel-primary .panel-heading,
@@ -10729,8 +10921,8 @@ footer section .link-list ng-include a:before {
 .robyn-product-list ul li {
   padding: 0 10px 10px;
 }
-.no-panels.robyn-product-list ul li a,
-.robyn-product-list ul li a {
+.no-panels.robyn-product-list ul li a:not(.btn),
+.robyn-product-list ul li a:not(.btn) {
   padding: 0;
 }
 .no-panels.robyn-product-list .well,
@@ -10752,6 +10944,10 @@ footer section .link-list ng-include a:before {
   color: #333333;
   text-transform: uppercase;
 }
+.no-panels.robyn-product-list .well .btn-blue,
+.robyn-product-list .well .btn-blue {
+  display: inline-block;
+}
 .no-panels.robyn-product-list .well .price,
 .robyn-product-list .well .price {
   margin-top: 20px;
@@ -10767,6 +10963,12 @@ footer section .link-list ng-include a:before {
   border: 1px solid #f2f2f2;
   padding: 5px;
   margin: 5px 5px 15px;
+}
+@media (min-width: 992px) {
+  .no-panels.robyn-product-list .inline.alt,
+  .robyn-product-list .inline.alt {
+    max-width: 25%;
+  }
 }
 .no-panels.robyn-product-list .inline .product-name,
 .robyn-product-list .inline .product-name {
@@ -10799,4 +11001,23 @@ footer section .link-list ng-include a:before {
   -moz-align-self: center;
   -ms-align-self: center;
   align-self: center;
+}
+.category-display-box > h4 {
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 4px double #f2f2f2;
+}
+.category-display-box .lead {
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #0787c4;
+}
+.category-display-box figure {
+  border: 1px solid #f2f2f2;
+  padding: 5px;
+  display: block;
+}
+.category-display-box figure img {
+  max-width: 100%;
 }

@@ -62,50 +62,18 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
 	}
 	function productViewScope(scope){
         if (scope.LineItem.Product.StaticSpecGroups && scope.LineItem.Product.StaticSpecGroups.images){
-            scope.GalleryLightboxImages = [];
+            scope.GalleryLightboxImages = {
+                Images: [],
+                Thumbs:[]
+            };
             angular.forEach(scope.LineItem.Product.StaticSpecGroups.images.Specs, function(s) {
-                if (s.Name.indexOf('image') > -1) {
-                    scope.GalleryLightboxImages.push(s);
+                if (s.Name.indexOf('_small') > -1) {
+                    scope.GalleryLightboxImages.Thumbs.push(s);
+                } else {
+                    scope.GalleryLightboxImages.Images.push(s);
                 }
             })
         }
-
-        if (scope.LineItem.Product.Description && scope.LineItem.Product.Description.indexOf('id="tags"') > -1) {
-            scope.productTags = [];
-            var description = $(scope.LineItem.Product.Description);
-            angular.forEach(description, function(section) {
-               if ($(section).attr('id') == 'tags') {
-                   angular.forEach($(section).children(), function(span) {
-                       var text = $(span).text();
-                       scope.productTags.push(text);
-                   });
-               }
-            });
-        } else {
-            scope.productTags = false;
-        }
-
-        if (scope.LineItem.Product.Description && scope.LineItem.Product.Description.indexOf('id="tabs"') > -1) {
-            scope.productTabs = [];
-            var description = $(scope.LineItem.Product.Description);
-            angular.forEach(description, function(section) {
-                if ($(section).attr('id') == 'tabs') {
-                    angular.forEach($(section).children(), function(tab) {
-                        var title = $(tab).attr('id');
-                        var content = $(tab).html();
-                        scope.productTabs.push(
-                            {
-                                Title: title,
-                                Content: content
-                            }
-                        );
-                    });
-                }
-            });
-        } else {
-            scope.productTabs = false;
-        }
-
 
 		scope.lineItemErrors = [];
 		scope.$watch("LineItem", function(){

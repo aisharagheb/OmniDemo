@@ -23,7 +23,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
     };
     $scope.changeDefaultIndex = function(value){
         if (value == 'next'){
-            if ($scope.defaultIndex == ($scope.GalleryLightboxImages.length - 1)){
+            if ($scope.defaultIndex == ($scope.GalleryLightboxImages.Images.length - 1)){
                 $scope.defaultIndex = 0;
             } else {
                 $scope.defaultIndex++;
@@ -31,7 +31,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
         }
         if (value == 'prev'){
             if ($scope.defaultIndex == 0){
-                $scope.defaultIndex = ($scope.GalleryLightboxImages.length - 1);
+                $scope.defaultIndex = ($scope.GalleryLightboxImages.Images.length - 1);
             } else {
                 $scope.defaultIndex--;
             }

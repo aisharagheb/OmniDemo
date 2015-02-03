@@ -7,7 +7,7 @@
     <div class="panel-body">
         <div id="451_list_specgroup" class="row">
             <div ng-class="{'col-md-6': length > 1}" >
-                <ul class="list-group" ng-repeat="sg in specgroups.EvenSpecGroups" ng-show="hasvisiblechild(sg.Specs)">
+                <ul class="list-group" ng-repeat="sg in specgroups.EvenSpecGroups | hiddenspecgroups" ng-show="hasvisiblechild(sg.Specs)">
                     <li class="451qa_sg_item list-group-item text-center"><h5>{{sg.Name | uppercase}}</h5></li>
                     <li class="list-group-item">
                         <div class="451qa_spec_item" ng-show="s.VisibleToCustomer" ng-repeat="s in sg.Specs">
@@ -25,7 +25,7 @@
                 </ul>
             </div>
             <div ng-class="{'col-md-6': length > 1}">
-                <ul class="list-group" ng-repeat="sg in specgroups.OddSpecGroups" ng-show="hasvisiblechild(sg.Specs)">
+                <ul class="list-group" ng-repeat="sg in specgroups.OddSpecGroups | hiddenspecgroups" ng-show="hasvisiblechild(sg.Specs)">
                     <li class="451qa_sg_item list-group-item text-center"><h5>{{sg.Name | uppercase}}</h5></li>
                     <li class="list-group-item">
                         <div class="451qa_spec_item" ng-show="s.VisibleToCustomer" ng-repeat="s in sg.Specs">

@@ -38,6 +38,42 @@ four51.app.factory('Product', ['$resource', '$451', 'Security', 'User', function
             });
         }
 
+        if (product.Description && product.Description.indexOf('id="tags"') > -1) {
+            product.productTags = [];
+            var description = $(product.Description);
+            angular.forEach(description, function(section) {
+                if ($(section).attr('id') == 'tags') {
+                    angular.forEach($(section).children(), function(span) {
+                        var text = $(span).text();
+                        product.productTags.push(text);
+                    });
+                }
+            });
+        } else {
+            product.productTags = false;
+        }
+
+        if (product.Description && product.Description.indexOf('id="tabs"') > -1) {
+            product.productTabs = [];
+            var description = $(product.Description);
+            angular.forEach(description, function(section) {
+                if ($(section).attr('id') == 'tabs') {
+                    angular.forEach($(section).children(), function(tab) {
+                        var title = $(tab).attr('id');
+                        var content = $(tab).html();
+                        product.productTabs.push(
+                            {
+                                Title: title,
+                                Content: content
+                            }
+                        );
+                    });
+                }
+            });
+        } else {
+            product.productTabs = false;
+        }
+
         // parse old tokens to retrieve their values
         angular.forEach(product.Specs, function(spec) {
             if (spec.DefaultValue && spec.DefaultValue == spec.Value) {

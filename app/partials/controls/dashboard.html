@@ -1,20 +1,13 @@
 <section id="dashboard">
     <div class="user-dashboard">
         <div class="container">
-            <p>
+            <p ng-hide="user.Type == 'Customer'">
                 Welcome to ROBYN, <a href="admin">Login</a> or <a href="admin">Create new account</a>
             </p>
+            <p ng-show="user.Type == 'Customer' && SpendingAccounts[0].Balance" class="spending-account">
+                {{SpendingAccounts[0].Label + ': '}}<span class="label label-info" style="font-size:1em;">{{(SpendingAccounts[0].Balance | currency) || (0 | currency)}}</span>
+            </p>
             <ul class="links">
-<!--                <li><a href="catalog">
-                    <i class="fa fa-home"></i> Home
-                </a></li>-->
-<!--                <li><a href="admin">
-                    <i class="fa fa-user"></i> My Account
-                </a></li>-->
-                <li class="hidden-xs hidden-sm spending-account" ng-show="SpendingAccounts[0].Balance">
-                    <span>Spending Account/span><br />{{(SpendingAccounts[0].Balance | currency) || (0 | currency)}}
-                </span>
-                </li>
                 <li><a href="cart">
                     <i class="fa fa-shopping-cart"></i> Shopping Cart
                 </a></li>

@@ -121,3 +121,75 @@ four51.app.filter('hiddencategories', function() {
         return results;
     }
 });
+
+
+four51.app.filter('hiddenspecgroups', function() {
+    return function(specgroups) {
+        var hiddenSpecGroups = ['images','Download'];
+        var results = [];
+        angular.forEach(specgroups, function(sg) {
+            if (hiddenSpecGroups.indexOf(sg.Name) == -1) {
+                results.push(sg);
+            }
+        });
+        return results;
+    }
+});
+
+four51.app.filter('dynamicspecs', function() {
+    return function(staticSpecs, variableSpecs) {
+        var results = [];
+        if (!variableSpecs || !staticSpecs) return results;
+        var language = (variableSpecs.Language && variableSpecs.Language.Value) ? variableSpecs.Language.Value : null;
+        var state = (variableSpecs.State && variableSpecs.State.Value) ? variableSpecs.State.Value : null;
+
+        if (language && !state) {
+            angular.forEach(staticSpecs, function(s) {
+                if (s.Name.indexOf(language) > -1 && s.Name.indexOf('Generic') == 0) {
+                    results.push(s);
+                }
+            });
+        }
+        else if (language && state) {
+            var stateFound = false;
+            angular.forEach(staticSpecs, function(s) {
+                if (s.Name.indexOf(language) > -1 && s.Name.indexOf(state) > -1) {
+                    results.push(s);
+                    stateFound = true;
+                }
+            });
+            if (!stateFound) {
+                angular.forEach(staticSpecs, function(s) {
+                    if (s.Name.indexOf(language) > -1 && s.Name.indexOf('Generic') == 0) {
+                        results.push(s);
+                    }
+                });
+            }
+        }
+        else if (!language && state) {
+            angular.forEach(staticSpecs, function(s) {
+                if (s.Name.indexOf(state) > -1) {
+                    results.push(s);
+                }
+            });
+        }
+        else {
+            return results;
+        }
+        return results;
+    }
+});
+
+
+four51.app.filter('filterbyspec', function() {
+    return function(staticSpecs, specValue) {
+        var results = [];
+        if (!specValue) return results;
+        angular.forEach(staticSpecs, function(s) {
+            if (s.Name == specValue) {
+                results.push(s);
+            }
+        });
+        return results;
+    }
+});
