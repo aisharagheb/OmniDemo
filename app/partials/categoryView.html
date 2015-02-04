@@ -1,22 +1,8 @@
 <section>
-    <nav id="451qa_nav_hdr" class="nav">
-        <ul>
-            <li class="hidden-sm hidden-xs">
-                <span ng-click="toggleNav()"><i class="fa fa-list-ul" ng-class="{ 'text-info': navStatus.visible }"></i></span>
-            </li>
-            <li>
-                <span id="451_lbl_curcat" class="text-primary" ng-bind-html="currentCategory.Name ? (currentCategory.Name | categoryNames) : '  {{'Categories' | r | xlat}}'"></span>
-            </li>
-            <!--<li class="pull-right">
-                <a href="search">
-                    <span><i class="fa fa-search text-primary"></i></span>
-                </a>
-            </li>-->
-        </ul>
-    </nav>
     <div class="row">
-        <aside class="col-sm-3 visible-md visible-lg" ng-if="navStatus.visible">
+        <aside class="col-md-3 visible-md visible-lg">
             <div class="panel-nav">
+                <h3 class="text-muted"><i class="fa fa-list"></i> {{'Categories' | r | xlat | uppercase}}</h3>
                 <nav class="nav 451qa_sidenav panel-body">
                     <ul>
                         <categorytree tree='tree' current='currentCategory' />
@@ -28,7 +14,7 @@
                 <!--<categorydisplay categoryid="'EX_BestProducts'"></categorydisplay>-->
             </div>
         </aside>
-        <div ng-class="{ 'col-md-8 col-md-offset-1': navStatus.visible }">
+        <div class="col-md-9">
 
             <categorylistview></categorylistview>
 

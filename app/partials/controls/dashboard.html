@@ -1,13 +1,13 @@
 <section id="dashboard">
-    <div class="user-dashboard">
+    <div class="user-dashboard" ng-show="(cartCount && user.CurrentOrderID) || (SpendingAccounts.length > 0 && SpendingAccounts[0].Balance)">
         <div class="container">
-            <p ng-hide="user.Type == 'Customer'">
-                Welcome to ROBYN, <a href="admin">Login</a> or <a href="admin">Create new account</a>
-            </p>
-            <p ng-show="user.Type == 'Customer' && SpendingAccounts[0].Balance" class="spending-account">
+            <!--<p ng-hide="user.Type == 'Customer'">-->
+                <!--Welcome to ROBYN, <a href="admin">Login</a> or <a href="admin">Create new account</a>-->
+            <!--</p>-->
+            <p ng-show="SpendingAccounts.length > 0 && SpendingAccounts[0].Balance" class="spending-account">
                 {{SpendingAccounts[0].Label + ': '}}<span class="label label-info" style="font-size:1em;">{{(SpendingAccounts[0].Balance | currency) || (0 | currency)}}</span>
             </p>
-            <ul class="links">
+            <ul class="links" ng-show="cartCount && user.CurrentOrderID">
                 <li><a href="cart">
                     <i class="fa fa-shopping-cart"></i> Shopping Cart
                 </a></li>
@@ -44,7 +44,7 @@
 
             </div>
             <div class="minicart-container">
-                <minicart></minicart>
+                <minicart current-order="currentOrder"></minicart>
             </div>
         </div>
     </div>

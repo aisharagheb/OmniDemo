@@ -10358,9 +10358,6 @@ fieldset[disabled] .btn-gray.active {
   color: #96979d;
   font-size: 0.8em;
 }
-.user-dashboard .spending-account {
-  padding-top: 8px;
-}
 .user-dashboard .spending-account .label-info {
   background-color: #0787c4;
   border-radius: 0;
@@ -10415,6 +10412,7 @@ fieldset[disabled] .btn-gray.active {
   text-decoration: none;
   color: #333333;
 }
+.user-dashboard p,
 .user-dashboard a {
   padding: 10px;
 }

@@ -1,5 +1,8 @@
 four51.app.directive('minicart', function() {
 	var obj = {
+        scope: {
+            currentOrder: '='
+        },
 		restrict: 'E',
 		templateUrl: 'partials/controls/minicart.html',
 		controller: 'minicartCtrl'
