@@ -19,7 +19,7 @@ four51.app.directive('node', ['$compile', function($compile) {
             node: '=',
             current: '='
         },
-        template: '<li class="451_cat_item" ng-class="{\'active\':  current.InteropID == node.InteropID}"><a ng-href="catalog/{{node.InteropID}}"><i class="fa fa-chevron-right"></i> {{node.Name | categoryNames}}</a></li>'
+        template: '<li class="451_cat_item" ng-class="{\'active\':  current.InteropID == node.InteropID}"><a ng-href="catalog/{{node.InteropID}}"><i class="fa fa-chevron-right"></i> <span>{{node.Name | categoryNames}}</span></a></li>'
 //		link: function(scope, element) {
 //			if (angular.isArray(scope.node.SubCategories)) {
 //				element.append("<categorytree tree='node.SubCategories' current='current'/>");

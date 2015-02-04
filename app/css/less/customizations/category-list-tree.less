@@ -62,15 +62,45 @@
 }
 
 .panel-nav{
+  & > h3 {
+    padding-bottom:10px;
+    border-bottom:4px double @off-white;
+  }
   font-size: 13px;
   border: none;
   ul{
+    border:none !important;
     li{
-      border-top: 1px dashed #dddddd;
+      padding:0;
+      border-top:none;
       a{
-        color: #96979d;
+        padding:0;
+        font-weight:normal;
+        color: @text-gray;
         &:hover{
           color: #333333;
+          text-decoration:none;
+        }
+        span {
+          border-bottom: 1px dashed @off-white;
+          display: inline-block;
+          padding: 10px;
+          width: 90%;
+        }
+        i {
+          font-size:0.8em;
+          color:@text-color;
+        }
+      }
+      &:last-of-type {
+        a span {
+          border-bottom: none;
+        }
+      }
+      &.active {
+        background-color:transparent;
+        a {
+          color:@express-blue;
         }
       }
     }

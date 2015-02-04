@@ -1,6 +1,7 @@
 <section class="user-view">
     <loadingindicator title="{{'Please wait while we save your changes' | r | xlat}}" ng-show="displayLoadingIndicator"/>
     <identifyusermessage ng-show="user.Type == 'TempCustomer'" />
+    <accountnavigation />
 	<form ng-show="user.Permissions.contains('ViewSelfAdmin')" name="login_existing" ng-submit="loginExisting()" ng-if="user.Type == 'TempCustomer'">
 		<div class="panel panel-default" id="user_form">
 			<div class="panel-heading">
@@ -81,7 +82,6 @@
                 <h3 class="panel-title">{{(user.Type == 'TempCustomer' ? 'Create' : 'My') + ' ' + ('Account' | r) | xlat}}</h3>
             </div>
             <div class="panel-body">
-                <accountnavigation />
                 <div class="col-sm-6 view-form-icon">
                     <div>
                         <label ng-show="user.FirstName">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>

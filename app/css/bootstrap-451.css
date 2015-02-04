@@ -6273,26 +6273,26 @@ button::-moz-focus-inner {
     padding: 6px 12px;
     width: auto;
   }
-  .btn-group {
+  .btn-group:not(.btn-group-maintain) {
     width: 100%;
     vertical-align: inherit;
   }
-  .btn-group > .btn {
+  .btn-group:not(.btn-group-maintain) > .btn {
     width: 100%;
     padding: 15px;
     margin: 5px 0;
   }
-  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  .btn-group:not(.btn-group-maintain) > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
   }
-  .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  .btn-group:not(.btn-group-maintain) > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
   }
-  .btn-group > .btn:last-child:not(:first-child):not(.dropdown-toggle) {
+  .btn-group:not(.btn-group-maintain) > .btn:last-child:not(:first-child):not(.dropdown-toggle) {
     border-bottom-left-radius: 4px;
     border-top-left-radius: 4px;
   }
@@ -6914,6 +6914,37 @@ select.ng-invalid:invalid:invalid:focus {
 .order-cloud .form-signin .btn-info {
   margin-top: 15px;
   padding: 15px;
+}
+.account-navigation .expand-account-nav {
+  display: none;
+}
+@media (max-width: 767px) {
+  .account-navigation {
+    position: relative;
+  }
+  .account-navigation .expand-account-nav {
+    cursor: pointer;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    z-index: 1020;
+  }
+  .account-navigation .expand-account-nav.visible-xs + .btn-group {
+    padding-right: 50px;
+  }
+  .account-navigation .btn-group {
+    background-color: #fff;
+    padding: 10px;
+  }
+  .account-navigation .btn-group:not(.open) > button:not(.active) {
+    border-width: 0;
+    min-height: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
 }
 .panel-nav {
   font-size: 13px;
@@ -10773,14 +10804,44 @@ footer section .link-list ng-include a:before {
   font-size: 13px;
   border: none;
 }
+.panel-nav > h3 {
+  padding-bottom: 10px;
+  border-bottom: 4px double #f2f2f2;
+}
+.panel-nav ul {
+  border: none !important;
+}
 .panel-nav ul li {
-  border-top: 1px dashed #dddddd;
+  padding: 0;
+  border-top: none;
 }
 .panel-nav ul li a {
+  padding: 0;
+  font-weight: normal;
   color: #96979d;
 }
 .panel-nav ul li a:hover {
   color: #333333;
+  text-decoration: none;
+}
+.panel-nav ul li a span {
+  border-bottom: 1px dashed #f2f2f2;
+  display: inline-block;
+  padding: 10px;
+  width: 90%;
+}
+.panel-nav ul li a i {
+  font-size: 0.8em;
+  color: #333333;
+}
+.panel-nav ul li:last-of-type a span {
+  border-bottom: none;
+}
+.panel-nav ul li.active {
+  background-color: transparent;
+}
+.panel-nav ul li.active a {
+  color: #0787c4;
 }
 .panel-category-list .well > a {
   border: 1px solid #f2f2f2;

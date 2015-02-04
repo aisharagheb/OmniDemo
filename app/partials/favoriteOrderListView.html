@@ -1,5 +1,6 @@
 <section>
     <loadingindicator ng-show="loading" />
+    <accountnavigation />
     <div class="panel panel-default" ng-if="favoriteorders.length == 0">
         <div class="panel-heading">
             <h3 class="panel-title panel-primary">{{('Favorite' | r) + ' ' + ('Orders' | r) | xlat }}</h3>
