@@ -207,20 +207,19 @@
                                 </div>
                             </div>
                         </div>
-
-                        <button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()">
-                            <loadingindicator ng-show="addToOrderIndicator" />
-                            <i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
-                            <i ng-show="lineItemErrors.length == 0" class="fa fa-shopping-cart"></i>
-                            {{addToOrderText | r | xlat}}
-                            <span id="451qa_lineitem_total" class="badge" ng-if="!(user.Permissions.contains('HidePricing')) && (LineItem.LineTotal || variantLineItemsOrderTotal) > 0">
-                                {{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}
-                            </span>
-                        </button>
-                        <div class="additional-buttons" ng-show="StaticSpecGroups.Download">
-                            <div ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs">
-                                <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-blue"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
-                            </div>
+                    </div>
+                    <button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()"  ng-show="allowAddToOrder">
+                        <loadingindicator ng-show="addToOrderIndicator" />
+                        <i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
+                        <i ng-show="lineItemErrors.length == 0" class="fa fa-shopping-cart"></i>
+                        {{addToOrderText | r | xlat}}
+                                    <span id="451qa_lineitem_total" class="badge" ng-if="!(user.Permissions.contains('HidePricing')) && (LineItem.LineTotal || variantLineItemsOrderTotal) > 0">
+                                        {{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}
+                                    </span>
+                    </button>
+                    <div class="additional-buttons" ng-show="StaticSpecGroups.Download && !LineItem.Variant">
+                        <div ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs">
+                            <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-blue"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                         </div>
                     </div>
                 <!--</div>-->

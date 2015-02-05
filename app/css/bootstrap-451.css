@@ -10303,6 +10303,26 @@ fieldset[disabled] .btn-gray.active {
   color: #f2f2f2;
   background-color: #96979d;
 }
+@media (max-width: 991px) {
+  .user-view customtextfield .view-form-icon > div,
+  .user-view customselectionfield .view-form-icon > div {
+    margin-top: 15px;
+  }
+  .user-view customtextfield .view-form-icon > div input,
+  .user-view customselectionfield .view-form-icon > div input,
+  .user-view customtextfield .view-form-icon > div select,
+  .user-view customselectionfield .view-form-icon > div select {
+    padding-left: 12px;
+  }
+  .user-view customtextfield .view-form-icon > div i,
+  .user-view customselectionfield .view-form-icon > div i {
+    display: none;
+  }
+  .user-view customtextfield .view-form-icon label,
+  .user-view customselectionfield .view-form-icon label {
+    position: static;
+  }
+}
 .order-cloud-image {
   background-color: #0787c4;
 }

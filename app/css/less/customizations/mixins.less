@@ -133,6 +133,30 @@
 //** remove padding from columns
 
 //== Print
+@media (max-width: @screen-sm-max) {
+  .user-view {
+    customtextfield,
+    customselectionfield {
+      .view-form-icon {
+        & > div {
+          margin-top:15px;
+          input,
+          select {
+            padding-left:12px;
+          }
+          i {
+            display:none;
+          }
+        }
+        label {
+          position:static;
+        }
+      }
+    }
+  }
+}
+
+
 
 // --------------------------------------------------
 // Flexbox LESS mixins

@@ -146,9 +146,9 @@
                     </span>
                 </div>
             </div>
-            <div class="panel-body" >
-                <div  ng-if="user.CustomFields" class="col-sm-6 view-form-icon">
-                    <div ng-repeat="field in user.CustomFields">
+            <div class="panel-body">
+                <div  ng-if="user.CustomFields" class="col-sm-6">
+                    <div ng-repeat="field in user.CustomFields" >
                         <customfilefield customfield="field" ng-if="field.ControlType == 'File' && field.DisplayToUser"></customfilefield>
                         <customtextfield customfield="field" ng-if="field.ControlType == 'Text' && field.DisplayToUser"></customtextfield>
                         <customselectionfield customfield="field" ng-if="field.ControlType == 'Selection' && field.DisplayToUser"></customselectionfield>
