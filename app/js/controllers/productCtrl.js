@@ -45,8 +45,16 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 		})
 	};
 	function setDefaultQty(lineitem) {
-		if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity != 0)
-			$scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;
+		if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity != 0) {
+            $scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;
+        }
+
+        if (lineitem.Variant && lineitem.Variant.Specs.Quantity && lineitem.Variant.Specs.Quantity.Value) {
+            $scope.LineItem.Quantity = lineitem.Variant.Specs.Quantity.Value;
+            $scope.LineItem.LockQuantity = true;
+        } else {
+            $scope.LineItem.LockQuantity = false;
+        }
 	}
 	function init(searchTerm, callback) {
 		ProductDisplayService.getProductAndVariant($routeParams.productInteropID, $routeParams.variantInteropID, function (data) {

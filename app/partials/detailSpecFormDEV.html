@@ -1,0 +1,14 @@
+<div id="451_list_vspec">
+    <div class="form-group" ng-repeat="s in LineItem.Specs | onproperty:[{Property: 'CanSetForLineItem', Value: true}, {Property: 'DefinesVariant', Value: true}]" ng-if="s.Name != 'Confirmation'">
+        <customfilefield customfield="s" ng-if="s.ControlType == 'File'"></customfilefield>
+        <customtextfield customfield="s" ng-if="s.ControlType == 'Text'"></customtextfield>
+        <customselectionfield change="specChanged" customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
+    </div>
+    <div ng-repeat="s in LineItem.Specs | onproperty:[{Property: 'CanSetForLineItem', Value: true}, {Property: 'DefinesVariant', Value: true}]" ng-if="s.Name == 'Confirmation'">
+        <div class="checkbox">
+            <label><span class="text-danger" ng-bind-html="s.Options[0].Value"></span>
+                <input type="checkbox" ng-true-value="s.Options[0].Value" ng-false-value="" ng-model="s.Value">
+            </label>
+        </div>
+    </div>
+</div>
