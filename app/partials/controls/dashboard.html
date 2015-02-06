@@ -44,7 +44,9 @@
 
             </div>
             <div class="minicart-container">
-                <minicart current-order="currentOrder"></minicart>
+                <div ng-show="cartCount">
+                    <minicart current-order="currentOrder" user="user"></minicart>
+                </div>
             </div>
         </div>
     </div>

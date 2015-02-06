@@ -10,7 +10,9 @@ As of right now, this is the only way to achieve a fully responsive image carous
     <li ng-repeat="slide in Slides">
         <div class="layer">
             <a target="{{slide.externalLink ? '_blank' : '_self'}}" ng-href="{{slide.linkUrl}}">
-                <div style="background-image:url({{'\'//' + hostName + slide.imageUrl + '\''}});"></div>
+                <div style="background-image:url({{'\'//' + hostName + slide.imageUrl + '\''}});">
+                    <img ng-src="{{hostName + slide.imageUrl}}" alt=""/>
+                </div>
             </a>
         </div>
     </li>
@@ -71,6 +73,11 @@ As of right now, this is the only way to achieve a fully responsive image carous
     /* prevent flickering when moving buffer */
     ul[rn-carousel-buffered] > li {
         display: none;
+    }
+    @-moz-document url-prefix() {
+        ul[rn-carousel] > li img {
+            display:none;
+        }
     }
     ul[rn-carousel-transition="hexagon"] {
         overflow: visible;

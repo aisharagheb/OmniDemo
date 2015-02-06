@@ -1,7 +1,8 @@
 four51.app.directive('minicart', function() {
 	var obj = {
         scope: {
-            currentOrder: '='
+            currentOrder: '=',
+            user: '='
         },
 		restrict: 'E',
 		templateUrl: 'partials/controls/minicart.html',
