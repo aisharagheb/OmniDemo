@@ -1,0 +1,496 @@
+<script>
+    var testCtrl = function($scope) {
+        $scope.checkUserGroup = function() {
+            angular.forEach($scope.user.Groups, function(ug) {
+                if (ug.InteropID === 'CPSS') {
+                    return true
+                }
+            });
+            return false;
+        }
+    }
+</script>
+
+<section class="specform-default" ng-controller="testCtrl">
+<!-- BREADCRUMB!-->
+<productnav editvariant="true" product="Product" variant="Variant" />
+<!-- SPEC FORM IMAGE PANEL!-->
+<div class="col-md-4" ng-hide="!Variant.PreviewUrl">
+    <div class="panel panel-default">
+        <loadingindicator ng-show="loadingImage" />
+        <div class="panel-body">
+            <figure>
+                <img class="product-image-large img-responsive" ng-src="{{Variant.PreviewUrl}}" imageonload />
+            </figure>
+        </div>
+    </div>
+</div>
+<div ng-class="{'col-xs-12': !Variant.PreviewUrl, 'col-md-8': Variant.PreviewUrl }">
+<!-- SPEC FORM PANEL! --->
+<div class="panel panel-default">
+<div class="panel-heading">
+    <h3 class="panel-title"><span ng-show="Variant.PreviewUrl">{{'Edit' | r | xlat}} </span>{{Variant.ExternalID || 'Create New' | xlat}}</h3>
+</div>
+<div class="panel-body">
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+        <customtextfield customfield="Variant.Specs.FranchiseNumber"></customtextfield>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+        <strong>Please Select The Seals For The Front of Your Card</strong>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+        <small>(Choose up to three)</small>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-6 col-sm-1">
+        <customcheckboxfield customfield="Variant.Specs.SealsCPSF" checked="CPSF" unchecked=""></customcheckboxfield>
+    </div>
+    <div class="col-xs-6 col-sm-1" ng-show="checkUserGroup()">
+        <customcheckboxfield customfield="Variant.Specs.SealsCOE" checked="COE" unchecked=""></customcheckboxfield>
+    </div>
+    <div class="col-xs-6 col-sm-1">
+        <customcheckboxfield customfield="Variant.Specs.SealsCOE" checked="COE" unchecked=""></customcheckboxfield>
+    </div>
+    <div class="col-xs-6 col-sm-1">
+        <customcheckboxfield customfield="Variant.Specs.SealsISO" checked="ISO" unchecked=""></customcheckboxfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+        <customtextfield customfield="Variant.Specs.V01Name"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+        <customselectionfield customfield="Variant.Specs.V02Title1"></customselectionfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+        <customtextfield customfield="Variant.Specs.SpecialtyNiche"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+        <customtextfield customfield="Variant.Specs.V03Email"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+        <customtextfield customfield="Variant.Specs.V04Addressline1"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customtextfield customfield="Variant.Specs.V05Addressline2"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+        <customtextfield customfield="Variant.Specs.V06City"></customtextfield>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
+        <customtextfield customfield="Variant.Specs.V07State"></customtextfield>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
+        <customtextfield customfield="Variant.Specs.V08Zip"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customtextfield customfield="Variant.Specs.WebSubDomain"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 alert alert-danger">
+        <small>If you have a Local Web Address, Please enter it here.</small>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customphonefield mask="(999)-999-9999" label="Phone" spec1="Variant.Specs.V09PhoneAC" spec2="Variant.Specs.V10PhoneExt" spec3="Variant.Specs.V11PhoneNum" ></customphonefield>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+        <customtextfield customfield="Variant.Specs.PhoneExtNum"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customphonefield mask="(999)-999-9999" label="Cell" spec1="Variant.Specs.V15CellAC" spec2="Variant.Specs.V16CellExt" spec3="Variant.Specs.V17CellNum" ></customphonefield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customphonefield mask="(999)-999-9999" label="Fax" spec1="Variant.Specs.V12FaxAC" spec2="Variant.Specs.V13FaxExt" spec3="Variant.Specs.V14FaxNum" ></customphonefield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customphonefield mask="(999)-999-9999" label="Other" spec1="Variant.Specs.OtherAC" spec2="Variant.Specs.OtherExt" spec3="Variant.Specs.OtherNum" ></customphonefield>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <strong>Select the Back Design of your card.</strong>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customselectionfield customfield="Variant.Specs.V84Backer"></customselectionfield>
+    </div>
+</div>
+<br/>
+<div ng-show="Variant.Specs.V84Backer.Value == 'Locations'">
+<!--Begin BC1 Location selection -->
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <strong>Select The Number of Locations  for Your Card</strong>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
+        <customselectionfield customfield="Variant.Specs.Locations"></customselectionfield>
+    </div>
+</div>
+</br>
+<!--TODO: parse int for Locations.Value to get rid of repetative html-->
+
+<div ng-show="Variant.Specs.Locations.Value">
+<!--Begin BC1 Location address 1 -->
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <strong>Location 1 Address Information</strong>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customtextfield customfield="Variant.Specs.V18Location1Name"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customtextfield customfield="Variant.Specs.V19Location1AddressLine1"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customtextfield customfield="Variant.Specs.V20Location1City"></customtextfield>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+        <customtextfield customfield="Variant.Specs.V21Location1State"></customtextfield>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+        <customtextfield customfield="Variant.Specs.V22Location1Zip"></customtextfield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customphonefield mask="(999)-999-9999" label="Phone" spec1="Variant.Specs.V23Location1PhoneAC" spec2="Variant.Specs.V24Location1PhoneExt" spec3="Variant.Specs.V25Location1PhoneNum" ></customphonefield>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <customphonefield mask="(999)-999-9999" label="Fax" spec1="Variant.Specs.V26Location1FaxAc" spec2="Variant.Specs.V27Location1FaxExt" spec3="Variant.Specs.V28Location1FaxNum" ></customphonefield>
+    </div>
+</div>
+<br/>
+<!--Begin BC1 Location address 2 -->
+<div ng-show="+(Variant.Specs.Locations.Value) > 1">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <strong>Location 2 Address Information</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V29Location2Name"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V30Location2AddressLine1"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V31Locaton2City"></customtextfield>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <customtextfield customfield="Variant.Specs.V32Location2State"></customtextfield>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <customtextfield customfield="Variant.Specs.V33Location2Zip"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customphonefield mask="(999)-999-9999" label="Phone" spec1="Variant.Specs.V34Location2PhoneAc" spec2="Variant.Specs.V35Location2PhoneExt" spec3="Variant.Specs.V36PhoneNum" ></customphonefield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customphonefield mask="(999)-999-9999" label="Fax" spec1="Variant.Specs.V37Location2FaxAc" spec2="Variant.Specs.V38Location2FaxExt" spec3="Variant.Specs.V39Location2FaxNum" ></customphonefield>
+        </div>
+    </div>
+</div>
+
+<br/>
+<!--Begin BC1 Location address 3 -->
+<div ng-show="+(Variant.Specs.Locations.Value) > 2">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <strong>Location 3 Address Information</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V40Location3Name"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V41Location3AddressLine1"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V42Location3City"></customtextfield>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <customtextfield customfield="Variant.Specs.V43Location3State"></customtextfield>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <customtextfield customfield="Variant.Specs.V44Location3Zip"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customphonefield mask="(999)-999-9999" label="Phone" spec1="Variant.Specs.V45Location3PhoneAc" spec2="Variant.Specs.V46Location3PhoneExt" spec3="Variant.Specs.V47Location3PhoneNum" ></customphonefield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customphonefield mask="(999)-999-9999" label="Fax" spec1="Variant.Specs.V48Location3FaxAc" spec2="Variant.Specs.V49Location3FaxExt" spec3="Variant.Specs.V50Location3FaxNum" ></customphonefield>
+        </div>
+    </div>
+</div>
+
+<br/>
+<!--Begin BC1 Location address 4 -->
+<div ng-show="+(Variant.Specs.Locations.Value) > 3">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <strong>Location 4 Address Information</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V51Location4Name"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V52Location4AddressLine1"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V53Location4City"></customtextfield>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <customtextfield customfield="Variant.Specs.V54Location4State"></customtextfield>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <customtextfield customfield="Variant.Specs.V55Location4Zip"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customphonefield mask="(999)-999-9999" label="Phone" spec1="Variant.Specs.V56Location4PhoneAc" spec2="Variant.Specs.V57Location4PhoneExt" spec3="Variant.Specs.V58Location4PhoneNum" ></customphonefield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customphonefield mask="(999)-999-9999" label="Fax" spec1="Variant.Specs.V59Location4FaxAc" spec2="Variant.Specs.V60Location4FaxExt" spec3="Variant.Specs.V61Location4FaxNum" ></customphonefield>
+        </div>
+    </div>
+</div>
+
+<br/>
+
+<!--Begin BC1 Location address 5 -->
+<div ng-show="+(Variant.Specs.Locations.Value) > 4">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <strong>Location 5 Address Information</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V62Location5Name"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V63Location5AddressLine1"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V64Location5City"></customtextfield>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <customtextfield customfield="Variant.Specs.V65Location5State"></customtextfield>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <customtextfield customfield="Variant.Specs.V66Location5Zip"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customphonefield mask="(999)-999-9999" label="Phone" spec1="Variant.Specs.V67Location5PhoneAc" spec2="Variant.Specs.V68Location5PhoneExt" spec3="Variant.Specs.V69Location5PhoneNum" ></customphonefield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customphonefield mask="(999)-999-9999" label="Fax" spec1="Variant.Specs.V70Location5FaxAc" spec2="Variant.Specs.V71Location5FaxExt" spec3="Variant.Specs.V72Location5FaxNum" ></customphonefield>
+        </div>
+    </div>
+</div>
+
+
+<br/>
+<!--Begin BC1 Location address 6 -->
+<div ng-show="+(Variant.Specs.Locations.Value) > 5">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <strong>Location 6 Address Information</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V73Location6Name"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V74Location6AddressLine1"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customtextfield customfield="Variant.Specs.V75Location6City"></customtextfield>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <customtextfield customfield="Variant.Specs.V76Location6State"></customtextfield>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <customtextfield customfield="Variant.Specs.V77Location6Zip"></customtextfield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customphonefield mask="(999)-999-9999" label="Phone" spec1="Variant.Specs.V78Location6PhoneAc" spec2="Variant.Specs.V79Location6PhoneExt" spec3="Variant.Specs.V80Location6PhoneNum" ></customphonefield>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <customphonefield mask="(999)-999-9999" label="Fax" spec1="Variant.Specs.V81Location6FaxAc" spec2="Variant.Specs.V82Location6FaxExt" spec3="Variant.Specs.V83Location6FaxNum" ></customphonefield>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div ng-show="Variant.Specs.V84Backer.Value && ((Variant.Specs.V84Backer.Value.indexOf('Facebook') > -1) || (Variant.Specs.V84Backer.Value.indexOf('Twitter') > -1) || (Variant.Specs.V84Backer.Value.indexOf('LinkedIn') > -1 ))">
+    <!--Social Media Textfields-->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <p>Type in message. Click <a href="http://www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/SocialMedia/SocialMedia.pdf"><strong>here</strong></a> to see sample</p>
+        </div>
+    </div>
+    <br/>
+    <div ng-show="Variant.Specs.V84Backer.Value.indexOf('Facebook') > -1">
+        <strong>Facebook</strong>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <customtextfield customfield="Variant.Specs.X01_Fbook1"></customtextfield>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <customtextfield customfield="Variant.Specs.X01_FBook2"></customtextfield>
+            </div>
+        </div>
+        <br/>
+    </div>
+    <div ng-show="Variant.Specs.V84Backer.Value.indexOf('Twitter') > -1">
+        <strong>Twitter</strong>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <customtextfield customfield="Variant.Specs.X02_Twitter1"></customtextfield>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <customtextfield customfield="Variant.Specs.X02_Twitter2"></customtextfield>
+            </div>
+        </div>
+        <br/>
+    </div>
+    <div ng-show="Variant.Specs.V84Backer.Value.indexOf('LinkedIn') > -1">
+        <strong>LinkedIn</strong>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <customtextfield customfield="Variant.Specs.X03_LinkedIn"></customtextfield>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <customtextfield customfield="Variant.Specs.X03_LinkedIn2"></customtextfield>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="panel-footer">
+    <button ng-show="Variant.InteropID" class="btn btn-default" type="button" ng-click="saveasnew(true)"><i ng-show="variantErrors.length > 0" class="fa fa-warning"> </i>{{'Save As New' | r | xlat}}</button>
+    <button class="btn btn-primary pull-right" type="submit" ng-click="save(true)"><i ng-show="variantErrors.length > 0" class="fa fa-warning"> </i>{{'Save' | r | xlat}}</button>
+</div>
+
+<div class="navbar-fixed-bottom">
+    <div class="view-error-message" ng-show="showVariantErrors && variantErrors.length">
+        <ul class="alert-warning">
+            <li class="text-center">
+							<span class="badge">
+								<i class="fa fa-exclamation-circle fa-inverse"></i>
+								{{variantErrors.length}}
+							</span>
+            </li>
+            <li class="text-center">
+                <ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
+                    <li class="alert-warning" ng-repeat="e in variantErrors">{{e | xlat}}</li>
+                </ul>
+            </li>
+            <li class="text-center">
+                <a ng-show="variantErrors.length > 1">
+                    <i class="fa fa-caret-down" ng-click="errorSection = 'open'" ng-hide="errorSection == 'open'"></i>
+                    <i class="fa fa-caret-up" ng-click="errorSection = ''" ng-show="errorSection == 'open'"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+</section>

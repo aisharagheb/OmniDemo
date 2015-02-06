@@ -48,7 +48,6 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 		if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity != 0) {
             $scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;
         }
-
         if (lineitem.Variant && lineitem.Variant.Specs.Quantity && lineitem.Variant.Specs.Quantity.Value) {
             $scope.LineItem.Quantity = lineitem.Variant.Specs.Quantity.Value;
             $scope.LineItem.LockQuantity = true;

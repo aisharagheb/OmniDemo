@@ -12,9 +12,18 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 		angular.forEach(order.LineItems, function(item) {
 			item.OriginalQuantity = item.Quantity; //needed to validate qty changes compared to available quantity
 			angular.forEach(item.Specs, function(spec) {
-				if (spec.ControlType == 'File' && spec.File && spec.File.Url.indexOf('auth') == -1)
-					spec.File.Url += "&auth=" + Security.auth();
+				if (spec.ControlType == 'File' && spec.File && spec.File.Url.indexOf('auth') == -1) {
+                    spec.File.Url += "&auth=" + Security.auth();
+                }
 			});
+            item.LockQuantity = false;
+            if (item.Variant && item.Variant.Specs) {
+                angular.forEach(item.Variant.Specs, function(spec) {
+                    if (spec.Name == 'Quantity' && spec.Value) {
+                        item.LockQuantity = true;
+                    }
+                });
+            }
 			item.SpecsLength = Object.keys(item.Specs).length;
 		});
 

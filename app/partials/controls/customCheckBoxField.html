@@ -1,5 +1,5 @@
 <div class="checkbox">
-    <label ng-bind-html="(customfield.Label || customfield.Name | r)">
+    <label><span ng-bind-html="(customfield.Label || customfield.Name | r)"></span>
         <input type="checkbox" ng-true-value="{{checked}}" ng-false-value="{{unchecked}}" ng-model="customfield.Value">
     </label>
 </div>

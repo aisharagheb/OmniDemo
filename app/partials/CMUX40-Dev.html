@@ -12,20 +12,18 @@
         });
 
         var designCountError = 'Please select at least one design.';
+        var mailingListError = 'Please upload a mailing list.';
 
         var setPriceVariant = function(value) {
             $scope.LPPErrors = [];
+            var bulk = $scope.Variant.Specs.BulkSelection.Value;
             var designCount = 0;
             if ($scope.Variant.Specs.Front1.Value) designCount++;
             if ($scope.Variant.Specs.Front2.Value) designCount++;
             if ($scope.Variant.Specs.Front3.Value) designCount++;
             if ($scope.Variant.Specs.Front4.Value) designCount++;
-            if (designCount == 0) {
-                $scope.Variant.Specs.PriceVariant.Value = '';
-                if ($scope.LPPErrors.indexOf(designCountError) == -1) {
-                    $scope.LPPErrors.push(designCountError);
-                }
-                return;
+            if (designCount == 0 && $scope.LPPErrors.indexOf(designCountError) == -1) {
+                $scope.LPPErrors.push(designCountError);
             }
 
             if (value < 300) {
@@ -38,7 +36,14 @@
                 var quantityBreak = 500;
             }
 
-            $scope.Variant.Specs.PriceVariant.Value = designCount + '-' + quantityBreak + '-' + 'N';
+            if (bulk == 'Yes' && !$scope.Variant.Specs.List.Value && $scope.LPPErrors.indexOf(mailingListError) == -1) {
+                $scope.LPPErrors.push(mailingListError);
+            }
+            if (!$scope.LPPErrors.length) {
+                $scope.Variant.Specs.PriceVariant.Value = designCount + '-' + quantityBreak + '-' + bulk[0];
+            } else {
+                $scope.Variant.Specs.PriceVariant.Value = '';
+            }
         };
 
         $scope.$watch('Variant.Specs.Quantity.Value', function(n) {
@@ -55,32 +60,60 @@
                     $scope.LPPErrors.push(qtyError);
                 }
             }
+        });
 
+        $scope.$watch('Variant.Specs.List.Value', function(n) {
+            if (!$scope.Variant) return;
+            if (!n && $scope.Variant.Specs.Country.Value && $scope.Variant.Specs.Country.Value == 'US' && $scope.LPPErrors.indexOf(mailingListError) == -1) {
+                $scope.LPPErrors.push(mailingListError);
+            }
+            else if (!n && $scope.Variant.Specs.Country.Value && $scope.Variant.Specs.Country.Value != 'US' && $scope.LPPErrors.indexOf(mailingListError) > -1) {
+                $scope.LPPErrors.splice($scope.LPPErrors.indexOf(mailingListError),1);
+            }
+            else if (n) {
+                $scope.LPPErrors.splice($scope.LPPErrors.indexOf(mailingListError),1);
+            }
         });
 
         $scope.$watch('Variant.Specs.Front1.Value', function(n) {
             if (!$scope.Variant) return;
             $scope.Variant.Specs.Back1.Value = n ? n : '';
             $scope.Variant.Specs.Variant1.Value = n ? n : '';
-            setPriceVariant($scope.Variant.Specs.Quantity);
+            setPriceVariant($scope.Variant.Specs.Quantity.Value);
         });
         $scope.$watch('Variant.Specs.Front2.Value', function(n) {
             if (!$scope.Variant) return;
             $scope.Variant.Specs.Back2.Value = n ? n : '';
             $scope.Variant.Specs.Variant2.Value = n ? n : '';
-            setPriceVariant($scope.Variant.Specs.Quantity);
+            setPriceVariant($scope.Variant.Specs.Quantity.Value);
         });
         $scope.$watch('Variant.Specs.Front3.Value', function(n) {
             if (!$scope.Variant) return;
             $scope.Variant.Specs.Back3.Value = n ? n : '';
             $scope.Variant.Specs.Variant3.Value = n ? n : '';
-            setPriceVariant($scope.Variant.Specs.Quantity);
+            setPriceVariant($scope.Variant.Specs.Quantity.Value);
         });
         $scope.$watch('Variant.Specs.Front4.Value', function(n) {
             if (!$scope.Variant) return;
             $scope.Variant.Specs.Back4.Value = n ? n : '';
             $scope.Variant.Specs.Variant4.Value = n ? n : '';
-            setPriceVariant($scope.Variant.Specs.Quantity);
+            setPriceVariant($scope.Variant.Specs.Quantity.Value);
+        });
+
+        $scope.$watch('Variant.Specs.Country.Value', function(n) {
+            if (!$scope.Variant) return;
+
+            if (n) {
+                if (n == "US") {
+                    $scope.Variant.Specs.BulkSelection.Value = 'Yes';
+                } else {
+                    $scope.Variant.Specs.BulkSelection.Value = 'No';
+                    $scope.Variant.Specs.List.File = null;
+                    $scope.Variant.Specs.List.Value = null;
+                    $scope.LPPErrors.splice($scope.LPPErrors.indexOf(mailingListError),1);
+                }
+                setPriceVariant($scope.Variant.Specs.Quantity.Value);
+            }
         });
     }
 </script>
@@ -129,6 +162,16 @@
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-2">
                         <customtextfield customfield="Variant.Specs.ZipCode"></customtextfield>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customselectionfield customfield="Variant.Specs.Country"></customselectionfield>
+                    </div>
+                </div>
+                <div class="row" ng-show="Variant.Specs.Country.Value == 'US'">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <customfilefield customfield="Variant.Specs.List"></customfilefield>
                     </div>
                 </div>
                 <div class="row">
