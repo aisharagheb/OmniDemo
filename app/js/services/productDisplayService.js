@@ -67,7 +67,7 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
                 Thumbs:[]
             };
             angular.forEach(scope.LineItem.Product.StaticSpecGroups.images.Specs, function(s) {
-                if (s.Name.indexOf('_small') > -1) {
+                if (s.Name.indexOf('_small') > -1 || s.Name.indexOf('thumb') > -1) {
                     scope.GalleryLightboxImages.Thumbs.push(s);
                 } else {
                     scope.GalleryLightboxImages.Images.push(s);

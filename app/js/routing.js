@@ -14,9 +14,9 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
 		when('/orderdetails/:orderid', {templateUrl: 'partials/orderDetails.html', controller: 'OrderDetailsCtrl'}).
         when('/catalog', { templateUrl: 'partials/categoryView.html', controller: 'CategoryCtrl' }).
         when('/catalog/:categoryInteropID', { templateUrl: 'partials/categoryView.html', controller: 'CategoryCtrl' }).
-        when('/product/:productInteropID', {templateUrl: 'partials/DEV-PDT.html', controller: 'ProductCtrl'}).
-        when('/product/:productInteropID/:variantInteropID', {templateUrl: 'partials/DEV-PDT.html', controller: 'ProductCtrl'}).
-		when('/product/:productInteropID/:variantInteropID/edit', {templateUrl: 'partials/specFormDev.html', controller: 'SpecFormCtrl'}).
+        when('/product/:productInteropID', {templateUrl: concatProductView, controller: 'ProductCtrl'}).
+        when('/product/:productInteropID/:variantInteropID', {templateUrl: concatProductView, controller: 'ProductCtrl'}).
+		when('/product/:productInteropID/:variantInteropID/edit', {templateUrl: concatSpecFormView, controller: 'SpecFormCtrl'}).
 		when('/order', { templateUrl: 'partials/orderSearchView.html', controller: 'OrderSearchCtrl' }).
 		when('/order/:id', { templateUrl: 'partials/Reporting/orderHistoryView.html', controller: 'OrderViewCtrl' }).
 		when('/favoriteorders', { templateUrl: 'partials/favoriteOrderListView.html', controller: 'FavoriteOrderCtrl' }).
@@ -30,7 +30,7 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
         when('/cart', { templateUrl: 'partials/cartView.html', controller: 'CartViewCtrl'}).
         when('/checkout', { templateUrl: 'partials/checkOutView.html', controller: 'CheckOutViewCtrl' }).
 		when('/checkout/:id', { templateUrl: 'partials/checkOutView.html', controller: 'CheckOutViewCtrl' }).
-		when('/cart/:productInteropID/:lineItemIndex', { templateUrl: 'partials/DEV-PDT.html', controller: 'LineItemEditCtrl'}).
+		when('/cart/:productInteropID/:lineItemIndex', { templateUrl: concatProductView, controller: 'LineItemEditCtrl'}).
 		when('/cart/:id', { templateUrl: 'partials/cartView.html', controller: 'CartViewCtrl' }).
 		when('/login', { templateUrl: 'partials/controls/login.html', controller: 'LoginCtrl' }).
 		when('/search', { templateUrl: 'partials/searchView.html', controller: 'ProductSearchCtrl' }).
