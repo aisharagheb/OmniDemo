@@ -18,8 +18,19 @@
 }
 
 .navbar-nav > li > .dropdown-menu {
-  border-top-width:0;
-  top:42px;
+  top:35px;
+  .border-top-radius(@border-radius-base);
+  .fa-caret-up{
+    z-index:20;
+    position:absolute;
+    top:-23px;
+    left:10px;
+    color:#fff;
+    &:first-of-type{
+      top:-25px;
+      color:#ddd;
+    }
+  }
 }
 
 #navigation-bar {

@@ -1,5 +1,5 @@
-four51.app.controller('Four51Ctrl', ['$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService','CategoryDisplayService', 'SpendingAccount',
-function ($scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService, CategoryDisplayService, SpendingAccount) {
+four51.app.controller('Four51Ctrl', ['$window', '$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService','CategoryDisplayService', 'SpendingAccount',
+function ($window, $scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService, CategoryDisplayService, SpendingAccount) {
 	$scope.AppConst = AppConst;
 	$scope.scroll = 0;
 	$scope.isAnon = $451.isAnon; //need to know this before we have access to the user object
@@ -95,10 +95,22 @@ function ($scope, $route, $location, $451, User, Order, Security, OrderConfig, C
     $scope.goToTop = function() {
         $("html, body").animate({ scrollTop: 0 }, "slow");
         return false;
-    }
+    };
 
-/*    $scope.checkPosition = function() {
-        var position = $(window).scrollTop();
-        return position > 300;
-    }*/
+    $scope.validateEmail = function(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    };
+
+    $scope.showScrollUp = false;
+    angular.element($window).bind("scroll", function(e) {
+        if (e.view.scrollY > 250) {
+            $scope.showScrollUp = true;
+        } else {
+            $scope.showScrollUp = false;
+        }
+        $scope.$apply();
+    });
+
+
 }]);

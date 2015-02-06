@@ -18,7 +18,7 @@
     <section ng-hide="Four51User.isAuthenticated() || isAnon" class="container">
         <login />
     </section>
-    <section ng-show="Four51User.isAuthenticated()" id="content">
+    <section ng-if="Four51User.isAuthenticated()" id="content">
         <section class="hidden-print">
             <navigation />
         </section>
@@ -58,6 +58,7 @@
     <script src="lib/angular/angular-ga-analytics.js" data-group="resources"></script>
     <script src="lib/angular/plugins/Debouncer.js" data-group="resources"></script>
     <script src="lib/angular/plugins/ngAutocomplete.js" data-group="resources"></script>
+    <script src="lib/angular/plugins/angular-carousel.js" data-group="resources"></script>
 
     <script src="//maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 
@@ -175,6 +176,7 @@
     <script src="js/directives/neworder.js" data-group="source"></script>
     <script src="js/directives/minicart.js" data-group="source"></script>
     <script src="js/directives/categorydisplay.js" data-group="source"></script>
+    <script src="js/directives/ffoCarousel.js" data-group="source"></script>
 
 </body>
 </html>

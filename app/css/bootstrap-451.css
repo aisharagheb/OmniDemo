@@ -1,3 +1,4 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700italic);
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -3051,7 +3052,7 @@ input[type="button"].btn-block {
 .dropdown-mega .dropdown-menu > li > a:focus {
   text-decoration: none;
   color: #ffffff;
-  background-color: #359fd5;
+  background-color: #0787c4;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -10394,8 +10395,22 @@ fieldset[disabled] .btn-gray.active {
 }
 .navbar-nav > li > .dropdown-menu,
 .navbar-nav > li > .dropdown-mega .dropdown-menu {
-  border-top-width: 0;
-  top: 42px;
+  top: 35px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.navbar-nav > li > .dropdown-menu .fa-caret-up,
+.navbar-nav > li > .dropdown-mega .dropdown-menu .fa-caret-up {
+  z-index: 20;
+  position: absolute;
+  top: -23px;
+  left: 10px;
+  color: #fff;
+}
+.navbar-nav > li > .dropdown-menu .fa-caret-up:first-of-type,
+.navbar-nav > li > .dropdown-mega .dropdown-menu .fa-caret-up:first-of-type {
+  top: -25px;
+  color: #ddd;
 }
 #navigation-bar {
   border-top: 1px solid #f2f2f2;
@@ -10760,6 +10775,12 @@ footer section .link-list ng-include a:before {
   position: fixed;
   bottom: 2px;
   right: 5px;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+.gototop:not(.active) {
+  opacity: 0;
+  pointer-events: none;
 }
 .category-list-tree {
   text-align: left;
@@ -10873,6 +10894,11 @@ footer section .link-list ng-include a:before {
 .panel-category-list .well > a:hover {
   -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+}
+.panel-category-list .well > a h5 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: italic;
 }
 .gallery-display {
   cursor: zoom-in;
