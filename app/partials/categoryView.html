@@ -16,11 +16,12 @@
         </aside>
         <div class="col-md-9">
 
-            <categorylistview></categorylistview>
+            <categorylistview ng-if="currentCategory.InteropID != 'eep-tropical-theme'"></categorylistview>
+            <tabbedcategorylistview ng-if="currentCategory.InteropID == 'eep-tropical-theme'"></tabbedcategorylistview>
 
             <loadingindicator ng-show="productLoadingIndicator" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
-            <productlistview ng-show="productListType == 'row'"></productlistview>
-            <productlistview-alt ng-show="productListType == 'inline'"></productlistview-alt>
+            <productlistview ng-show="productListType == 'row' && currentCategory.InteropID != 'eep-tropical-theme'"></productlistview>
+            <productlistview-alt ng-show="productListType == 'inline' && currentCategory.InteropID != 'eep-tropical-theme'"></productlistview-alt>
         </div>
     </div>
     <div ng-show="isActive('catalog')">

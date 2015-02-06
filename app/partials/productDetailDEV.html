@@ -190,10 +190,7 @@
             <div class="well aom-bordered-well product-description text-muted" ng-show="pdtTab == 'description'">
                 <p id="451qa_prod_desc" ng-bind-html="trustedDescription(LineItem.Product )"/>
                 <p ng-show="LineItem.Variant.Description" ng-bind-html="trustedDescription(LineItem.Variant)" />
-
-
             </div>
-
 
             <!-- PRICE SCHEDULE PANEL! --->
             <priceScheduleTable ng-if="!(user.Permissions.contains('HidePricing')) && LineItem.PriceSchedule.PriceBreaks.length > 1" ps='LineItem.PriceSchedule' p='LineItem.Product'/>

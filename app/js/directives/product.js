@@ -25,6 +25,15 @@ four51.app.directive('categorylistview', function() {
     return obj;
 });
 
+four51.app.directive('tabbedcategorylistview', function() {
+    var obj = {
+        restrict: "E",
+        templateUrl:'partials/CategoryListViews/tabbedCategoryView.html'
+    };
+
+    return obj;
+});
+
 four51.app.directive('shortproductview', function() {
 	var obj = {
 		restrict: "E",
