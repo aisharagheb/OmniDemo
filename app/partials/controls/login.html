@@ -75,7 +75,8 @@
                             </div>
                         </div>
                         <input ng-disabled="login_form.$invalid" class="btn btn-large btn-primary btn-block" id="451_btn_login" type="submit" value="{{buttonText}}" />
-                        <a  class="btn btn-info btn-blue btn-block" href="#" onclick="$('#userCreate').show(); return false;">Create New User</a><br/>
+
+                        <a  ng-show="!showEmailHelp && !PasswordReset" class="btn btn-info btn-blue btn-block" onclick="$('#userCreate').show(); return false;" >Create New User.</a><br/>
                         <div style="display: none;" id="userCreate"> <ng-include src="'partials/createBrandNewUserView.html'"></ng-include></div>
                         </div>
                     </div>
