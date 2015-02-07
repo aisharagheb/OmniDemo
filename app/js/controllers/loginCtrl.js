@@ -8,7 +8,7 @@ function ($scope, $sce, $route, $location, User) {
 	$scope.$on('event:auth-loginFailed', function(event, message) {
 		$scope.loginMessage = message;
 	});
-
+//Create user panel
 	// build a post method for password reset
 	$scope.login = function() {
 		$scope.loginMessage = null;
