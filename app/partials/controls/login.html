@@ -8,7 +8,7 @@
                         <img src="css/images/logo.png" alt=""/>
                     </figure>
                     <p id="451qa_msg_login" ng-show="loginMessage" ng-bind-html="loginMessage" class="alert alert-info"></p>
-                    <div>
+                    <div ng-hide="showCreateNewUser">
                         <div class="view-form-icon" ng-show="!showEmailHelp && !PasswordReset">
                             <div>
                                 <label ng-show="credentials.Username">{{'Username' | r}}</label>
@@ -75,12 +75,11 @@
                             </div>
                         </div>
                         <input ng-disabled="login_form.$invalid" class="btn btn-large btn-primary btn-block" id="451_btn_login" type="submit" value="{{buttonText}}" />
-
-                        <a  ng-show="!showEmailHelp && !PasswordReset" class="btn btn-info btn-blue btn-block" onclick="$('#userCreate').show(); return false;" >Create New User.</a><br/>
-                        <div style="display: none;" id="userCreate"> <ng-include src="'partials/createBrandNewUserView.html'"></ng-include></div>
-                        </div>
                     </div>
+                    <div ng-show="!showEmailHelp && !PasswordReset" class="btn btn-info btn-block" ng-class="{'btn-blue': !showCreateNewUser, 'btn-warning': showCreateNewUser}" ng-click="showCreateNewUser = !showCreateNewUser">{{showCreateNewUser ? 'Cancel' : 'Create New User'}}</div>
+                    <ng-include ng-if="user.Type != 'Customer'" ng-show="showCreateNewUser" src="'partials/createBrandNewUserView.html'"></ng-include>
                 </form>
+
             </div>
         </div>
 

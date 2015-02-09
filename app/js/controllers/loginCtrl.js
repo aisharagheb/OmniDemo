@@ -1,5 +1,6 @@
 four51.app.controller('LoginCtrl', ['$scope', '$sce', '$route', '$location', 'User',
 function ($scope, $sce, $route, $location, User) {
+    $scope.showCreateNewUser = false;
 	$scope.PasswordReset = $location.search().token != null;
 	var codes = ['PasswordSecurityException'];
 
