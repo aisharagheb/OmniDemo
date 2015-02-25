@@ -1,5 +1,5 @@
-four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location', '$filter', '$rootScope', '$451', 'Analytics', 'User', 'Order', 'OrderConfig', 'FavoriteOrder', 'AddressList',
-function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics, User, Order, OrderConfig, FavoriteOrder, AddressList) {
+four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location', '$filter', '$rootScope', '$451', 'Analytics', 'User', 'Order', 'OrderConfig', 'FavoriteOrder', 'AddressList', 'WebMerge',
+function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics, User, Order, OrderConfig, FavoriteOrder, AddressList, WebMerge) {
 	$scope.errorSection = 'open';
 
 	$scope.isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
@@ -22,6 +22,11 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, Analytics,
         Order.submit($scope.currentOrder,
 	        function(data) {
 				$scope.user.CurrentOrderID = null;
+                angular.forEach(data.LineItems, function(item) {
+                    if (item.WebMerge) {
+                        WebMerge.create(item.Specs, $scope.user);
+                    }
+                });
 				User.save($scope.user, function(data) {
 			        $scope.user = data;
 	                $scope.displayLoadingIndicator = false;

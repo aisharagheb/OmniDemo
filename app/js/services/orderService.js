@@ -25,6 +25,11 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
                 });
             }
 			item.SpecsLength = Object.keys(item.Specs).length;
+
+            item.WebMerge = false;
+            if ((item.Product.Specs && item.Product.Specs.WebMerge) || (item.Specs && item.Specs.WebMerge)) {
+                item.WebMerge = true;
+            }
 		});
 
 		order.forceMultipleShip = function(value) {

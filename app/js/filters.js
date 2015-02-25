@@ -193,3 +193,21 @@ four51.app.filter('filterbyspec', function() {
         return results;
     }
 });
+
+four51.app.filter('specnametolabel', function() {
+    return function(name, specs) {
+        if (!name || !specs) return;
+        var value = name;
+        var specForm = false;
+        if (value.indexOf('is a required field') > -1) {
+            specForm = true;
+            name.replace(' is a required field', '');
+        }
+
+        if (specs[value]) {
+            value = specs[value].Label;
+        }
+
+        return value + (specForm ? ' is a required field' : '');
+    }
+});

@@ -14,7 +14,7 @@
     <hr />
     <input type="hidden" ng-required="customfield.Required" ng-model="customfield.File.ID"></input>
     <div class="error ui-state-error-text text-danger"></div>
-    <div class="alert alert-info" ng-show="replace || !customfield.File">
+    <div class="alert alert-info" ng-show="(replace || !customfield.File) && !hideinstructions">
         {{customfield.UploadInstructions}}
         <ul ng-show="replace || !customfield.File">
             <li>{{'Allowed File Types' | r | xlat}}: {{customfield.AllowedExt | r}}</li>

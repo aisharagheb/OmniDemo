@@ -3,7 +3,8 @@ function($parse, $resource, $451, fileReader, Security) {
 	var obj = {
 		scope: {
 			customfield: '=',
-			replace: '@ngModel'
+			replace: '@ngModel',
+            hideinstructions: '='
 		},
 		restrict: 'E',
 		templateUrl: 'partials/controls/fileUpload.html',
