@@ -28,7 +28,7 @@
         <section class="container-view">
             <ng-view autoscroll />
         </section>
-        <section ng-show="isInPath('catalog')" style="margin-bottom:-100px;">
+        <section ng-hide="isActive('cart') || isActive('checkout')" style="margin-bottom:-100px;">
             <footer>
                 <ng-include src="'partials/footer.html'"></ng-include>
             </footer>
