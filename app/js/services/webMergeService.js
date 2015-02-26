@@ -5,10 +5,8 @@ four51.app.factory('WebMerge', ['$resource', '$http', function($resource, $http)
     return service;
 
     function _create(specs, user) {
-        var url = "https://www.webmerge.me/merge/12756/je8vzy?test=1";
-
-        console.log(specs);
-
+        var url = "https://www.webmerge.me/merge/" + specs.WebMerge.DefaultValue;
+        
         var form = {};
         angular.forEach(specs, function(spec) {
             if (spec.Name != 'WebMerge') {
@@ -16,6 +14,8 @@ four51.app.factory('WebMerge', ['$resource', '$http', function($resource, $http)
             }
         });
         form['email'] = user.Email;
+        form['EMAIL'] = user.Email;
+        form['Email'] = user.Email;
 
         $.ajax({
             url: url,
