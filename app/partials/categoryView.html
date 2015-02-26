@@ -16,12 +16,14 @@
         </aside>
         <div class="col-md-9">
 
-            <categorylistview ng-if="currentCategory.InteropID != 'eep-tropical-theme'"></categorylistview>
+            <categorylistview ng-if="currentCategory.InteropID != 'eep-tropical-theme' || currentCategory.InteropID != 'eep-sports-theme' || currentCategory.InteropID != 'eep-service-lines'"></categorylistview>
             <tabbedcategorylistview ng-if="currentCategory.InteropID == 'eep-tropical-theme'"></tabbedcategorylistview>
+            <tabbedcategorylistviewtwo ng-if="currentCategory.InteropID == 'eep-sports-theme'"></tabbedcategorylistviewtwo>
+            <tabbedcategorylistviewthree ng-if="currentCategory.InteropID == 'eep-service-lines'"></tabbedcategorylistviewthree>
 
             <loadingindicator ng-show="productLoadingIndicator" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
-            <productlistview ng-show="productListType == 'row' && currentCategory.InteropID != 'eep-tropical-theme'"></productlistview>
-            <productlistview-alt ng-show="productListType == 'inline' && currentCategory.InteropID != 'eep-tropical-theme'"></productlistview-alt>
+            <productlistview ng-show="productListType == 'row' && (currentCategory.InteropID != 'eep-tropical-theme' && currentCategory.InteropID != 'eep-sports-theme' && currentCategory.InteropID != 'eep-service-lines')"></productlistview>
+            <productlistview-alt ng-show="productListType == 'inline' && (currentCategory.InteropID != 'eep-tropical-theme' && currentCategory.InteropID != 'eep-sports-theme' && currentCategory.InteropID != 'eep-service-lines')"></productlistview-alt>
         </div>
     </div>
     <div ng-show="isActive('catalog')">
