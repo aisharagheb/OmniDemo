@@ -1,5 +1,5 @@
-four51.app.controller('NavCtrl', ['$location', '$route', '$scope', '$451', 'User',
-function ($location, $route, $scope, $451, User) {
+four51.app.controller('NavCtrl', ['$location', '$route', '$scope', '$451', 'User', 'Security',
+function ($location, $route, $scope, $451, User, Security) {
     $scope.Logout = function(){
         User.logout();
         if ($scope.isAnon) {
@@ -64,4 +64,6 @@ function ($location, $route, $scope, $451, User) {
         }
 
     }
+
+    $scope.AuthToken = Security.auth();
 }]);
