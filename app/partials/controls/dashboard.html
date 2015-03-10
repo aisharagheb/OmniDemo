@@ -25,7 +25,7 @@
                 </a>
             </div>
             <div class="search">
-                <form ng-submit="customSearch(searchTerm)">
+                <form ng-submit="customSearch(searchTerm, searchType)">
                     <div class="input-group">
                         <input type="text" class="form-control" ng-model="searchTerm" placeholder="{{searchType}}"/>
                     <span class="input-group-btn">
@@ -41,7 +41,6 @@
                     </span>
                     </div>
                 </form>
-
             </div>
             <div class="minicart-container">
                 <div>

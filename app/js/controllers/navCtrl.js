@@ -53,17 +53,15 @@ function ($location, $route, $scope, $451, User, Security) {
 
     $scope.searchType = 'Product Search';
 
-    $scope.customSearch = function(term) {
-        if($scope.searchType == 'Product Search'){
+    $scope.customSearch = function(term, type) {
+        if(type == 'Product Search'){
             $location.path('/search/' + term);
-
         }
         else {
-//
-//            this will be content cms thing
+            window.location = 'http://cms.expresscompanystore.com/search/results/search&keywords=' + term + '&auth=' + Security.auth();
         }
 
-    }
+    };
 
     $scope.AuthToken = Security.auth();
 }]);
