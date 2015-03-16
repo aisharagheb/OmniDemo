@@ -9,30 +9,28 @@
             </div>
         </a>
     </div>
+   <script>
+
+   </script>
     <div class="col-sm-8 text-left">
         <div class="panel-body">
             <p class="product-name" ng-bind-html="LineItem.Product.Name"></p>
             <small class="pull-right text-info">{{LineItem.Product.ExternalID}}</small>
-            <p class="text-muted" ng-show="LineItem.Product.Description"><small ng-bind-html="trustedDescription(LineItem.Product)"></small></p>
+            <style>
+                font{
+                    color:#999999 !important;
+                    font-size: 11px !important;
+                    font-weight: normal !important;
+                }
+
+            </style>
+                 <p class="text-muted" ng-show="LineItem.Product.Description">
+                <small ng-bind-html="trustedDescription(LineItem.Product)"></small></p>
             <a class="btn btn-blue" href="product/{{LineItem.Product.InteropID}}"><i class="fa fa-shopping-cart"></i></a>
             <p class="price">
                 <small class="text-danger" ng-show="StaticSpecGroups && StaticSpecGroups.StrikeThroughPricing"><s>{{StaticSpecGroups.StrikeThroughPricing.Specs.StrikeThroughPrice.Value}}</s><br/></small>
                 <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
             </p>
-            <!--<section class="panel-body">
-                <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
-                    {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
-                    <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
-                    {{'for' | xlat}} {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
-                </p>
-                <p ng-show="LineItem.Product.UnitOfMeasure">
-                    {{'Unit of Measure' | r | xlat}}: {{LineItem.Product.UnitOfMeasure}}
-                </p>
-
-                <p ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
-                    {{'Quantity Available' | r | xlat}}: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
-                </p>
-            </section>-->
         </div>
     </div>
 </div>

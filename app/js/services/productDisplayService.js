@@ -159,6 +159,7 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
 			calcTotal(scope.LineItem);
 
 		}
+
 		scope.trustedDescription = function(p){
 			if(p) return $sce.trustAsHtml(p.Description);
 		}
