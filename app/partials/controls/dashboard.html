@@ -1,21 +1,21 @@
 <section id="dashboard">
     <div class="user-dashboard" ng-show="(cartCount && user.CurrentOrderID) || (SpendingAccounts.length > 0 && SpendingAccounts[0].Balance)">
-        <div class="container">
-            <!--<p ng-hide="user.Type == 'Customer'">-->
-                <!--Welcome to ROBYN, <a href="admin">Login</a> or <a href="admin">Create new account</a>-->
+        <!--<div class="container">-->
+            <!--&lt;!&ndash;<p ng-hide="user.Type == 'Customer'">&ndash;&gt;-->
+                <!--&lt;!&ndash;Welcome to ROBYN, <a href="admin">Login</a> or <a href="admin">Create new account</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;</p>&ndash;&gt;-->
+            <!--<p ng-show="SpendingAccounts.length > 0 && SpendingAccounts[0].Balance" class="spending-account">-->
+                <!--{{SpendingAccounts[0].Label + ': '}}<span class="label label-info" style="font-size:1em;">{{(SpendingAccounts[0].Balance | currency) || (0 | currency)}}</span>-->
             <!--</p>-->
-            <p ng-show="SpendingAccounts.length > 0 && SpendingAccounts[0].Balance" class="spending-account">
-                {{SpendingAccounts[0].Label + ': '}}<span class="label label-info" style="font-size:1em;">{{(SpendingAccounts[0].Balance | currency) || (0 | currency)}}</span>
-            </p>
-            <ul class="links" ng-show="cartCount && user.CurrentOrderID">
-                <li><a href="cart">
-                    <i class="fa fa-shopping-cart"></i> Shopping Cart
-                </a></li>
-                <li><a href="checkout">
-                    <i class="fa fa-check-circle-o"></i> CheckOut
-                </a></li>
-            </ul>
-        </div>
+            <!--<ul class="links" ng-show="cartCount && user.CurrentOrderID">-->
+                <!--<li><a href="cart">-->
+                    <!--<i class="fa fa-shopping-cart"></i> Shopping Cart-->
+                <!--</a></li>-->
+                <!--<li><a href="checkout">-->
+                    <!--<i class="fa fa-check-circle-o"></i> CheckOut-->
+                <!--</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
     </div>
     <div class="primary-dashboard">
         <div class="container">
@@ -41,7 +41,7 @@
                     </span>
                     </div>
                 </form>
-            </div>
+            </div> 
             <div class="minicart-container">
                 <div>
                     <minicart current-order="currentOrder" user="user"></minicart>

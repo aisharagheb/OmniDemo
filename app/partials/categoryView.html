@@ -9,7 +9,7 @@
                     </ul>
                 </nav>
             </div>
-            <div ng-show="!isActive('catalog')">
+            <div>
                 <categorydisplay categoryid="'EX_LatestProducts'"></categorydisplay>
                 <categorydisplay categoryid="'EX_BestProducts'"></categorydisplay>
             </div>
@@ -25,9 +25,5 @@
             <productlistview ng-show="productListType == 'row' && (currentCategory.InteropID != 'eep-tropical-theme' && currentCategory.InteropID != 'eep-sports-theme' && currentCategory.InteropID != 'eep-service-lines')"></productlistview>
             <productlistview-alt ng-show="productListType == 'inline' && (currentCategory.InteropID != 'eep-tropical-theme' && currentCategory.InteropID != 'eep-sports-theme' && currentCategory.InteropID != 'eep-service-lines')"></productlistview-alt>
         </div>
-    </div>
-    <div ng-show="isActive('catalog')">
-        <categorydisplay-inline categoryid="'EX_LatestProducts'" user="user"></categorydisplay-inline>
-        <categorydisplay-inline categoryid="'EX_BestProducts'" user="user"></categorydisplay-inline>
     </div>
 </section>
