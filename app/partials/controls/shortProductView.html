@@ -22,7 +22,12 @@
                     font-size: 11px !important;
                     font-weight: normal !important;
                 }
-
+                h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+                    color:#999999 !important;
+                    font-size: 11px !important;
+                    font-weight: normal !important;
+                }
+/*spans don't 1531 this specification because it will affect the rest of the app.*/
             </style>
                  <p class="text-muted" ng-show="LineItem.Product.Description">
                 <small ng-bind-html="trustedDescription(LineItem.Product)"></small></p>
@@ -34,3 +39,5 @@
         </div>
     </div>
 </div>
+
+
