@@ -49,6 +49,14 @@ four51.app.directive('tabbedcategorylistviewthree', function() {
 
     return obj;
 });
+four51.app.directive('broadcastview', function() {
+    var obj = {
+        restrict: "E",
+        templateUrl:'partials/CategoryListViews/categoryBroadcastView.html'
+    };
+
+    return obj;
+});
 
 four51.app.directive('shortproductview', function() {
 	var obj = {

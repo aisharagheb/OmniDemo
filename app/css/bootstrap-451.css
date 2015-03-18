@@ -10324,6 +10324,22 @@ fieldset[disabled] .btn-gray.active {
     position: static;
   }
 }
+.bulletList .panel-body li:before,
+.bulletList .panel-category-list:not(.no-panels) li:before,
+.bulletList .panel-product-list:not(.no-panels) li:before,
+.bulletList .panel-lineitem li:before,
+.bulletList .panel-order-history li:before,
+.bulletList .panel-order-shipping-multiple li:before {
+  content: '-';
+  margin: 0 5px 0 -15px;
+  color: #005288;
+}
+.bulletlist ul li {
+  font-size: 12px;
+}
+.bulletlist .btn {
+  font-size: 12px;
+}
 .order-cloud-image {
   background-color: #0787c4;
 }
