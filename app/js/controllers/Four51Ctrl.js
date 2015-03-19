@@ -98,9 +98,11 @@ function ($window, $scope, $route, $location, $451, User, Order, Security, Order
     };
 
     $scope.validateEmail = function(email) {
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
+        var regex = /^([a-zA-Z0-9_.+-])+\@((expresspro)+\.)+(com)+$/;
+        return regex.test(email);
     };
+
+
 
     $scope.showScrollUp = false;
     angular.element($window).bind("scroll", function(e) {
