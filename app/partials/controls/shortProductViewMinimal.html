@@ -2,10 +2,10 @@
 
     <div class="product-name"><div ng-bind-html="LineItem.Product.Name"></div></div>
     <a href="product/{{LineItem.Product.InteropID}}">
-        <figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" >
-            <img style="min-height:100px; max-height:100px;" ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}"/>
+        <figure ng-show="LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl" >
+            <img style="max-height:150px;" ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}"/>
         </figure>
-        <div class="empty" ng-hide="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl">
+        <div class="empty" ng-hide="LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl">
             <span class="fa empty"><i class="fa fa-camera"></i></span>
         </div>
     </a>

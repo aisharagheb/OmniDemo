@@ -10340,6 +10340,16 @@ fieldset[disabled] .btn-gray.active {
 .bulletlist .btn {
   font-size: 12px;
 }
+.imageCatSize .category-display-box figure img {
+  max-height: 50px;
+  width: auto;
+  margin: 10px;
+}
+.imageCatSize .category-display-box figure {
+  min-height: 50px;
+  min-width: 50px;
+  border: none;
+}
 .order-cloud-image {
   background-color: #0787c4;
 }
@@ -11053,7 +11063,7 @@ footer section .link-list ng-include a:before {
 }
 .no-panels.robyn-product-list .well figure,
 .robyn-product-list .well figure {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   padding: 10px;
 }
 .no-panels.robyn-product-list .well figure img,
@@ -11140,5 +11150,9 @@ footer section .link-list ng-include a:before {
   display: block;
 }
 .category-display-box figure img {
+  max-width: 100%;
+}
+.thumbnail img {
+  max-height: 300px;
   max-width: 100%;
 }

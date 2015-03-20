@@ -1,8 +1,8 @@
 <div class="451qa_prod_item row robyn-short-product" ng-swipe-left="showSwipe = true">
     <div class="col-sm-4 text-center">
         <a class="thumbnail" href="product/{{LineItem.Product.InteropID}}">
-            <figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" >
-                <img ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}"/>
+            <figure ng-show="LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl" >
+                <img ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}"/>
             </figure>
             <div class="empty" ng-hide="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl">
                 <span class="fa empty"><i class="fa fa-camera"></i></span>
@@ -22,14 +22,28 @@
                     font-size: 11px !important;
                     font-weight: normal !important;
                 }
-                h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+                h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 :not .category-display-box{
                     color:#999999 !important;
                     font-size: 11px !important;
                     font-weight: normal !important;
                 }
 /*spans don't 1531 this specification because it will affect the rest of the app.*/
             </style>
-                 <p class="text-muted" ng-show="LineItem.Product.Description">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            Description
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            <p class="text-muted" ng-show="LineItem.Product.Description" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
                 <small ng-bind-html="trustedDescription(LineItem.Product)"></small></p>
             <a class="btn btn-blue" href="product/{{LineItem.Product.InteropID}}"><i class="fa fa-shopping-cart"></i></a>
             <p class="price">
