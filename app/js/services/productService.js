@@ -59,6 +59,7 @@ four51.app.factory('Product', ['$resource', '$451', 'Security', 'User', function
             angular.forEach(description, function(section) {
                 if ($(section).attr('id') == 'tabs') {
                     angular.forEach($(section).children(), function(tab) {
+
                         var title = $(tab).attr('id');
                         var content = $(tab).html();
                         product.productTabs.push(

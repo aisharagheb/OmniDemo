@@ -163,6 +163,14 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
 		scope.trustedDescription = function(p){
 			if(p) return $sce.trustAsHtml(p.Description);
 		}
+
+        scope.limitDescription = function(d){
+            if (scope.trustedDescription.length > 100){
+                return true;
+                scope.wordlength = scope.trustedDescription.suubstring(0,99);
+            }
+        }
+
 		scope.inventoryDisplay = function(product, variant){
 			var qa = product.IsVariantLevelInventory ? variant : product;
 			if(qa)

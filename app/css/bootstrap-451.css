@@ -10578,6 +10578,9 @@ fieldset[disabled] .btn-gray.active {
     margin: 20px auto 0;
     float: none;
   }
+  .spending-account {
+    text-align: left;
+  }
 }
 @media (min-width: 992px) {
   .user-dashboard .container,
@@ -10611,16 +10614,62 @@ fieldset[disabled] .btn-gray.active {
     -ms-flex: 2;
     flex: 2;
   }
+  .primary-dashboard .container .spending-account,
+  .primary-dashboard .container-view .spending-account {
+    -webkit-flex: 0.8;
+    -moz-flex: 0.8;
+    -ms-flex: 0.8;
+    flex: 0.8;
+  }
   .primary-dashboard .container .minicart-container,
   .primary-dashboard .container-view .minicart-container {
-    -webkit-flex: 2;
-    -moz-flex: 2;
-    -ms-flex: 2;
-    flex: 2;
+    -webkit-flex: 1.2;
+    -moz-flex: 1.2;
+    -ms-flex: 1.2;
+    flex: 1.2;
   }
 }
+.spending-account {
+  margin-top: 8px;
+  cursor: pointer;
+  color: #999999;
+  text-align: center;
+}
+.spending-account .fa-caret-down {
+  color: #0790D8;
+}
+.spending-account:hover .spending-account-list {
+  display: block;
+}
+.spending-account-list {
+  display: none;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -webkit-box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.176);
+  box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.176);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 10;
+}
+.spending-account-list .fa-caret-up {
+  position: absolute;
+  top: -18px;
+  left: 40px;
+  color: #fff;
+}
+.spending-account-list .fa-caret-up:first-of-type {
+  top: -20px;
+  color: rgba(0, 0, 0, 0.2);
+}
 .minicart {
-  padding: 7px 15px 15px;
+  padding: 7px 5px 15px;
   float: right;
   cursor: pointer;
   color: #999999;
@@ -10636,7 +10685,7 @@ fieldset[disabled] .btn-gray.active {
   padding: 2px 4px;
 }
 .minicart .fa-caret-down {
-  color: #0787c4;
+  color: #0790D8;
 }
 .minicart:active .minicart-detail,
 .minicart:focus .minicart-detail,
@@ -10828,7 +10877,7 @@ footer section .link-list ng-include a:before {
 .category-list-tree-sub {
   overflow: hidden;
   text-align: left;
-  background-color: #f2f2f2;
+  background-color: #fff;
 }
 .category-list-tree-sub > a:not(.shop-all) {
   min-height: 100px;
@@ -10840,7 +10889,7 @@ footer section .link-list ng-include a:before {
 }
 .category-list-tree-sub > a.shop-all {
   color: #333333;
-  background-color: #fff;
+  background-color: #f2f2f2;
   margin: 10px;
   padding: 5px;
   -webkit-transition: all 200ms ease-in-out;
@@ -11155,4 +11204,8 @@ footer section .link-list ng-include a:before {
 .thumbnail img {
   max-height: 300px;
   max-width: 100%;
+}
+.robyn-short-product .product-description:not(.expanded) {
+  max-height: 125px;
+  overflow: hidden;
 }

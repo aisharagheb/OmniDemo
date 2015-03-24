@@ -62,7 +62,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 			ProductDisplayService.setNewLineItemScope($scope);
 			ProductDisplayService.setProductViewScope($scope);
 			setDefaultQty($scope.LineItem);
-			$scope.$broadcast('ProductGetComplete');
+            $scope.$broadcast('ProductGetComplete');
 			$scope.loadingIndicator = false;
 			$scope.setAddToOrderErrors();
 			if (angular.isFunction(callback))

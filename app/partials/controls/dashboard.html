@@ -42,6 +42,21 @@
                     </div>
                 </form>
             </div>
+            <div class="spending-account text-left">
+                <i class="fa fa-money text-info"></i>
+                Spending Account(s)
+                <i class="fa fa-caret-down"></i>
+                <div class="spending-account-list">
+                    <i class="fa fa-caret-up fa-2x"></i>
+                    <i class="fa fa-caret-up fa-2x"></i>
+                    <div ng-repeat="sa in SpendingAccounts">
+                        <dl>
+                            <dt>{{sa.Name}}</dt>
+                            <dd>{{sa.Balance | currency}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
             <div class="minicart-container">
                 <div>
                     <minicart current-order="currentOrder" user="user"></minicart>

@@ -224,7 +224,7 @@
 
     <!-- PRODUCT TABS! --->
     <tabset ng-if="LineItem.Product.productTabs">
-        <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}">
+        <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}" active="$index == 0">
             <div ng-bind-html="tab.Content"></div>
         </tab>
         <!--PRODUCT TAGS-->

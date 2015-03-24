@@ -48,6 +48,7 @@
   color:@text-gray;
   font-size:0.8em;
   .spending-account {
+
     .label-info {
       background-color:@express-blue;
       border-radius:0;
@@ -152,6 +153,12 @@
       }
     }
   }
+
+  .spending-account {
+    text-align:left;
+  }
+
+
 }
 
 //** tablet landscape & desktop
@@ -173,9 +180,52 @@
       .search {
         .flex(2);
       }
-      .minicart-container {
-        .flex(2);
+      .spending-account {
+        .flex(0.8);
       }
+      .minicart-container {
+        .flex(1.2);
+      }
+    }
+  }
+}
+
+.spending-account {
+  .fa-caret-down {
+    color:#0790D8;
+  }
+  margin-top:8px;
+  cursor: pointer;
+  color:@gray-light;
+  text-align:center;
+  &:hover {
+    .spending-account-list {
+      display:block;
+    }
+  }
+}
+
+.spending-account-list {
+  display:none;
+  .border-top-radius(@border-radius-base);
+  .border-bottom-radius(@border-radius-base);
+  .box-shadow(0px 6px 12px 0px rgba(0,0,0,0.176));
+  border:1px solid rgba(0,0,0,0.2);
+  padding:@grid-gutter-width;
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  background-color:#fff;
+  z-index:10;
+  .fa-caret-up{
+    position:absolute;
+    top:-18px;
+    left:40px;
+    color:#fff;
+    &:first-of-type{
+      top:-20px;
+      color:rgba(0,0,0,0.2);
     }
   }
 }

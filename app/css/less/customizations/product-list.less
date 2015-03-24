@@ -101,3 +101,12 @@
   max-height: 300px;
   max-width: 100%;
 }
+
+.robyn-short-product {
+  .product-description {
+    &:not(.expanded) {
+      max-height: 125px;
+      overflow:hidden;
+    }
+  }
+}
