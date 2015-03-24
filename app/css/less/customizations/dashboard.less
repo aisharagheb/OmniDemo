@@ -153,14 +153,13 @@
       }
     }
   }
-
-  .spending-account {
-    text-align:left;
+  .spending-account{
+    margin-left:10px;
   }
 
 
-}
 
+}
 //** tablet landscape & desktop
 @media (min-width: @screen-md-min) {
   .user-dashboard {
@@ -188,6 +187,7 @@
       }
     }
   }
+
 }
 
 .spending-account {
@@ -197,7 +197,8 @@
   margin-top:8px;
   cursor: pointer;
   color:@gray-light;
-  text-align:center;
+  text-align:left;
+  margin-left:20px;
   &:hover {
     .spending-account-list {
       display:block;
@@ -213,11 +214,12 @@
   border:1px solid rgba(0,0,0,0.2);
   padding:@grid-gutter-width;
   position:absolute;
-  top:100%;
+  top:30px;
   left:0;
   right:0;
   background-color:#fff;
   z-index:10;
+  max-width: 300px;
   .fa-caret-up{
     position:absolute;
     top:-18px;
@@ -227,5 +229,8 @@
       top:-20px;
       color:rgba(0,0,0,0.2);
     }
+  }
+  .fa-money{
+    font-size: 10px;
   }
 }

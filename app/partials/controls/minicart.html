@@ -74,12 +74,12 @@
                 <div class="col-xs-8 text-right text-muted">Total:</div>
                 <div class="col-xs-4 text-right text-muted">{{currentOrder.Total | currency}}</div>
             </div>
-            <div class="row">
+            <div class="row" >
                 <div class="col-xs-6">
-                    <a class="btn btn-blue btn-block" href="cart">View Cart</a>
+                    <a class="btn btn-blue btn-block" ng-disabled="!cartCount" href="cart">View Cart</a>
                 </div>
                 <div class="col-xs-6">
-                    <a class="btn btn-blue btn-block" href="checkout">Checkout</a>
+                    <a class="btn btn-blue btn-block" ng-disabled="!cartCount" href="checkout">Checkout</a>
                 </div>
             </div>
         </div>

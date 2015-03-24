@@ -10579,7 +10579,7 @@ fieldset[disabled] .btn-gray.active {
     float: none;
   }
   .spending-account {
-    text-align: left;
+    margin-left: 10px;
   }
 }
 @media (min-width: 992px) {
@@ -10633,7 +10633,8 @@ fieldset[disabled] .btn-gray.active {
   margin-top: 8px;
   cursor: pointer;
   color: #999999;
-  text-align: center;
+  text-align: left;
+  margin-left: 20px;
 }
 .spending-account .fa-caret-down {
   color: #0790D8;
@@ -10652,11 +10653,12 @@ fieldset[disabled] .btn-gray.active {
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 10px;
   position: absolute;
-  top: 100%;
+  top: 30px;
   left: 0;
   right: 0;
   background-color: #fff;
   z-index: 10;
+  max-width: 300px;
 }
 .spending-account-list .fa-caret-up {
   position: absolute;
@@ -10667,6 +10669,9 @@ fieldset[disabled] .btn-gray.active {
 .spending-account-list .fa-caret-up:first-of-type {
   top: -20px;
   color: rgba(0, 0, 0, 0.2);
+}
+.spending-account-list .fa-money {
+  font-size: 10px;
 }
 .minicart {
   padding: 7px 5px 15px;
@@ -10685,7 +10690,7 @@ fieldset[disabled] .btn-gray.active {
   padding: 2px 4px;
 }
 .minicart .fa-caret-down {
-  color: #0790D8;
+  color: #0787c4;
 }
 .minicart:active .minicart-detail,
 .minicart:focus .minicart-detail,
