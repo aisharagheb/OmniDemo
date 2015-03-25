@@ -91,6 +91,16 @@
         </div>
     </div>
 
+    <!-- PRODUCT TABS! --->
+    <tabset justified="true" class="newtabset" ng-if="LineItem.Product.productTabs">
+        <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}" >
+            <small ng-if="tab.Content"><div ng-bind-html="tab.Content"></div></small>
+            <div ng-if="tab.Tags" ng-repeat="tag in tab.Tags" style="display:inline-flex;display:-webkit-inline-flex;padding:2px;">
+                <small><a class="btn btn-small btn-gray" href="search/{{tag}}"> <i class="fa fa-tag"></i> {{tag}}</a> <br/></small>
+            </div>
+        </tab>
+    </tabset>
+
     <!-- PRODUCT DESCRIPTION PANEL! --->
     <div class="panel panel-primary"  style="border-color: #ffffff; box-shadow: none;">
         <div class="panel-body" id="451_area_prod_desc">
@@ -222,18 +232,6 @@
     </form>
 
 
-    <!-- PRODUCT TABS! --->
-    <tabset ng-if="LineItem.Product.productTabs">
-        <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}" active="$index == 0">
-            <div ng-bind-html="tab.Content"></div>
-        </tab>
-        <!--PRODUCT TAGS-->
-        <tab heading="Tags">
-            <div ng-repeat="tag in LineItem.Product.productTags" ng-show="LineItem.Product.productTags" style="display: inline-flex; padding:2px;">
-                <a class="btn btn-sm btn-gray" href="search/{{tag}}"> <i class="fa fa-tag"></i> {{tag}}</a> <br/>
-            </div>
-        </tab>
-    </tabset>
 
 </div>
 </div>

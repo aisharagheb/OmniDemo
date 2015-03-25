@@ -28,21 +28,52 @@
                     font-size: 11px !important;
                     font-weight: normal !important;
                 }
+                .newtabset .btn{
+                    font-size: 12px;!important
+                }
+                .newtabset .panel-product-list ul li a .btn{
+                    padding:.2em;!important
+                }
+                .newtabset .tab-content{
+                    border: solid 1px #dddddd;
+                }
+                .newtabset .nav-tabs.nav-justified > li > a{
+                    margin-bottom: -11px;
+                    border: 1px solid #dddddd;
+                }
 
+                .newtabset .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus{
+                    margin-bottom: -11px;
+                    background-color:#0787C4;
+                    color: #ffffff;
+                }
 
 /*spans don't 1531 this specification because it will affect the rest of the app.*/
             </style>
 
             <p class="product-description" ng-class="{'expanded':someVar}"><small ng-bind-html="trustedDescription(LineItem.Product)"></small></p>
-            <a class="pull-right" style="font-size:11px; font-weight:bold; background-color:#0787C4; color:#ffffff; padding:2px;" ng-show="LineItem.Product.Description.length >= 475" class="btn-link" ng-click="someVar = !someVar">More/Less</a>
+            <div class="row hidden-xs">
+                <div class="col-lg-12 col-sm-12 col-xs-9">
+                    <!-- PRODUCT TABS! --->
+                    <tabset justified="true" class="newtabset" ng-if="LineItem.Product.productTabs">
+                        <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}" >
+                            <small ng-if="tab.Content"><div ng-bind-html="tab.Content"></div></small>
+                            <div ng-if="tab.Tags" ng-repeat="tag in tab.Tags" style="display:inline-flex;display:-webkit-inline-flex;padding:2px;">
 
+                                <small><a class="btn btn-small btn-gray" href="search/{{tag}}"> <i class="fa fa-tag"></i> {{tag}}</a> <br/></small>
+
+                            </div>
+                        </tab>
+                    </tabset>
+                </div>
+            </div>
+            <a class="pull-right" style="font-size:11px; font-weight:bold; background-color:#0787C4; color:#ffffff; padding:2px;" ng-show="LineItem.Product.Description.length >= 475" class="btn-link" ng-click="someVar = !someVar">More/Less</a>
             <a class="btn btn-blue" href="product/{{LineItem.Product.InteropID}}"><i class="fa fa-shopping-cart"></i></a>
             <p class="price">
                 <small class="text-danger" ng-show="StaticSpecGroups && StaticSpecGroups.StrikeThroughPricing"><s>{{StaticSpecGroups.StrikeThroughPricing.Specs.StrikeThroughPrice.Value}}</s><br/></small>
                 <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
             </p>
         </div>
-
     </div>
 </div>
 

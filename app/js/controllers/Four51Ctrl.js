@@ -98,7 +98,7 @@ function ($window, $scope, $route, $location, $451, User, Order, Security, Order
     };
 
     $scope.validateEmail = function(email) {
-        var regex = /^([a-zA-Z0-9_.+-])+\@((expresspro)+\.)+(com)+$/;
+        var regex = /^([a-zA-Z0-9_.+-])+\@((expresspros)+\.)+(com)+$/;
         return regex.test(email);
     };
 
