@@ -33,6 +33,10 @@
           }
         }
       }
+      &.inline-search{
+        @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {width: @fourfiveone-product-search-md;}
+        @media (min-width: @screen-lg-min){width: @fourfiveone-product-search-lg;}
+      }
       &.minimal{
         .panel-body > div:first-of-type{
           text-align:center;

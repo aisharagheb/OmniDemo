@@ -86,13 +86,17 @@
 
 //== Mega Nav
 .dropdown-mega {
+  margin:10px;
   &:extend(.dropdown all);
   position: absolute;
-  top: 60px;
-  height: 40px;
+  top: 170px;
+  height: 50px;
   left: 5px;
   right: 5px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid @off-white;
+  @media (min-width:@screen-sm-min){
+    top: 211px;
+  }
   p {
     margin-left: 5px;
   }
@@ -105,9 +109,12 @@
     font-size: @font-size-large;
     color: darken(@navbar-default-bg, 35%);
     i {
-      padding: 10px;
+
       font-weight: bold;
     }
+  }
+  @media (min-width: @screen-sm-min) {
+    top: 170px;
   }
 
   .dropdown-menu {
@@ -128,6 +135,7 @@
       }
     }
     & > ul > li {
+      text-align:left;
       padding-left: 5px;
       padding-right: 5px;
       @media (min-width: @screen-md-min) {
@@ -135,11 +143,17 @@
         width: percentage((2 / @grid-columns));
       }
       & > a {
-        font-weight: bold;
+        color: @text-gray;
+        text-decoration: none;
         @media (max-width: @screen-md-min) {
             border-top: 1px solid @panel-default-border;
         }
+        &:hover{
+          color: #333333;
+          text-decoration:none;
+        }
       }
+
       & > ul li {
         float: none;
         & ul li > a {

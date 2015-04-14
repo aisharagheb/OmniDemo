@@ -2281,6 +2281,47 @@ fieldset[disabled] .btn-danger.active {
   color: #d9534f;
   background-color: #ffffff;
 }
+.btn-repeat {
+  color: #333333;
+  background-color: #cccccc;
+  border-color: #cccccc;
+}
+.btn-repeat:hover,
+.btn-repeat:focus,
+.btn-repeat:active,
+.btn-repeat.active,
+.open .dropdown-toggle.btn-repeat {
+  color: #333333;
+  background-color: #b8b8b8;
+  border-color: #adadad;
+}
+.btn-repeat:active,
+.btn-repeat.active,
+.open .dropdown-toggle.btn-repeat {
+  background-image: none;
+}
+.btn-repeat.disabled,
+.btn-repeat[disabled],
+fieldset[disabled] .btn-repeat,
+.btn-repeat.disabled:hover,
+.btn-repeat[disabled]:hover,
+fieldset[disabled] .btn-repeat:hover,
+.btn-repeat.disabled:focus,
+.btn-repeat[disabled]:focus,
+fieldset[disabled] .btn-repeat:focus,
+.btn-repeat.disabled:active,
+.btn-repeat[disabled]:active,
+fieldset[disabled] .btn-repeat:active,
+.btn-repeat.disabled.active,
+.btn-repeat[disabled].active,
+fieldset[disabled] .btn-repeat.active {
+  background-color: #cccccc;
+  border-color: #cccccc;
+}
+.btn-repeat .badge {
+  color: #cccccc;
+  background-color: #333333;
+}
 .btn-link {
   color: #005288;
   font-weight: normal;
@@ -5987,7 +6028,6 @@ body {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   -webkit-text-stroke: 1px transparent;
-  margin-bottom: 100px;
 }
 @-ms-viewport {
   width: auto !important;
@@ -6590,6 +6630,9 @@ button::-moz-focus-inner {
 .pagination > .active > span:focus {
   background-color: #0c2a3a !important;
 }
+.pagination > li > a {
+  padding: 5px !important;
+}
 [ng\:cloak],
 [ng-cloak],
 [data-ng-cloak],
@@ -7004,12 +7047,18 @@ select.ng-invalid:invalid:invalid:focus {
   padding-left: 25px;
 }
 .dropdown-mega {
+  margin: 10px;
   position: absolute;
-  top: 60px;
-  height: 40px;
+  top: 170px;
+  height: 50px;
   left: 5px;
   right: 5px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #f2f2f2;
+}
+@media (min-width: 768px) {
+  .dropdown-mega {
+    top: 211px;
+  }
 }
 .dropdown-mega p {
   margin-left: 5px;
@@ -7023,8 +7072,12 @@ select.ng-invalid:invalid:invalid:focus {
   color: #a6a6a6;
 }
 .dropdown-mega > a i {
-  padding: 10px;
   font-weight: bold;
+}
+@media (min-width: 768px) {
+  .dropdown-mega {
+    top: 170px;
+  }
 }
 .dropdown-mega .dropdown-menu {
   border-radius: 0;
@@ -7049,6 +7102,7 @@ select.ng-invalid:invalid:invalid:focus {
 }
 .dropdown-mega .dropdown-menu > ul > li,
 .dropdown-mega .dropdown-mega .dropdown-menu > ul > li {
+  text-align: left;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -7061,13 +7115,19 @@ select.ng-invalid:invalid:invalid:focus {
 }
 .dropdown-mega .dropdown-menu > ul > li > a,
 .dropdown-mega .dropdown-mega .dropdown-menu > ul > li > a {
-  font-weight: bold;
+  color: #666666;
+  text-decoration: none;
 }
 @media (max-width: 992px) {
   .dropdown-mega .dropdown-menu > ul > li > a,
   .dropdown-mega .dropdown-mega .dropdown-menu > ul > li > a {
     border-top: 1px solid #dddddd;
   }
+}
+.dropdown-mega .dropdown-menu > ul > li > a:hover,
+.dropdown-mega .dropdown-mega .dropdown-menu > ul > li > a:hover {
+  color: #333333;
+  text-decoration: none;
 }
 .dropdown-mega .dropdown-menu > ul > li > ul li,
 .dropdown-mega .dropdown-mega .dropdown-menu > ul > li > ul li {
@@ -8060,6 +8120,16 @@ select.ng-invalid:invalid:invalid:focus {
     min-height: 150px;
     max-height: 150px;
     overflow-y: scroll;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .panel-product-list ul li.inline-search {
+    width: 50%;
+  }
+}
+@media (min-width: 1200px) {
+  .panel-product-list ul li.inline-search {
+    width: 50%;
   }
 }
 .panel-product-list ul li.minimal .panel-body > div:first-of-type,
@@ -10263,7 +10333,7 @@ fieldset[disabled] .btn-blue.active {
   background-color: #ffffff;
 }
 .btn-gray {
-  color: #96979d;
+  color: #666666;
   background-color: #f2f2f2;
   border-color: #e5e5e5;
   border-radius: 4px;
@@ -10273,7 +10343,7 @@ fieldset[disabled] .btn-blue.active {
 .btn-gray:active,
 .btn-gray.active,
 .open .dropdown-toggle.btn-gray {
-  color: #96979d;
+  color: #666666;
   background-color: #dedede;
   border-color: #c7c7c7;
 }
@@ -10302,7 +10372,7 @@ fieldset[disabled] .btn-gray.active {
 }
 .btn-gray .badge {
   color: #f2f2f2;
-  background-color: #96979d;
+  background-color: #666666;
 }
 @media (max-width: 991px) {
   .user-view customtextfield .view-form-icon > div,
@@ -10447,7 +10517,7 @@ fieldset[disabled] .btn-gray.active {
 }
 .user-dashboard {
   background-color: #f2f2f2;
-  color: #96979d;
+  color: #666666;
   font-size: 0.8em;
 }
 .user-dashboard .spending-account .label-info {
@@ -10490,13 +10560,13 @@ fieldset[disabled] .btn-gray.active {
 .user-dashboard p a:focus,
 .user-dashboard p a:hover {
   text-decoration: none;
-  color: #96979d;
+  color: #666666;
 }
 .user-dashboard .links li {
   display: inline-block;
 }
 .user-dashboard .links li a {
-  color: #96979d;
+  color: #666666;
 }
 .user-dashboard .links li a:active,
 .user-dashboard .links li a:focus,
@@ -10631,9 +10701,9 @@ fieldset[disabled] .btn-gray.active {
 }
 .spending-account {
   margin-top: 8px;
-  cursor: pointer;
+  cursor: auto;
   color: #999999;
-  text-align: left;
+  text-align: center;
   margin-left: 20px;
 }
 .spending-account .fa-caret-down {
@@ -10643,6 +10713,7 @@ fieldset[disabled] .btn-gray.active {
   display: block;
 }
 .spending-account-list {
+  text-align: left;
   display: none;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
@@ -10672,6 +10743,9 @@ fieldset[disabled] .btn-gray.active {
 }
 .spending-account-list .fa-money {
   font-size: 10px;
+}
+.spending-account-list .fa-question {
+  padding-right: 5px;
 }
 .minicart {
   padding: 7px 5px 15px;
@@ -10910,7 +10984,7 @@ footer section .link-list ng-include a:before {
 .category-list-tree-sub ul li a {
   padding: 0;
   text-align: left;
-  color: #96979D;
+  color: #666666;
 }
 .category-list-tree-sub ul li a:hover {
   padding: 0;
@@ -10922,7 +10996,7 @@ footer section .link-list ng-include a:before {
   color: #96979D;
 }
 .panel-nav {
-  font-size: 13px;
+  font-size: 15px;
   border: none;
 }
 .panel-nav > h3 {
@@ -10939,7 +11013,7 @@ footer section .link-list ng-include a:before {
 .panel-nav ul li a {
   padding: 0;
   font-weight: normal;
-  color: #96979d;
+  color: #666666;
 }
 .panel-nav ul li a:hover {
   color: #333333;
@@ -11025,7 +11099,7 @@ footer section .link-list ng-include a:before {
   border: 1px solid #ddd;
   border-top: none;
   min-height: 200px;
-  color: #96979d;
+  color: #666666;
 }
 .additional-buttons {
   display: inline-block;
@@ -11104,6 +11178,7 @@ footer section .link-list ng-include a:before {
 }
 .no-panels.robyn-product-list ul li,
 .robyn-product-list ul li {
+  min-height: 405px;
   padding: 0 10px 10px;
 }
 .no-panels.robyn-product-list ul li a:not(.btn),

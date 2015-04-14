@@ -195,9 +195,9 @@
     color:#0790D8;
   }
   margin-top:8px;
-  cursor: pointer;
+  cursor: auto;
   color:@gray-light;
-  text-align:left;
+  text-align:center;
   margin-left:20px;
   &:hover {
     .spending-account-list {
@@ -207,6 +207,7 @@
 }
 
 .spending-account-list {
+  text-align:left;
   display:none;
   .border-top-radius(@border-radius-base);
   .border-bottom-radius(@border-radius-base);
@@ -232,5 +233,8 @@
   }
   .fa-money{
     font-size: 10px;
+  }
+  .fa-question{
+    padding-right:5px;
   }
 }

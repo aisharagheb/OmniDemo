@@ -4,10 +4,10 @@
         <div>
             <orderacknowledgemessage ng-show="order.recent" />
         </div>
-        <nav class="nav">
+        <nav class="nav ">
             <ul>
-                <li><span class="text-primary">{{(order.Type) + ' ' + ('Order' | r) | xlat}}<span ng-show="order.ExternalID"> {{'ID' | r}}: </span>{{order.ExternalID}}</span></li>
                 <li class="pull-right" ng-click="onPrint()"><span><i class="fa fa-print text-primary" rel="tooltip" title="{{'Print' | r | xlat}}"></i></span></li>
+                <li class="pull-right"><span class="text-primary">{{(order.Type) + ' ' + ('Order' | r) | xlat}}<span ng-show="order.ExternalID"> {{'ID' | r}}: </span>{{order.ExternalID}}</span></li>
             </ul>
         </nav>
         <div class="col-md-3 col-md-offset-1 col-md-push-8">
@@ -23,7 +23,7 @@
                         <orderhistorysummary ng-if="!(user.Permissions.contains('HidePricing'))"></orderhistorysummary>
                     </div>
                     <div class="panel-footer" ng-if="order.FromUserID == user.ID && order.Status != 'Unsubmitted'">
-                        <button ng-disabled="currentOrder" class="btn btn-primary pull-right" ng-click="repeatOrder()">
+                        <button ng-disabled="currentOrder" class="btn btn-repeat pull-right" ng-click="repeatOrder()">
                             <i ng-show="currentOrder" class="fa fa-warning"></i>
                             {{('Repeat' | r) + ' ' + ('Order' | r) | xlat}}
                         </button>
@@ -32,6 +32,9 @@
             </div>
         </div>
         <div class="col-md-8 col-md-pull-4">
+            <div class="text-center text-primary" style="font-family: 'Open Sans', sans-serif;
+  font-style:italic;"><h1><strong>Thank you for your order.</strong></h1></div>
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title panel-primary">

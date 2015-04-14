@@ -1,6 +1,7 @@
 <loadingindicator ng-show="searchLoading" title="{{'Please wait while we fetch all products' | r}}" />
 <section>
-    <div class="panel panel-search robyn-product-list">
+
+    <div class="panel panel-search ">
         <div class="panel-heading">
             <h3 class="panel-title">
                 {{'Search' | r | xlat}}
@@ -25,19 +26,42 @@
             </p>
         </div>
         <div class="panel-footer" ng-show="productCount > settings.pageSize">
+            <div class="row">
+            <div class=" robyn-toolbar" ng-show="productCount > 0">
+                <div class="form-inline">
+                    <label style="display:inline-block; font-weight:normal;">{{'Sort by: ' | r | xlat}}</label>
+                    <select class="form-control" ng-model="sort">
+                        <option value="Name">Product Name: A to Z</option>
+                        <option value="Name DESC">Product Name: Z to A</option>
+                        <option value="ExternalID">Product ID: A to Z</option>
+                        <option value="ExternalID DESC">Product ID: A to Z</option>
+                        <option value="Price">Price: Low to High</option>
+                        <option value="Price DESC">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
             <pagination page="settings.currentPage" max-size="10" rotate="false" boundary-links="true" total-items="productCount"
                         items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
-        </div>
-        <div ng-show="productCount > 0" class="panel-product-list">
-            <nav class="nav">
-                <ul>
-                    <li class="inline minimal" ng-repeat="product in products | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
-                        <div class="well">
-                            <shortproductviewminimal p="product" user="user" />
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+            </div>
+            </div>
+
+        <div ng-show="productCount > 0" class=" panel-product-list" >
+            <div class="row">
+                <aside class="col-md-3 visible-md visible-lg">
+                    <div class="imageCatSize" >
+                        <categorydisplay categoryid="'EX_CommonSearchProducts'"></categorydisplay>
+                    </div>
+                </aside>
+                <div class="col-md-9 robyn-product-list">
+                    <nav class="nav" >
+                        <ul>
+                            <li class="inline inline-search minimal" ng-repeat="product in products | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize | orderBy:sorter:direction">
+                                <shortproductviewminimal p="product" user="user" />
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
         <div class="panel-footer" ng-show="productCount > settings.pageSize">
             <pagination page="settings.currentPage" max-size="10" rotate="false" boundary-links="true" total-items="productCount"

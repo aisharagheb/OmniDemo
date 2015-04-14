@@ -32,15 +32,14 @@
         <section class="container-view">
             <ng-view autoscroll />
         </section>
-        <br/>
-        <section ng-hide="isActive('cart') || isActive('checkout')" style="margin-bottom:-100px;">
-            <footer>
+        <br/><br/><br/>
+            <footer ng-hide="isActive('cart') || isActive('checkout')">
                 <ng-include src="'partials/footer.html'"></ng-include>
             </footer>
-        </section>
         <section class="hidden-print">
             <copyright ng-if="!user.Permissions.contains('UnBrandedSite')" />
         </section>
+
     </section>
 </section>
 

@@ -94,7 +94,7 @@
     <!-- PRODUCT TABS! --->
     <tabset justified="true" class="newtabset" ng-if="LineItem.Product.productTabs">
         <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}" >
-            <small ng-if="tab.Content"><div ng-bind-html="tab.Content"></div></small>
+            <p ng-if="tab.Content"><div ng-bind-html="tab.Content"></div></p>
             <div ng-if="tab.Tags" ng-repeat="tag in tab.Tags" style="display:inline-flex;display:-webkit-inline-flex;padding:2px;">
                 <small><a class="btn btn-small btn-gray" href="search/{{tag}}"> <i class="fa fa-tag"></i> {{tag}}</a> <br/></small>
             </div>

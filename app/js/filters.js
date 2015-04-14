@@ -111,7 +111,7 @@ four51.app.filter('categoryNames', function() {
 
 four51.app.filter('hiddencategories', function() {
     return function(categories) {
-        var hiddenCategories = ['EX_LatestProducts', 'EX_BestProducts'];
+        var hiddenCategories = ['EX_LatestProducts', 'EX_BestProducts', 'EX_CommonSearchProducts'];
         var results = [];
         angular.forEach(categories, function(c) {
             if (hiddenCategories.indexOf(c.InteropID) == -1) {

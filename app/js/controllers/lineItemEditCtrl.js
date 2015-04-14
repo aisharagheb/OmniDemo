@@ -7,7 +7,7 @@ function ($scope, $routeParams, $location, Product, ProductDisplayService, Order
 		ProductDisplayService.setProductViewScope($scope);
 	});
 	$scope.allowAddToOrder = true;
-	$scope.addToOrderText = "Save Line Item";
+	$scope.addToOrderText = "Add To Cart";
 	$scope.addToOrder = function(){
 		if($scope.lineItemErrors && $scope.lineItemErrors.length){
 			$scope.showAddToCartErrors = true;

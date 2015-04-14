@@ -21,4 +21,12 @@ function($scope, Product, $routeParams) {
 			$scope.searchLoading = false;
 		}, $scope.settings.currentPage, $scope.settings.pageSize);
 	}
+
+    $scope.$watch('sort', function(s) {
+        if (!s) return;
+        (s.indexOf('Price') > -1) ?
+            $scope.sorter = 'StandardPriceSchedule.PriceBreaks[0].Price' :
+            $scope.sorter = s.replace(' DESC', "");
+        $scope.direction = s.indexOf('DESC') > -1;
+    });
 }]);

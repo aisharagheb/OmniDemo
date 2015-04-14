@@ -1,5 +1,4 @@
 <div class="451qa_prod_item robyn-short-product inline">
-
     <div class="product-name"><div ng-bind-html="LineItem.Product.Name"></div></div>
     <a href="product/{{LineItem.Product.InteropID}}">
         <figure ng-show="LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl" >
@@ -13,25 +12,32 @@
         <small class="text-danger pull-right" ng-show="StaticSpecGroups && StaticSpecGroups.StrikeThroughPricing"><s>{{StaticSpecGroups.StrikeThroughPricing.Specs.StrikeThroughPrice.Value}}</s><br/></small>
         <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
     </p>
-   <!-- <div class="col-xs-12 text-left">
-        <div class="panel-body">
-            <div>
-                <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
-                <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
-                    {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
-                    <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
-                    {{'for' | xlat}} {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
-                </p>
-                <p ng-show="LineItem.Product.UnitOfMeasure">
-                    {{'Unit of Measure' | r | xlat}}: {{LineItem.Product.UnitOfMeasure}}
-                </p>
+    <form name="addToOrderForm" ng-submit="addToOrder()" >
+        <style>
+            input:not([type="checkbox"]), textarea, select, button{
+                min-height: 20px;
+            }
 
-                <p ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
-                    {{'Quantity Available' | r | xlat}}: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
-                </p>
+            .view-form-icon .quantity div input {
+                font-size: 16px;
+                height: 30px;
+
+            }
+        </style>
+        <div class="view-form-icon" >
+            <div class="row" >
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" ng-show="allowAddToOrderInProductList">
+                   <small> <label class="">{{'Quantity' | r | xlat}}</label></small>
+                    <quantityfield required="true" calculated="calcVariantLineItems" lineitem="LineItem" class="quantity"/>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-show="allowAddToOrderInProductList">
+                    <button style="padding:0px;height:30px;" class="btn btn-blue btn-block btn-xs" type="submit" ng-disabled="addToOrderForm.$invalid">
+                        <loadingindicator  ng-show="displayLoadingIndicator" />
+                       <small>Add To Cart</small>
+                    </button>
+                </div>
             </div>
-            <br/>
-            &lt;!&ndash;<a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</a>&ndash;&gt;
         </div>
-    </div>-->
+        <br/>
+    </form>
 </div>
