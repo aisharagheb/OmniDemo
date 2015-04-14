@@ -50,6 +50,7 @@
 
 /*spans don't 1531 this specification because it will affect the rest of the app.*/
             </style>
+
             <p class="product-description" ng-class="{'expanded':someVar}"><small ng-bind-html="trustedDescription(LineItem.Product)"></small></p>
             <div class="row hidden-xs">
                 <div class="col-lg-12 col-sm-12 col-xs-9">
@@ -66,7 +67,6 @@
                     </tabset>
                 </div>
             </div>
-
             <a class="pull-right" style="font-size:11px; font-weight:bold; background-color:#0787C4; color:#ffffff; padding:2px;" ng-show="LineItem.Product.Description.length >= 475" class="btn-link" ng-click="someVar = !someVar">More/Less</a>
             <a class="btn btn-blue" href="product/{{LineItem.Product.InteropID}}"><i class="fa fa-shopping-cart"></i></a>
             <p class="price">
@@ -74,29 +74,9 @@
                 <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
             </p>
             <form name="addToOrderForm" ng-submit="addToOrder()">
-                <style>
-                    input:not([type="checkbox"]), textarea, select, button{
-                        min-height: 20px;
-                    }
-
-                    .view-form-icon .quantity div input {
-                        font-size: 16px;
-                        height: 30px;
-                    }
-                </style>
-                <div class="view-form-icon " ng-show="allowAddToOrderInProductList">
+                <div class="view-form-icon" ng-show="allowAddToOrderInProductList">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                            <small><label class="">{{'Quantity' | r | xlat}}</label></small>
-                            <quantityfield required="true" calculated="calcVariantLineItems" lineitem="LineItem" class="quantity"/>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <button  class="btn btn-blue btn-block btn-xs" type="submit" ng-disabled="addToOrderForm.$invalid">
-                                <loadingindicator  ng-show="displayLoadingIndicator" />
-                                <small><i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
-                                    Add To Cart</small>
-                            </button>
-                        </div>
+                        <quantityfield required="true" calculated="calcVariantLineItems" lineitem="LineItem" class="quantity"/>
                     </div>
                 </div>
             </form>
