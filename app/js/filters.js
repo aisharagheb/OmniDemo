@@ -211,3 +211,28 @@ four51.app.filter('specnametolabel', function() {
         return value + (specForm ? ' is a required field' : '');
     }
 });
+
+four51.app.filter('groupOptionsFilter', function(){
+    return function(options, groups){
+        var result = [];
+        var isInGroup = false;
+        angular.forEach(groups, function(group){
+            if (group.Name === 'CPSS'){
+                isInGroup = true;
+            }
+        })
+        if (isInGroup){
+            console.log('isInGroup');
+            return options;
+        }
+        else {
+            angular.forEach(options, function(option){
+                if (option.Value !== 'CPSS Only' && option.Value !== 'CPSS and ISO' && option.Value !== 'CPSS and COE' && option.Value !== 'CPSS ISO and COE'){
+                    result.push(option);
+                }
+            });
+        }
+        console.log(result);
+        return result;
+    }
+});

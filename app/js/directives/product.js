@@ -1,7 +1,8 @@
 four51.app.directive('productlistview', function() {
     var obj = {
         restrict: "E",
-        templateUrl:'partials/productListView.html'
+        templateUrl:'partials/productListView.html',
+        controller: 'productListInit'
     };
 
     return obj;
@@ -10,11 +11,54 @@ four51.app.directive('productlistview', function() {
 four51.app.directive('productlistviewAlt', function() {
     var obj = {
         restrict: "E",
-        templateUrl:'partials/ProductListViews/productListInlineMinimalLess.html'
+        templateUrl:'partials/ProductListViews/productListInlineMinimalLess.html',
+        controller: 'productListInit'
     };
 
     return obj;
 });
+
+four51.app.controller('productListInit', ['$scope', 'User', 'Order', '$location', function($scope, User, Order, $location){
+    $scope.list = [];
+
+    $scope.addListToOrder = function(){
+        angular.forEach($scope.list, function(item){
+            addToOrder(item);
+        });
+    }
+
+    function addToOrder(item) {
+        if($scope.lineItemErrors && $scope.lineItemErrors.length){
+            $scope.showAddToCartErrors = true;
+            return;
+        }
+        if(!$scope.currentOrder){
+            $scope.currentOrder = { };
+            $scope.currentOrder.LineItems = [];
+        }
+        if (!$scope.currentOrder.LineItems)
+            $scope.currentOrder.LineItems = [];
+        $scope.currentOrder.LineItems.push(item);
+        $scope.currentOrder.Type = item.PriceSchedule.OrderType;
+        $scope.addToOrderIndicator = true;
+        Order.clearshipping($scope.currentOrder).
+            save($scope.currentOrder,
+            function(o){
+                $scope.user.CurrentOrderID = o.ID;
+                User.save($scope.user, function(){
+                    $scope.addToOrderIndicator = true;
+                    $location.path('/cart');
+                });
+            },
+            function(ex) {
+                $scope.addToOrderIndicator = false;
+                $scope.lineItemErrors.push(ex.Detail);
+                $scope.showAddToCartErrors = true;
+                //$route.reload();
+            }
+        );
+    };
+}]);
 
 four51.app.directive('categorylistview', function() {
     var obj = {
@@ -62,6 +106,7 @@ four51.app.directive('shortproductview', function() {
 	var obj = {
 		restrict: "E",
 		scope: {
+            list: '=',
 			p: '=',
             user: '='
 		},
@@ -76,6 +121,7 @@ four51.app.directive('shortproductviewinline', function() {
     var obj = {
         restrict: "E",
         scope: {
+            list: '=',
             p: '=',
             user: '='
         },
@@ -90,6 +136,7 @@ four51.app.directive('shortproductviewminimal', function() {
     var obj = {
         restrict: "E",
         scope: {
+            list: '=',
             p: '=',
             user: '='
         },
