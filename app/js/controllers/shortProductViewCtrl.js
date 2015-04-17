@@ -11,7 +11,6 @@ four51.app.controller('shortProductViewCtrl', ['$routeParams', '$scope', 'Produc
 		$scope.actionMessage = null;
 		$scope.errorMessage = null;
 		$scope.user.CurrentOrderID ? addLineItemToCurrentOrder() : addLineItemToNewOrder();
-		$scope.displayLoadingIndicator = false;
 	};
 
 	$scope.$watch('LineItem.Quantity', function(newVal){
