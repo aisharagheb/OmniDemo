@@ -1,4 +1,4 @@
-<div class="row">
+<div ng-if="products" class="row">
     <button class="btn btn-blue pull-right" ng-click="addListToOrder()" ng-disabled="list.length < 1">
         <loadingindicator  ng-show="displayLoadingIndicator"></loadingindicator>
         <i ng-hide="lineItemErrors.length > 0" class="fa fa-shopping-cart"></i>
