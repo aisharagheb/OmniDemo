@@ -9,4 +9,22 @@ Template: Howdy
     min-height: 150px;
 }
 
+.support-info   {
+    height: 100px;
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.support-info h4 {
+    position: relative;
+    top: 35%;
+    transform: translateY(-50%);
+}
+
+form[name="addToOrderForm"]  {
+    font-size: 80%;
+}
+
 

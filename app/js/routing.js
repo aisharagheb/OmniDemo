@@ -42,3 +42,5 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
 		when('/contactus', { templateUrl: 'partials/Messages/contactus.html' }).
 		otherwise({redirectTo: '/catalog'});
 }]);
+
+

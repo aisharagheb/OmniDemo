@@ -1,5 +1,4 @@
 <div class="451qa_prod_item robyn-short-product inline">
-
     <div class="product-name"><div ng-bind-html="LineItem.Product.Name"></div></div>
     <a href="product/{{LineItem.Product.InteropID}}">
         <figure ng-show="LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl" >
@@ -16,7 +15,8 @@
     <form name="addToOrderForm" ng-submit="addToOrder()">
         <div class="view-form-icon" ng-show="allowAddToOrderInProductList">
             <div class="row">
-                <quantityfield required="true" calculated="calcVariantLineItems" lineitem="LineItem" class="quantity"/>
+                <!--<quantityfield required="true" calculated="calcVariantLineItems" lineitem="LineItem" class="quantity"/>-->
+                <productlistaddtocart></productlistaddtocart>
             </div>
         </div>
     </form>
