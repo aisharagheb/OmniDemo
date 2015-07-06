@@ -65,3 +65,4 @@ function ($scope, $location, $sce, User) {
 		});
 	};
 }]);
+

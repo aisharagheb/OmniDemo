@@ -52,6 +52,9 @@
             </style>
 
             <p class="product-description" ng-class="{'expanded':someVar}"><small ng-bind-html="trustedDescription(LineItem.Product)"></small></p>
+            <ul class="product-list-qualities" ng-show="StaticSpecGroups.Qualities" >
+                <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" ng-bind-html="Value.Value"></li>
+            </ul>
             <div class="row hidden-xs">
                 <div class="col-lg-12 col-sm-12 col-xs-9">
                     <!-- PRODUCT TABS! --->

@@ -20,6 +20,36 @@ function ($window, $scope, $route, $location, $451, User, Order, Security, Order
 				$('.navbar-fixed-bottom, .headroom.navbar-fixed-top').css("position", "fixed");
 			});
 	}
+	var pageViews;
+	var maxPageViews;
+	$scope.$watch('user.CustomFields', function(newVal){
+		if(!newVal) return;
+		angular.forEach($scope.user.CustomFields, function (field) {
+			if (field.Name === 'ExpressPageViews') {
+				pageViews = field;
+				if (pageViews.Value === null) {
+					pageViews.Value = 0;
+					User.save($scope.user, function () {
+						//do nothing
+					});
+				}
+				else {
+					pageViews.Value = parseInt(pageViews.Value);
+				}
+			}
+			if (field.Name === 'MaxExpressPageViews') {
+				maxPageViews = field;
+				maxPageViews.Value = parseInt(field.DefaultValue);
+			}
+		});
+		if ($location.url().indexOf('precartmessage') > -1) {
+			pageViews.Value++;
+			User.save($scope.user, function () {
+				//do nothing
+			});
+		}
+	});
+
 
 	function init() {
 		if (Security.isAuthenticated()) {

@@ -28,3 +28,52 @@ form[name="addToOrderForm"]  {
 }
 
 
+.spending-account {
+    margin-left: 0;
+}
+
+@media (max-width: 768px) {
+    .spending-account {
+        padding: 10px;
+    }
+    .ng-hidden-xs {
+        display: none !important;
+    }
+    .primary-dashboard .container .logo a img, .primary-dashboard .container-view .logo a img {
+        margin-top: 20%;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .ng-visible-xs {
+        display: none !important;
+    }
+}
+
+.spending-account-xs {
+    padding: 5px;
+    height: auto;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: #0787c4;
+    text-align: center;
+}
+
+.product-list-qualities li {
+     min-height: 0 !important;
+ }
+
+.product-list-qualities li a {
+    display: inline !important;
+}
+
+.breadcrumb a, .breadcrumb a:visited {
+    text-decoration: none !important;
+}
+
+.breadcrumb li:last-child a {
+    color: #000;
+    text-transform: none;
+    cursor: default;
+}

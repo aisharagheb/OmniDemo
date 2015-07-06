@@ -19,6 +19,7 @@ function ($scope, $location, $route, $routeParams, $window, ProductDisplayServic
 			});
 		}
 	});
+
 	function validateVariant(){
 		if(!$scope.Variant) return;
 		var newErrors = [];

@@ -3,7 +3,7 @@
         $scope.checkUserGroup = function() {
             angular.forEach($scope.user.Groups, function(ug) {
                 if (ug.InteropID === 'CPSS') {
-                    return true
+                    return true;
                 }
             });
             return false;

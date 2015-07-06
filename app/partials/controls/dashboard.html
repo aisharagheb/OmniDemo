@@ -42,7 +42,12 @@
                     </div>
                 </form>
             </div>
-            <div class="spending-account text-left" ng-show="SpendingAccounts.length > 0 && SpendingAccounts[0].Balance" >
+            <div class="spending-account-xs ng-visible-xs navbar-fixed-top" ng-show="SpendingAccounts.length > 0 && SpendingAccounts[0].Balance">
+                <div ng-repeat="sa in SpendingAccounts">
+                    &nbsp;{{sa.Name}}: {{sa.Balance | currency}}&nbsp;
+                </div>
+            </div>
+            <div class="spending-account text-center ng-hidden-xs" ng-show="SpendingAccounts.length > 0 && SpendingAccounts[0].Balance" >
                 <i class="fa fa-money text-info"></i>
                 Spending Account(s) <i class="fa fa-caret-down "></i>
                 <div class="spending-account-list">
@@ -59,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="minicart-container">
+            <div class="minicart-container text-center">
                 <div>
                     <minicart current-order="currentOrder" user="user"></minicart>
                 </div>

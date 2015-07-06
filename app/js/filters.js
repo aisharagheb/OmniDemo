@@ -222,7 +222,7 @@ four51.app.filter('groupOptionsFilter', function(){
             }
         })
         if (isInGroup){
-            console.log('isInGroup');
+            //console.log('isInGroup');
             return options;
         }
         else {
@@ -232,7 +232,7 @@ four51.app.filter('groupOptionsFilter', function(){
                 }
             });
         }
-        console.log(result);
+        //console.log(result);
         return result;
     }
 });

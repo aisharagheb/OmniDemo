@@ -43,6 +43,58 @@ function ($routeParams, $sce, $scope, $451, Category, Product, Nav) {
 		}
 	});
 
+    /* BREADCRUMBS */
+    $scope.linkedTree = {};
+    $scope.breadcrumbs = [];
+    $scope.$watch('currentCategory', function(newVal) {
+        if (!newVal) return;
+        $scope.breadcrumbs = [];
+        console.log('watch hit');
+        initTree();
+        getNode($scope.linkedTree, $scope.currentCategory, $scope.breadcrumbs);
+    });
+    function initTree() {
+        $scope.linkedTree.Description = '';
+        $scope.linkedTree.Image = null;
+        $scope.linkedTree.Name = 'Catalog';
+        $scope.linkedTree.ProductViewName = null;
+        $scope.linkedTree.SortOptions = null;
+        $scope.linkedTree.InteropID = 'catalog';
+        $scope.linkedTree.Parent = null;
+        $scope.linkedTree.SubCategories = $scope.tree;
+        linkTree($scope.linkedTree.SubCategories, $scope.linkedTree);
+    }
+    function linkTree(currentNodes, parentNode) {
+        if (currentNodes) {
+            angular.forEach(currentNodes, function(node) {
+                node.Parent = parentNode;
+                linkTree(node.SubCategories, node);
+            });
+        }
+    }
+    function getNode(currentNode, node, breadcrumbs) {
+        if (currentNode.InteropID === node.InteropID) {
+            getBreadCrumbs(currentNode, breadcrumbs);
+        }
+        else if (currentNode.SubCategories) {
+            angular.forEach(currentNode.SubCategories, function(cat) {
+                getNode(cat, node, breadcrumbs);
+            });
+        }
+    }
+    function getBreadCrumbs(node, breadcrumbs) {
+        if (node) {
+            var linkPath;
+            if (node.InteropID !== 'catalog') {
+                linkPath = 'catalog/' + node.InteropID;
+            } else {
+                linkPath = node.InteropID;
+            }
+            breadcrumbs.unshift({name: node.Name, link: linkPath});
+            getBreadCrumbs(node.Parent, breadcrumbs);
+        }
+    }
+
     // panel-nav
     $scope.navStatus = Nav.status;
     $scope.toggleNav = Nav.toggle;

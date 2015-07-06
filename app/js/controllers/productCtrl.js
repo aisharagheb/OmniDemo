@@ -11,6 +11,16 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 		pageSize: 10
 	};
 
+	$scope.numSpecs = 0;
+	$scope.$watch('StaticSpecGroups.Download.Specs', function(newVal) {
+		if (!newVal) return;
+		angular.forEach($scope.StaticSpecGroups.Download.Specs, function(spec) {
+			$scope.numSpecs++;
+			console.log($scope.numSpecs);
+		})
+	});
+
+
 
     $scope.showLightbox = false;
     $scope.defaultIndex = 0;
@@ -125,14 +135,24 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 		//$scope.currentOrder.Type = (!$scope.LineItem.Product.IsVariantLevelInventory && $scope.variantLineItems) ? $scope.variantLineItems[$scope.LineItem.Product.Variants[0].InteropID].PriceSchedule.OrderType : $scope.LineItem.PriceSchedule.OrderType;
 		// shipper rates are not recalcuated when a line item is added. clearing out the shipper to force new selection, like 1.0
 		Order.clearshipping($scope.currentOrder).
-			save($scope.currentOrder,
-				function(o){
-					$scope.user.CurrentOrderID = o.ID;
-					User.save($scope.user, function(){
-						$scope.addToOrderIndicator = true;
-						$location.path('/cart');
-					});
-				},
+			//save($scope.currentOrder,
+			//	function(o){
+			//		$scope.user.CurrentOrderID = o.ID;
+			//		User.save($scope.user, function(){
+			//			$scope.addToOrderIndicator = true;
+			//			$location.path('/catalog');
+			//			alert('This product has been added to your cart');
+			//		});
+			//	},
+			save($scope.currentOrder, function(o){
+				$scope.user.CurrentOrderID = o.ID;
+				User.save($scope.user, function(){
+					$scope.addToOrderIndicator = false;
+					$scope.LineItem.Quantity = 0;
+					$scope.LineItem.LineTotal = 0;
+					alert('This product has been added to your cart');
+				});
+			},
 				function(ex) {
 					$scope.addToOrderIndicator = false;
 					$scope.lineItemErrors.push(ex.Detail);

@@ -10,7 +10,25 @@ four51.app.directive('minicart', function() {
 
 four51.app.controller('minicartCtrl', ['$scope', '$location', 'Order','User','BonusItem',
 	function ($scope, $location, Order, User, BonusItem) {
-
+		var pageViews = 0;
+		var maxPageViews = 0;
+		$scope.preCartRedirect = function(){
+			angular.forEach($scope.user.CustomFields, function (field) {
+				if (field.Name === 'ExpressPageViews') {
+					pageViews = parseInt(field.Value);
+				}
+				if (field.Name === 'MaxExpressPageViews') {
+					maxPageViews = parseInt(field.DefaultValue);
+				}
+			});
+			console.log(pageViews, maxPageViews);
+			if (pageViews >= maxPageViews) {
+				$location.path('cart');
+			}
+			else {
+				$location.path('precartmessage');
+			}
+		}
 		$scope.freeProductInfo = BonusItem.findfreeproduct($scope.currentOrder);
 
 		$scope.removeItem = function(item, override) {
