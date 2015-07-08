@@ -42,12 +42,18 @@ form[name="addToOrderForm"]  {
     .primary-dashboard .container .logo a img, .primary-dashboard .container-view .logo a img {
         margin-top: 20%;
     }
+    ul .inline.minimal {
+        width: 100% !important;
+    }
 
 }
 
 @media (min-width: 768px) {
     .ng-visible-xs {
         display: none !important;
+    }
+    ul .inline.minimal {
+        width: 33% !important;
     }
 }
 
@@ -79,7 +85,7 @@ form[name="addToOrderForm"]  {
     cursor: default;
 }
 
-.product-list {
+.product-list-view-express {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -93,4 +99,16 @@ ul .inline.minimal {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+}
+
+ul .inline.minimal .well {
+    width: 100%;
+}
+
+.navbar .nav > li > a {
+    text-decoration:none;
+}
+
+a {
+    text-decoration:none!important;
 }

@@ -1,5 +1,5 @@
 <ul class="breadcrumb">
-    <li ng-repeat="crumb in breadcrumbs">
+    <li ng-repeat="crumb in breadcrumbs | hiddencategories">
         <a ng-href="{{crumb.link}}">{{crumb.name}}</a>
     </li>
 </ul>
