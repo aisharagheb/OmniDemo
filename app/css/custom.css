@@ -112,3 +112,7 @@ ul .inline.minimal .well {
 a {
     text-decoration:none!important;
 }
+
+.pre-cart-message div img {
+    padding: 5px;
+}
