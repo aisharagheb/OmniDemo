@@ -21,7 +21,6 @@ four51.app.controller('minicartCtrl', ['$scope', '$location', 'Order','User','Bo
 					maxPageViews = parseInt(field.DefaultValue);
 				}
 			});
-			console.log(pageViews, maxPageViews);
 			if (pageViews >= maxPageViews) {
 				$location.path('cart');
 			}
@@ -59,5 +58,8 @@ four51.app.controller('minicartCtrl', ['$scope', '$location', 'Order','User','Bo
 				);
 			}
 		};
+        $scope.$on('event:orderUpdate', function(event, order) {
+            $scope.currentOrder = order;
+        });
 	}
 ]);

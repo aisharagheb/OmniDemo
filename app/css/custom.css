@@ -20,7 +20,12 @@ Template: Howdy
 .support-info h4 {
     position: relative;
     top: 35%;
-    transform: translateY(-50%);
+    -webkit-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+    transform:translateY(-50%);
+    vertical-align: top;
 }
 
 form[name="addToOrderForm"]  {
@@ -45,7 +50,6 @@ form[name="addToOrderForm"]  {
     ul .inline.minimal {
         width: 100% !important;
     }
-
 }
 
 @media (min-width: 768px) {
@@ -72,7 +76,7 @@ form[name="addToOrderForm"]  {
  }
 
 .product-list-qualities li a {
-    display: inline !important;
+    display: inline- !important;
 }
 
 .breadcrumb a, .breadcrumb a:visited {
@@ -83,6 +87,14 @@ form[name="addToOrderForm"]  {
     color: #000;
     text-transform: none;
     cursor: default;
+}
+
+.breadcrumb li {
+    display: inline;
+}
+
+.breadcrumb li a {
+    padding: 5px;
 }
 
 .product-list-view-express {

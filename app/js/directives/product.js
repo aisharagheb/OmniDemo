@@ -20,7 +20,6 @@ four51.app.directive('productlistviewAlt', function() {
 
 four51.app.controller('productListInit', ['$scope', 'User', 'Order', '$location', function($scope, User, Order, $location){
     $scope.list = [];
-
     $scope.addListToOrder = function(){
         $scope.displayLoadingIndicator = true;
         angular.forEach($scope.list, function(item){
@@ -46,6 +45,7 @@ four51.app.controller('productListInit', ['$scope', 'User', 'Order', '$location'
     }
 
     function addToOrder(item) {
+
         if($scope.lineItemErrors && $scope.lineItemErrors.length){
             $scope.showAddToCartErrors = true;
             return;
