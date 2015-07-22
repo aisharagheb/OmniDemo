@@ -35,8 +35,17 @@
                 <div class="panel-body">
                     <loadingindicator ng-show="loadingImage && LineItem.Variant.IsMpowerVariant" />
                     <figure>
-                        <img ng-if="!LineItem.Product.StaticSpecGroups.images || (LineItem.Product.Type=='VariableText' && LineItem.Variant)" id="451_img_prod_lg" class="product-image-large img-responsive" ng-src="{{LineItem.Variant.PreviewUrl || LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" imageonload />
-                        <img ng-click="toggleLightbox(true)" ng-if="LineItem.Product.StaticSpecGroups.images && !LineItem.Variant" id="451_img_prod_lg" class="product-image-large img-responsive gallery-display" ng-src="{{GalleryLightboxImages.Images[defaultIndex].FileURL}}" imageonload />
+                        <!--normal-->
+                        <img ng-if="!StaticSpecGroups.images && !StaticSpecGroups.LightboxImages || (LineItem.Product.Type=='VariableText' && LineItem.Variant)" id="451_img_prod_lg" class="product-image-large img-responsive" ng-src="{{LineItem.Variant.PreviewUrl || LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" imageonload />
+                        <!--lightbox-->
+                        <!--lightbox-->
+                        <div ng-show="StaticSpecGroups.LightboxImages.Specs" class="panel panel-no-panels" ng-controller="LightboxCtrl">
+                            <productlightbox></productlightbox>
+                        </div>
+                        <!--lightbox-->
+                        <!--gallery-->
+                        <img ng-click="toggleLightbox(true)" ng-if="StaticSpecGroups.images && !LineItem.Variant" id="451_img_prod_lg" class="product-image-large img-responsive gallery-display" ng-src="{{GalleryLightboxImages.Images[defaultIndex].FileURL}}" imageonload />
+                        <!--gallery-->
                     </figure>
                     <div class="empty" ng-hide="LineItem.Variant.PreviewUrl || LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl">
                         <span class="fa empty"><i class="fa fa-camera"></i></span>
@@ -215,7 +224,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()"  ng-show="allowAddToOrder" style="margin-top: 35px; padding:15px; width: 100%;">
+                            <button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()" ng-show="allowAddToOrder" style="margin-top: 35px; padding:15px; width: 100%;">
                                 <loadingindicator ng-show="addToOrderIndicator" />
                                 <i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
                                 <i ng-show="lineItemErrors.length == 0" class="fa fa-shopping-cart"></i>

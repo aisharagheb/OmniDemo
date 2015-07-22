@@ -54,15 +54,15 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 			$scope.variantLineItemsOrderTotal += item.LineTotal || 0;
 		})
 	};
-	function setDefaultQty(lineitem) {
-		if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity != 0) {
+    function setDefaultQty(lineitem) {
+        /*if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity != 0)
+         $scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;*/
+        /*PW-14299 PDT: default qty input to 1*/
+        if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity !== 0) {
             $scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;
         }
-        if (lineitem.Variant && lineitem.Variant.Specs.Quantity && lineitem.Variant.Specs.Quantity.Value) {
-            $scope.LineItem.Quantity = lineitem.Variant.Specs.Quantity.Value;
-            $scope.LineItem.LockQuantity = true;
-        } else {
-            $scope.LineItem.LockQuantity = false;
+        else if(lineitem.PriceSchedule.RestrictedQuantity === false) {
+            $scope.LineItem.Quantity = 0;
         }
 	}
 	function init(searchTerm, callback) {
@@ -118,6 +118,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 			$scope.currentOrder = { };
 			$scope.currentOrder.LineItems = [];
 		}
+        var quantity = "0";
 		if (!$scope.currentOrder.LineItems)
 			$scope.currentOrder.LineItems = [];
 		if($scope.allowAddFromVariantList){
@@ -125,11 +126,14 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 				if(item.Quantity > 0){
 					$scope.currentOrder.LineItems.push(item);
 					$scope.currentOrder.Type = item.PriceSchedule.OrderType;
+                    quantity = item.Quantity;
 				}
 			});
 		}else{
-			$scope.currentOrder.LineItems.push($scope.LineItem);
+            var lineItem = angular.copy($scope.LineItem);
+			$scope.currentOrder.LineItems.push(lineItem);
 			$scope.currentOrder.Type = $scope.LineItem.PriceSchedule.OrderType;
+            quantity = $scope.LineItem.Quantity;
 		}
 		$scope.addToOrderIndicator = true;
 		//$scope.currentOrder.Type = (!$scope.LineItem.Product.IsVariantLevelInventory && $scope.variantLineItems) ? $scope.variantLineItems[$scope.LineItem.Product.Variants[0].InteropID].PriceSchedule.OrderType : $scope.LineItem.PriceSchedule.OrderType;
@@ -146,11 +150,12 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 			//	},
 			save($scope.currentOrder, function(o){
 				$scope.user.CurrentOrderID = o.ID;
+                $scope.currentOrder = o;
 				User.save($scope.user, function(){
 					$scope.addToOrderIndicator = false;
-					$scope.LineItem.Quantity = 0;
-					$scope.LineItem.LineTotal = 0;
-					alert('This product has been added to your cart');
+					$scope.LineItem.Quantity = null;
+                    $scope.LineItem.LineTotal = null;
+					$scope.TotalQty = quantity;
 				});
 			},
 				function(ex) {

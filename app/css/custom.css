@@ -76,7 +76,14 @@ form[name="addToOrderForm"]  {
  }
 
 .product-list-qualities li a {
-    display: inline- !important;
+    display: inline !important;
+    text-decoration: underline !important;
+    color: green;
+}
+
+.product-list-qualities li {
+    color: green;
+    font-size: 80%;
 }
 
 .breadcrumb a, .breadcrumb a:visited {

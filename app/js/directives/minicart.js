@@ -8,8 +8,8 @@ four51.app.directive('minicart', function() {
 	return obj;
 });
 
-four51.app.controller('minicartCtrl', ['$scope', '$location', 'Order','User','BonusItem',
-	function ($scope, $location, Order, User, BonusItem) {
+four51.app.controller('minicartCtrl', ['$scope', '$location', 'Order','User','BonusItem', '$timeout',
+	function ($scope, $location, Order, User, BonusItem, $timeout) {
 		var pageViews = 0;
 		var maxPageViews = 0;
 		$scope.preCartRedirect = function(){
@@ -58,8 +58,28 @@ four51.app.controller('minicartCtrl', ['$scope', '$location', 'Order','User','Bo
 				);
 			}
 		};
+
+        $scope.isInPath = function(path) {
+            var cur_path = $location.path().replace('/', '');
+            var result = false;
+
+            if(cur_path.indexOf(path) > -1) {
+                result = true;
+            }
+            else {
+                result = false;
+            }
+            return result;
+        };
+
         $scope.$on('event:orderUpdate', function(event, order) {
             $scope.currentOrder = order;
+            if (!$scope.isInPath('catalog')){
+                $(".minicart").addClass("animated rubberBand");
+                $timeout( function() {
+                    $(".minicart").removeClass("animated rubberBand");
+                }, 3000);
+            }
         });
 	}
 ]);
