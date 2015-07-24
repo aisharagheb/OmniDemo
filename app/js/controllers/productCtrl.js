@@ -110,6 +110,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 	}
 
 	$scope.addToOrder = function(){
+        $scope.actionMessage = null;
 		if($scope.lineItemErrors && $scope.lineItemErrors.length){
 			$scope.showAddToCartErrors = true;
 			return;
@@ -153,9 +154,11 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
                 $scope.currentOrder = o;
 				User.save($scope.user, function(){
 					$scope.addToOrderIndicator = false;
+                    $scope.actionMessage = quantity + " " + (+(quantity) > 1 ? 'items' : 'item') + " added to your cart.";
 					$scope.LineItem.Quantity = null;
                     $scope.LineItem.LineTotal = null;
 					$scope.TotalQty = quantity;
+
 				});
 			},
 				function(ex) {

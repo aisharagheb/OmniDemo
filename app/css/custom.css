@@ -135,3 +135,11 @@ a {
 .pre-cart-message div img {
     padding: 5px;
 }
+
+.product-detail-default .view-response-message.alert-info.text-center {
+    margin-top: 35px;
+}
+
+.view-response-message.ng-hide-add {
+    padding: 18px;
+}

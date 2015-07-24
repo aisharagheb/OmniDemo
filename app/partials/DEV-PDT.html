@@ -234,6 +234,11 @@
                             </span>
                             </button>
                         </div>
+                        <div class="col-sm-4">
+                            <div class="view-response-message alert-info text-center" alert-show="actionMessage">
+                                {{actionMessage | r | xlat}}
+                            </div>
+                        </div>
                     </div>
                     <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1">
                         <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
@@ -246,13 +251,17 @@
                 </div>
                 <!--</div>-->
                 <!--</div>-->
+
+                <!--<div class="col-sm-8">-->
+                    <!--<div class="alert-info text-center">-->
+                        <!--TEST TEST TEST-->
+                    <!--</div>-->
+                <!--</div>-->
+
             </form>
-
-
 
         </div>
     </div>
-
     <!-- RELATED PRODUCTS! -->
     <relatedproducts ng-if="LineItem.Product.RelatedProductsGroupID" relatedgroupid="LineItem.Product.RelatedProductsGroupID" user="user"/>
 

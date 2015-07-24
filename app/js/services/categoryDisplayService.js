@@ -6,7 +6,7 @@ four51.app.factory('CategoryDisplayService', function() {
 		});
 
 		function analyzeSubs(cat) {
-			cat.Featured = cat.Featured ? cat.Featured : cat.Name.indexOf('||Featured') > -1;
+			cat.Featured = cat.Featured ? cat.Featured : cat.InteropID.indexOf('||Featured') > -1;
 			angular.forEach(cat.SubCategories, function(subcategory) {
 				analyzeSubs(subcategory);
 			});
