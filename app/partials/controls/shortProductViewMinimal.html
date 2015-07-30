@@ -1,5 +1,4 @@
 <div class="451qa_prod_item robyn-short-product inline">
-    <div class="product-name"><div ng-bind-html="LineItem.Product.Name"></div></div>
     <a href="product/{{LineItem.Product.InteropID}}">
         <figure ng-show="LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl" >
             <img style="max-height:150px;" ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}"/>
@@ -12,6 +11,7 @@
         <small class="text-danger pull-right" ng-show="StaticSpecGroups && StaticSpecGroups.StrikeThroughPricing"><s>{{StaticSpecGroups.StrikeThroughPricing.Specs.StrikeThroughPrice.Value}}</s><br/></small>
         <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
     </p>
+    <div class="product-name"><div ng-bind-html="LineItem.Product.Name"></div></div>
     <form name="addToOrderForm" ng-submit="addToOrder()">
         <div class="view-form-icon" ng-show="allowAddToOrderInProductList">
             <div class="row">
