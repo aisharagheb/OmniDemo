@@ -12,6 +12,9 @@
         <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
     </p>
     <div class="product-name"><div ng-bind-html="LineItem.Product.Name"></div></div>
+    <ul class="product-list-qualities" ng-show="StaticSpecGroups.Qualities">
+        <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" ng-bind-html="Value.Value"></li>
+    </ul>
     <form name="addToOrderForm" ng-submit="addToOrder()">
         <div class="view-form-icon" ng-show="allowAddToOrderInProductList">
             <div class="row">
@@ -20,9 +23,6 @@
             </div>
         </div>
     </form>
-    <ul class="product-list-qualities" ng-show="StaticSpecGroups.Qualities">
-        <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" ng-bind-html="Value.Value"></li>
-    </ul>
    <!-- <div class="col-xs-12 text-left">
         <div class="panel-body">
             <div>
