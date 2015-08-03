@@ -70,18 +70,28 @@ form[name="addToOrderForm"]  {
     text-align: center;
 }
 
-.product-list-qualities li {
+.product-list-qualities-grid li {
      min-height: 0 !important;
-     margin: 5px 0 0 7px;
+     margin: 5px 0 -5px 7px;
  }
 
-.product-list-qualities li a {
+.product-list-qualities-pdt li {
+    min-height: 0 !important;
+    margin: 5px 0 0 7px;
+}
+
+.product-list-qualities-list li {
+    min-height: 0 !important;
+    margin: 5px 0 -10px 0;
+}
+
+.product-list-qualities-list li a, .product-list-qualities-grid li a, .product-list-qualities-pdt li a {
     display: inline !important;
     text-decoration: underline !important;
     color: green;
 }
 
-.product-list-qualities li {
+.product-list-qualities-list li, .product-list-qualities-grid li, .product-list-qualities-pdt li {
     color: green;
     font-size: 80%;
 }
@@ -142,4 +152,23 @@ a {
 
 .view-response-message.ng-hide-add {
     padding: 18px;
+}
+
+.no-panels.robyn-product-list .well, .robyn-product-list .well {
+    border-width: 0;
+}
+
+.panel-body, .panel-category-list:not(.no-panels), .panel-product-list:not(.no-panels) {
+    padding-left: 0;
+}
+
+.row.view-product {
+    padding-top: 35px;
+}
+
+.row.view-product .btn {
+    padding: 15px;
+    border-color: #dddddd;
+    color: #999;;
+    
 }

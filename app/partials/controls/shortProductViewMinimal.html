@@ -1,4 +1,5 @@
 <div class="451qa_prod_item robyn-short-product inline">
+    <div class="product-name"><div ng-bind-html="LineItem.Product.Name"></div></div>
     <a href="product/{{LineItem.Product.InteropID}}">
         <figure ng-show="LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl" >
             <img style="max-height:150px;" ng-src="{{LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}"/>
@@ -12,9 +13,6 @@
         <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
     </p>
     <div class="product-name"><div ng-bind-html="LineItem.Product.Name"></div></div>
-    <ul class="product-list-qualities" ng-show="StaticSpecGroups.Qualities">
-        <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" ng-bind-html="Value.Value"></li>
-    </ul>
     <form name="addToOrderForm" ng-submit="addToOrder()">
         <div class="view-form-icon" ng-show="allowAddToOrderInProductList">
             <div class="row">
@@ -22,26 +20,34 @@
                 <productlistaddtocart></productlistaddtocart>
             </div>
         </div>
-    </form>
-   <!-- <div class="col-xs-12 text-left">
-        <div class="panel-body">
-            <div>
-                <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
-                <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
-                    {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
-                    <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
-                    {{'for' | xlat}} {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
-                </p>
-                <p ng-show="LineItem.Product.UnitOfMeasure">
-                    {{'Unit of Measure' | r | xlat}}: {{LineItem.Product.UnitOfMeasure}}
-                </p>
-
-                <p ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
-                    {{'Quantity Available' | r | xlat}}: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
-                </p>
+        <div class="view-form-icon" ng-show="!allowAddToOrderInProductList">
+            <div class="row view-product">
+                <a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Details' | r) | xlat}}</a>
             </div>
-            <br/>
-            &lt;!&ndash;<a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</a>&ndash;&gt;
         </div>
-    </div>-->
+    </form>
+    <ul class="product-list-qualities-grid" ng-show="StaticSpecGroups.Qualities">
+        <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" ng-bind-html="Value.Value"></li>
+    </ul>
+    <!-- <div class="col-xs-12 text-left">
+         <div class="panel-body">
+             <div>
+                 <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
+                 <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
+                     {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
+                     <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
+                     {{'for' | xlat}} {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
+                 </p>
+                 <p ng-show="LineItem.Product.UnitOfMeasure">
+                     {{'Unit of Measure' | r | xlat}}: {{LineItem.Product.UnitOfMeasure}}
+                 </p>
+
+                 <p ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
+                     {{'Quantity Available' | r | xlat}}: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
+                 </p>
+             </div>
+             <br/>
+             &lt;!&ndash;<a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</a>&ndash;&gt;
+         </div>
+     </div>-->
 </div>

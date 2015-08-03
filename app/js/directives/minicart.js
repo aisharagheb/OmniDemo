@@ -74,12 +74,6 @@ four51.app.controller('minicartCtrl', ['$scope', '$location', 'Order','User','Bo
 
         $scope.$on('event:orderUpdate', function(event, order) {
             $scope.currentOrder = order;
-            if (!$scope.isInPath('catalog')){
-                $(".minicart").addClass("animated rubberBand");
-                $timeout( function() {
-                    $(".minicart").removeClass("animated rubberBand");
-                }, 3000);
-            }
         });
 	}
 ]);

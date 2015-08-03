@@ -49,7 +49,6 @@ function ($routeParams, $sce, $scope, $451, Category, Product, Nav) {
     $scope.$watch('currentCategory', function(newVal) {
         if (!newVal) return;
         $scope.breadcrumbs = [];
-        console.log('watch hit');
         initTree();
         getNode($scope.linkedTree, $scope.currentCategory, $scope.breadcrumbs);
     });

@@ -115,7 +115,7 @@
                 <div class="panel-body" id="451_area_prod_desc">
                     <p ng-bind-html="trustedDescription(LineItem.Product)" />
                     <p ng-show="LineItem.Variant.Description" ng-bind-html="trustedDescription(LineItem.Variant)" />
-                    <ul class="product-list-qualities" ng-show="StaticSpecGroups.Qualities" >
+                    <ul class="product-list-qualities-pdt" ng-show="StaticSpecGroups.Qualities" >
                         <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" ng-bind-html="Value.Value"></li>
                     </ul>
                 </div>
