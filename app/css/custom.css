@@ -172,3 +172,9 @@ a {
     color: #999;;
     
 }
+
+.no-panels.robyn-product-list ul li ul li, .robyn-product-list ul li ul li {
+    min-height: 30px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
