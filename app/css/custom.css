@@ -183,3 +183,7 @@ a {
 .no-panels.robyn-product-list .inline .product-name, .robyn-product-list .inline .product-name {
     justify-content: flex-start;
 }
+
+.no-panels.robyn-product-list .inline .product-name, .robyn-product-list .inline .product-name {
+    height: 40px;
+}
