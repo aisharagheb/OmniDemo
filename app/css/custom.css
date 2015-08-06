@@ -159,7 +159,7 @@ a {
     border-width: 0;
 }
 
-.panel-body, .panel-category-list:not(.no-panels), .panel-product-list:not(.no-panels) {
+.panel-category-list:not(.no-panels), .panel-product-list:not(.no-panels) {
     padding-left: 0;
 }
 
@@ -186,4 +186,12 @@ a {
 
 .no-panels.robyn-product-list .inline .product-name, .robyn-product-list .inline .product-name {
     height: 40px;
+}
+
+.category-display-box {
+    padding-left: 10px;
+}
+
+.empty {
+    height: 185px;
 }

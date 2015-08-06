@@ -12,6 +12,7 @@
         <small class="text-danger pull-right" ng-show="StaticSpecGroups && StaticSpecGroups.StrikeThroughPricing"><s>{{StaticSpecGroups.StrikeThroughPricing.Specs.StrikeThroughPrice.Value}}</s><br/></small>
         <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
     </p>
+    <div class="product-id" ng-bind-html="LineItem.Product.ExternalID"></div>
     <form name="addToOrderForm" ng-submit="addToOrder()">
         <div class="view-form-icon" ng-show="allowAddToOrderInProductList">
             <div class="row">
