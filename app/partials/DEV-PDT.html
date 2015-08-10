@@ -2,7 +2,7 @@
     <loadingindicator ng-show="loadingIndicator" title="{{'Please wait while we fetch product information' | r | xlat}}" />
     <!-- BREADCRUMB!-->
     <productnav product="LineItem.Product" variant="LineItem.Variant" />
-    <!-- PRODUCT IMAGE PANEL!-->
+    <!-- PRODUCT IMAGE PANEL FOR PRODUCTS WITH EXPRESS-GALLERY!-->
     <div class="express-gallery-lightbox" ng-show="showLightbox">
         <figure class="row">
             <div class="col-md-6 col-md-offset-3">
@@ -17,7 +17,7 @@
     </div>
     <div class="row">
         <div class="col-md-5">
-            <!-- PRODUCT INFO!-->
+            <!-- PRODUCT INFO SM/XS!-->
             <div class="row visible-sm visible-xs">
                 <div class="col-xs-12">
                     <h2 id="451qa_prod_name" ng-hide="LineItem.Variant.ExternalID" ng-bind-html="LineItem.Product.Name">
@@ -30,19 +30,30 @@
                         {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
                     </h2>
                 </div>
+                <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1 && LineItem.Product.VariantCount > 0">
+                    <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                </div>
+                <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1 && LineItem.Product.VariantCount > 0">
+                    <div class="col-sm-3 col-xs-12">
+                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="width:100%;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                    </div>
+                </div>
             </div>
+            <!-- IMAGE PANEL!-->
             <div class="panel panel-default" ng-class="{'express-gallery-panel':LineItem.Product.StaticSpecGroups.images}" style="border-color: #ffffff; box-shadow: none;">
                 <div class="panel-body">
                     <loadingindicator ng-show="loadingImage && LineItem.Variant.IsMpowerVariant" />
                     <figure>
                         <!--normal-->
                         <img ng-if="!StaticSpecGroups.images && !StaticSpecGroups.LightboxImages || (LineItem.Product.Type=='VariableText' && LineItem.Variant)" id="451_img_prod_lg" class="product-image-large img-responsive" ng-src="{{LineItem.Variant.PreviewUrl || LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" imageonload />
-                        <!--lightbox-->
+                        <!--normal-->
+
                         <!--lightbox-->
                         <div ng-show="StaticSpecGroups.LightboxImages.Specs" class="panel panel-no-panels" ng-controller="LightboxCtrl">
                             <productlightbox></productlightbox>
                         </div>
                         <!--lightbox-->
+
                         <!--gallery-->
                         <img ng-click="toggleLightbox(true)" ng-if="StaticSpecGroups.images && !LineItem.Variant" id="451_img_prod_lg" class="product-image-large img-responsive gallery-display" ng-src="{{GalleryLightboxImages.Images[defaultIndex].FileURL}}" imageonload />
                         <!--gallery-->
@@ -78,11 +89,8 @@
                 </div>
             </div>
         </div>
-
-
         <div class="col-md-7">
-
-            <!-- PRODUCT INFO!-->
+            <!-- PRODUCT INFO MD/LG!-->
             <div class="row visible-md visible-lg">
                 <div class="col-xs-12">
                     <h2 id="451qa_prod_name" ng-hide="LineItem.Variant.ExternalID" ng-bind-html="LineItem.Product.Name">
@@ -98,8 +106,15 @@
                         {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
                     </h2>
                 </div>
+                <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1 && LineItem.Product.VariantCount > 0">
+                    <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                </div>
+                <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1 && LineItem.Product.VariantCount > 0">
+                    <div class="col-sm-3 col-xs-12">
+                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="width:100%;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                    </div>
+                </div>
             </div>
-
             <!-- PRODUCT TABS! --->
             <tabset justified="true" class="newtabset" ng-if="LineItem.Product.productTabs">
                 <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}" >
@@ -111,9 +126,9 @@
             </tabset>
 
             <!-- PRODUCT DESCRIPTION PANEL! --->
-            <div class="panel panel-primary"  style="border-color: #ffffff; box-shadow: none;">
+            <div class="panel panel-primary"  style="border-color: #ffffff; box-shadow: none; padding-bottom: 20px;">
                 <div class="panel-body" id="451_area_prod_desc">
-                    <p ng-bind-html="trustedDescription(LineItem.Product)" />
+                    <p id="expressProductDescription" class="{{LineItem.Product.Specs.State.Value ? LineItem.Product.Specs.State.Value : ''}} {{LineItem.Product.Specs.Language.Value ? LineItem.Product.Specs.Language.Value : ''}}" ng-bind-html="trustedDescription(LineItem.Product)" />
                     <p ng-show="LineItem.Variant.Description" ng-bind-html="trustedDescription(LineItem.Variant)" />
                     <ul class="product-list-qualities-pdt" ng-show="StaticSpecGroups.Qualities" >
                         <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" ng-bind-html="Value.Value"></li>
@@ -171,7 +186,7 @@
                             <loadingindicator ng-show="searchIndicator" />
                             <li ng-repeat="v in LineItem.Product.Variants | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
                                 <div class="row">
-                                    <a ng-class="{'col-sm-6': allowAddFromVariantList, 'col-sm-11': !allowAddFromVariantList }" href=#/product/{{LineItem.Product.InteropID}}/{{v.InteropID}}>
+                                    <a ng-class="{'col-sm-3': allowAddFromVariantList, 'col-sm-11': !allowAddFromVariantList }" href=#/product/{{LineItem.Product.InteropID}}/{{v.InteropID}}>
                                         <h5>
                                             <strong>{{v.ExternalID}}</strong>
                                         </h5>
@@ -187,6 +202,17 @@
                                     </div>
                                     <div class="col-sm-3 view-form-icon" ng-show="allowAddFromVariantList">
                                         <quantityfield required="false" calculated="calcVariantLineItems" lineitem="variantLineItems[v.InteropID]" class="quantity" />
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()" ng-show="allowAddToOrder" style="margin-top: 0; width: 100%;">
+                                            <loadingindicator ng-show="addToOrderIndicator" />
+                                            <i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
+                                            <i ng-show="lineItemErrors.length == 0" class="fa fa-shopping-cart"></i>
+                                            {{addToOrderText | r | xlat}}
+                                            <span id="451qa_lineitem_total" class="badge" ng-if="!(user.Permissions.contains('HidePricing')) && (LineItem.LineTotal || variantLineItemsOrderTotal) > 0">
+                                            {{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}
+                                            </span>
+                                        </button>
                                     </div>
                                     <div class="col-sm-1" ng-show="v.IsMpowerVariant">
                                         <button type="button" ng-click="deleteVariant(v, false)" class="btn btn-default btn-block">
@@ -215,8 +241,8 @@
                         <span class="text-info">{{'Maximum Quantity' | r | xlat}}</span> {{LineItem.PriceSchedule.MaxQuantity}}
                     </p>
                     <div class="row">
-                        <div class="col-sm-4">
-                            <div class="view-form-icon" ng-if="!allowAddFromVariantList">
+                        <div class="col-sm-4" ng-if="!LineItem.Specs.WebMerge">
+                            <div class="view-form-icon" ng-if="!allowAddFromVariantList && !StaticSpecGroups.Qualities.Specs.DownloadOnly">
                                 <div>
                                     <label ng-class="{required: !allowAddFromVariantList}" ng-hide="allowAddFromVariantList">{{('Order' | r) + ' ' + ('Quantity' | r) | xlat}}</label>
                                     <quantityfield required="true" lineitem="LineItem" class="quantity" />
@@ -224,7 +250,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()" ng-show="allowAddToOrder" style="margin-top: 35px; padding:15px; width: 100%;">
+                            <button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()" ng-if="allowAddToOrder && LineItem.Product.VariantCount == 0 && !StaticSpecGroups.Qualities.Specs.DownloadOnly" style="margin-top: 35px; padding:15px; width: 100%;">
                                 <loadingindicator ng-show="addToOrderIndicator" />
                                 <i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
                                 <i ng-show="lineItemErrors.length == 0" class="fa fa-shopping-cart"></i>
@@ -240,12 +266,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1">
+                    <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1 && LineItem.Product.VariantCount == 0 && !LineItem.Specs.State && !LineItem.Specs.Language">
                         <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                     </div>
-                    <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1">
+                    <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1 && LineItem.Product.VariantCount == 0 && !LineItem.Specs.State && !LineItem.Specs.Language">
                         <div class="col-sm-4">
                             <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="width:100%; left: -2px;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                        </div>
+                    </div>
+                    <div ng-show="LineItem.Specs.State.Value != 'null' && LineItem.Specs.Language == 'null'">
+                        <div class="col-sm-4">
+                            <a ng-href="{{spec.FileURL}}" class="btn btn-gray" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | filterbyspec:LineItem.Specs.State.Value"><i class="fa fa-download"></i> {{spec.Name}}</a>
+                        </div>
+                    </div>
+                    <div ng-show="LineItem.Specs.Language.Value != 'null' && LineItem.Specs.State">
+                        <div class="col-sm-4">
+                            <a ng-href="{{spec.FileURL}}" class="btn btn-gray" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | dynamicspecs:LineItem.Specs"><i class="fa fa-download"></i> {{spec.Name}}</a>
+                        </div>
+                    </div>
+                    <div ng-show="LineItem.Specs.Language.Value != 'null' && !LineItem.Specs.State">
+                        <div class="col-sm-4">
+                            <a ng-href="{{spec.FileURL}}" class="btn btn-gray" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | filterbyspec:LineItem.Specs.Language.Value"><i class="fa fa-download"></i> {{spec.Name}}</a>
                         </div>
                     </div>
                 </div>
