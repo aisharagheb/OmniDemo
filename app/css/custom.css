@@ -71,6 +71,16 @@ form[name="addToOrderForm"]  {
     text-align: center;
 }
 
+.product-list-qualities-grid {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
 .product-list-qualities-grid li {
      min-height: 0 !important;
      margin: 5px 0 -15px 7px;
@@ -125,7 +135,8 @@ form[name="addToOrderForm"]  {
     flex-wrap: wrap;
 }
 
-ul .inline.minimal {
+ul .inline.minimal,
+ul .inline.inline-search.minimal {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
