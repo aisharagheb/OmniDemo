@@ -11,10 +11,12 @@ four51.app
             controller: 'ffoCarouselCtrl'
         }
     })
-    .controller('ffoCarouselCtrl', ['$scope', 'User', function($scope, User){
+    .controller('ffoCarouselCtrl', ['$scope', 'Security', 'User', function($scope, Security, User){
         $scope.showCarousel = false;
 
         $scope.hostName = window.location.hostname;
+
+        $scope.AuthToken = Security.auth();
 
         User.get(function(user) {
             $scope.Slides = [];
@@ -23,7 +25,8 @@ four51.app
                     var s = {
                         'imageUrl': f.File.Url,
                         'linkUrl': f.Label == 'none' ? null : f.Label,
-                        'externalLink': f.Label.indexOf('http') > -1
+                        'externalLink': f.Label.indexOf('http') > -1,
+                        'cmsLink': f.Label.indexOf('cms') > -1 ? $scope.$eval(f.Label, $scope.AuthToken).toString() : 'none'
                     };
                     $scope.Slides.push(s);
                 }

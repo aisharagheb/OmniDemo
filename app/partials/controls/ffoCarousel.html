@@ -9,7 +9,12 @@ As of right now, this is the only way to achieve a fully responsive image carous
     <img style="float:left; opacity:0;" ng-src="{{Slides[0].imageUrl}}"/>
     <li ng-repeat="slide in Slides">
         <div class="layer">
-            <a target="{{slide.externalLink ? '_blank' : '_self'}}" ng-href="{{slide.linkUrl}}">
+            <a ng-if="slide.cmsLink === 'none'" target="{{slide.externalLink ? '_blank' : '_self'}}" ng-href="{{slide.linkUrl}}">
+                <div style="background-image:url({{'\'//' + hostName + slide.imageUrl + '\''}});">
+                    <img ng-src="{{hostName + slide.imageUrl}}" alt=""/>
+                </div>
+            </a>
+            <a ng-if="slide.cmsLink !== 'none'" ng-href="{{slide.cmsLink}}">
                 <div style="background-image:url({{'\'//' + hostName + slide.imageUrl + '\''}});">
                     <img ng-src="{{hostName + slide.imageUrl}}" alt=""/>
                 </div>

@@ -27,7 +27,7 @@
         </div>
     </form>
     <ul class="product-list-qualities-grid" ng-show="StaticSpecGroups.Qualities">
-        <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" ng-bind-html="Value.Value"></li>
+        <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" compile="Value.Value"></li>
     </ul>
     <!-- <div class="col-xs-12 text-left">
          <div class="panel-body">

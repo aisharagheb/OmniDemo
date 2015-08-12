@@ -11,6 +11,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 		pageSize: 10
 	};
 
+
 	$scope.numSpecs = 0;
 	$scope.$watch('StaticSpecGroups.Download.Specs', function(newVal) {
 		if (!newVal) return;
