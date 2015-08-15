@@ -67,14 +67,11 @@
                                     {{'Favorites' | r | xlat}}
                                 </a>
                             </li>
-<<<<<<< HEAD
-=======
                             <li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus">
                                 <a ng-href="{{'http://cms.expresscompanystore.com/support' + '?auth=' + AuthToken}}">
                                     {{'Support' | r | xlat}}
                                 </a>
                             </li>
->>>>>>> origin/master
                             <li>
                                 <a href="#" neworder ng-if="user.Permissions.contains('MultipleShoppingCart') && currentOrder" class="neworder" ng-click="newOrderLoadingIndicator = true;startNewOrder()">
                                     {{"Start" | r | xlat}} {{"New" | r | xlat}} {{"Order" | r | xlat}}
