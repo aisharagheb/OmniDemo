@@ -206,3 +206,7 @@ a {
 .empty {
     height: 185px;
 }
+
+form[name='addToOrderForm'] div div .view-response-message.alert-info.text-center {
+    margin-top: 35px;
+}

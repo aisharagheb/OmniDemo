@@ -63,7 +63,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
             $scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;
         }
         else if(lineitem.PriceSchedule.RestrictedQuantity === false) {
-            $scope.LineItem.Quantity = 0;
+            $scope.LineItem.Quantity = null;
         }
 	}
 	function init(searchTerm, callback) {

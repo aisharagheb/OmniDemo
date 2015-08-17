@@ -41,8 +41,8 @@ function productlistaddtocart() {
     }
 }
 
-ProductListAddToCartCtrl.$inject = ['$scope', 'Order', 'User'];
-function ProductListAddToCartCtrl($scope, Order, User) {
+ProductListAddToCartCtrl.$inject = ['$scope', 'Order', 'User', '$timeout'];
+function ProductListAddToCartCtrl($scope, Order, User, $timeout) {
 
     $scope.allowAddToOrderInProductList = $scope.allowAddToOrder && $scope.LineItem.Product.Type != 'VariableText' && $scope.LineItem.Product.SpecCount == 0;
     $scope.addToOrder = function(){
@@ -73,6 +73,9 @@ function ProductListAddToCartCtrl($scope, Order, User) {
                 });
                 if (callback) callback();
                 $scope.actionMessage = 'Item has been added to your cart!';
+                $timeout(function () {
+                    $scope.actionMessage = null;
+                }, 5000);
             },
             function (ex) {
                 $scope.displayLoadingIndicator = false;

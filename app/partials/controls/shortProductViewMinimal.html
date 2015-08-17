@@ -17,7 +17,10 @@
         <div class="view-form-icon" ng-show="allowAddToOrderInProductList">
             <div class="row">
                 <!--<quantityfield required="true" calculated="calcVariantLineItems" lineitem="LineItem" class="quantity"/>-->
-                <productlistaddtocart></productlistaddtocart>
+                <productlistaddtocart ng-show="!actionMessage"></productlistaddtocart>
+                <div class="view-response-message alert-info text-center" alert-show="actionMessage">
+                    {{actionMessage | r | xlat}}
+                </div>
             </div>
         </div>
         <div class="view-form-icon" ng-show="!allowAddToOrderInProductList">
