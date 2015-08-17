@@ -2,7 +2,7 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
 	$locationProvider.html5Mode(true);
 
 	var concatProductView = function(routeParams){
-			return 'productview.hcf?id='+ routeParams.productInteropID;
+        return 'productview.hcf?id='+ routeParams.productInteropID;
 	}
 
 	var concatSpecFormView = function(routeParams){
