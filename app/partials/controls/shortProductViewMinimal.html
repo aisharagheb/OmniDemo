@@ -14,7 +14,7 @@
     </p>
     <div class="product-id" ng-bind-html="LineItem.Product.ExternalID"></div>
     <form name="addToOrderForm" ng-submit="addToOrder()">
-        <div class="view-form-icon" ng-show="allowAddToOrderInProductList">
+        <div class="view-form-icon" ng-show="allowAddToOrderInProductList && !StaticSpecGroups.Qualities.Specs.DownloadOnly">
             <div class="row">
                 <!--<quantityfield required="true" calculated="calcVariantLineItems" lineitem="LineItem" class="quantity"/>-->
                 <productlistaddtocart ng-show="!actionMessage"></productlistaddtocart>
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div class="view-form-icon" ng-show="!allowAddToOrderInProductList">
+        <div class="view-form-icon" ng-show="!allowAddToOrderInProductList || StaticSpecGroups.Qualities.Specs.DownloadOnly">
             <div class="row view-product">
                 <a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Details' | r) | xlat}}</a>
             </div>

@@ -80,14 +80,14 @@
                 <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
             </p>
             <form name="addToOrderForm" ng-submit="addToOrder()">
-                <div class="view-form-icon" ng-show="allowAddToOrderInProductList">
+                <div class="view-form-icon" ng-show="allowAddToOrderInProductList && !StaticSpecGroups.Qualities.Specs.DownloadOnly">
                     <div class="row">
                         <!--<quantityfield required="true" calculated="calcVariantLineItems" lineitem="LineItem" class="quantity"/>-->
                         <productlistaddtocart></productlistaddtocart>
                     </div>
                 </div>
             </form>
-            <div class="view-form-icon" ng-show="!allowAddToOrderInProductList">
+            <div class="view-form-icon" ng-show="!allowAddToOrderInProductList || StaticSpecGroups.Qualities.Specs.DownloadOnly">
                 <div class="row view-product">
                     <a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Details' | r) | xlat}}</a>
                 </div>
