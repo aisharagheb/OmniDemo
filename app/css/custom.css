@@ -210,3 +210,11 @@ a {
 form[name='addToOrderForm'] div div .view-response-message.alert-info.text-center {
     margin-top: 35px;
 }
+
+form[name='addToOrderForm'] {
+    height: 87px;
+}
+
+.row.robyn-short-product .row.view-product {
+    margin-top: -30px;
+}

@@ -1,4 +1,4 @@
-four51.app.factory('Product', ['$resource', '$451', 'Security', 'User', function($resource, $451, Security, User) {
+four51.app.factory('Product', ['$resource', '$451', 'Security', 'User', '$sce', function($resource, $451, Security, User, $sce) {
     //var _cacheName = '451Cache.Product.' + $451.apiName;
     var variantCache = [], productCache = [], criteriaCache;
     function _then(fn, data, count) {
@@ -46,7 +46,8 @@ four51.app.factory('Product', ['$resource', '$451', 'Security', 'User', function
                     angular.forEach($(section).children(), function(tab) {
 
                         var title = $(tab).attr('id');
-                        var content = $(tab).html();
+                        //var content = $(tab).html();
+                        var content = $sce.trustAsHtml($(tab).html());
                         product.productTabs.push(
                             {
                                 Title: title,

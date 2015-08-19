@@ -90,7 +90,11 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
 				var haveQty = false;
 				var haveQtyError = false;
 				angular.forEach(scope.variantLineItems, function(item){
-					if(item.Quantity > 0)
+					if (scope.LineItem.PriceSchedule.DefaultQuantity != null){
+                        item.Quantity = scope.LineItem.PriceSchedule.DefaultQuantity;
+                        haveQty = true;
+                    }
+                    if(item.Quantity > 0)
 						haveQty = true;
 					if(item.qtyError && !haveQtyError)
 					{

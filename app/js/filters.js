@@ -180,6 +180,50 @@ four51.app.filter('dynamicspecs', function() {
     }
 });
 
+four51.app.filter('dynamicspecs2', function() {
+    return function(staticSpecs, variableSpecs) {
+        var results = [];
+        if (!variableSpecs || !staticSpecs) return results;
+        var language = (variableSpecs.Language && variableSpecs.Language.Value) ? variableSpecs.Language.Value : null;
+        var region = (variableSpecs.Region && variableSpecs.Region.Value) ? variableSpecs.Region.Value : null;
+
+        if (language && !region) {
+            angular.forEach(staticSpecs, function(s) {
+                if (s.Name.indexOf(language) > -1 && s.Name.indexOf('Generic') == 0) {
+                    results.push(s);
+                }
+            });
+        }
+        else if (language && region) {
+            var regionFound = false;
+            angular.forEach(staticSpecs, function(s) {
+                if (s.Name.indexOf(language) > -1 && s.Name.indexOf(region) > -1) {
+                    results.push(s);
+                    regionFound = true;
+                }
+            });
+            if (!regionFound) {
+                angular.forEach(staticSpecs, function(s) {
+                    if (s.Name.indexOf(language) > -1 && s.Name.indexOf('Generic') == 0) {
+                        results.push(s);
+                    }
+                });
+            }
+        }
+        else if (!language && region) {
+            angular.forEach(staticSpecs, function(s) {
+                if (s.Name.indexOf(region) > -1) {
+                    results.push(s);
+                }
+            });
+        }
+        else {
+            return results;
+        }
+        return results;
+    }
+});
+
 
 four51.app.filter('filterbyspec', function() {
     return function(staticSpecs, specValue) {
