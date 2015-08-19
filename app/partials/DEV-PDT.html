@@ -203,7 +203,7 @@
                                             <small><span class="text-info">{{'Total' | r | xlat}}</span><br /><span class=" text-success">{{variantLineItems[v.InteropID].LineTotal | culturecurrency}}</span></small>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3 view-form-icon" ng-show="allowAddFromVariantList && !StaticSpecGroups.Qualities.Specs.DownloadOnly">
+                                    <div class="col-sm-3 view-form-icon" ng-show="allowAddFromVariantList && (!StaticSpecGroups.Qualities.Specs.DownloadOnly && !LineItem.PriceSchedule.DefaultQuantity)">
                                         <quantityfield required="false" calculated="calcVariantLineItems" lineitem="variantLineItems[v.InteropID]" class="quantity" />
                                     </div>
                                     <div class="col-sm-3">
@@ -244,7 +244,7 @@
                         <span class="text-info">{{'Maximum Quantity' | r | xlat}}</span> {{LineItem.PriceSchedule.MaxQuantity}}
                     </p>
                     <div class="row">
-                        <div class="col-sm-4" ng-if="!allowAddFromVariantList && !StaticSpecGroups.Qualities.Specs.DownloadOnly && !LineItem.Specs.WebMerge">
+                        <div class="col-sm-4" ng-if="!allowAddFromVariantList && !StaticSpecGroups.Qualities.Specs.DownloadOnly && !LineItem.Specs.WebMerge && !LineItem.PriceSchedule.DefaultQuantity">
                             <div class="view-form-icon" ng-if="!allowAddFromVariantList && !StaticSpecGroups.Qualities.Specs.DownloadOnly">
                                 <div>
                                     <label ng-class="{required: !allowAddFromVariantList}" ng-hide="allowAddFromVariantList">{{('Order' | r) + ' ' + ('Quantity' | r) | xlat}}</label>
@@ -253,7 +253,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()" ng-if="allowAddToOrder && LineItem.Variant.ExternalID  || (allowAddToOrder && LineItem.Variant.ExternalID && LineItem.PriceSchedule.DefaultQuantity != 'null') && (!StaticSpecGroups.Qualities.Specs.DownloadOnly && LineItem.PriceSchedule.DefaultQuantity != 'null')" style="margin-top: 35px; padding:15px; width: 100%;">
+                            <button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()" ng-if="allowAddToOrder && LineItem.Product.Variants.length == 0 || (allowAddToOrder && LineItem.Variant.ExternalID && LineItem.PriceSchedule.DefaultQuantity != 'null') && (!StaticSpecGroups.Qualities.Specs.DownloadOnly && LineItem.PriceSchedule.DefaultQuantity != 'null')" style="margin-top: 35px; padding:15px; width: 100%;">
                                 <loadingindicator ng-show="addToOrderIndicator" />
                                 <i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
                                 <i ng-show="lineItemErrors.length == 0" class="fa fa-shopping-cart"></i>
