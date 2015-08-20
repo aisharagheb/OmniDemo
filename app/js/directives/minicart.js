@@ -14,8 +14,31 @@ function minicartDirective() {
     };
 }
 
-minicartController.$inject = ['$scope', '$location', 'Order', 'OrderConfig', 'User'];
-function minicartController($scope, $location, Order, OrderConfig, User) {
+minicartController.$inject = ['$scope', '$location', 'Order', 'OrderConfig', 'User', 'BonusItem'];
+function minicartController($scope, $location, Order, OrderConfig, User, BonusItem) {
+
+    var pageViews = 0;
+    var maxPageViews = 0;
+    $scope.preCartRedirect = function(){
+        angular.forEach($scope.user.CustomFields, function (field) {
+            if (field.Name === 'ExpressPageViews') {
+                pageViews = parseInt(field.Value);
+            }
+            if (field.Name === 'MaxExpressPageViews') {
+                maxPageViews = parseInt(field.DefaultValue);
+            }
+        });
+        console.log(pageViews, maxPageViews);
+        if (pageViews >= maxPageViews) {
+            $location.path('cart');
+        }
+        else {
+            $location.path('precartmessage');
+        }
+    }
+    $scope.freeProductInfo = BonusItem.findfreeproduct($scope.currentOrder);
+
+
     $scope.removeItem = function(item, override) {
         if (override || confirm('Are you sure you wish to remove this item from your cart?') == true) {
             Order.deletelineitem($scope.currentOrder.ID, item.ID,
