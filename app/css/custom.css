@@ -222,3 +222,7 @@ form[name='addToOrderForm'] {
 .row.robyn-short-product .row.view-product {
     margin-top: -30px;
 }
+
+.product-list-qualities-grid i.fa.fa-money, .product-list-qualities-pdt i.fa.fa-money {
+    margin-right: 4px;
+}
