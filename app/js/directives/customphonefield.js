@@ -11,7 +11,10 @@ four51.app.directive('customphonefield', function() {
         templateUrl: 'partials/controls/customPhoneField.html',
         controller: ['$scope', function($scope) {
             $scope.$watch('spec1', function(n,o) {
-                if (n) $scope.phoneNumber = $scope.spec1.Value + $scope.spec2.Value + $scope.spec3.Value;
+                if (n && $scope.spec2 && $scope.spec3){
+                    $scope.phoneNumber = $scope.spec1.Value + $scope.spec2.Value + $scope.spec3.Value;
+                }
+
             });
 
             $scope.$watch('phoneNumber', function(value){
