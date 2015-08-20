@@ -44,7 +44,7 @@
             </div>
             <div class="spending-account-xs ng-visible-xs navbar-fixed-top" ng-show="SpendingAccounts.length > 0 && SpendingAccounts[0].Balance">
                 <div ng-repeat="sa in SpendingAccounts">
-                    &nbsp;{{sa.Name}}: {{sa.Balance | currency}}&nbsp;
+                    &nbsp;{{sa.Label}}: {{sa.Balance | currency}}&nbsp;
                 </div>
             </div>
             <div class="spending-account text-center ng-hidden-xs" ng-show="SpendingAccounts.length > 0 && SpendingAccounts[0].Balance" >
@@ -55,12 +55,12 @@
                     <i class="fa fa-caret-up fa-2x"></i>
                     <div ng-repeat="sa in SpendingAccounts">
                         <dl>
-                            <dt>{{sa.Name}}</dt>
+                            <dt>{{sa.Label}}</dt>
                             <dd>{{sa.Balance | currency}}</dd>
                         </dl>
                     </div>
                     <div class="row text-right text-info">
-                        <a href="http://cms.expresscompanystore.com/spending-accounts" target="_blank"><i class="fa fa-lg fa-question"></i></a>
+                        <a ng-href="{{'http://cms.expresscompanystore.com/support' + '?auth=' + AuthToken}}"><i class="fa fa-lg fa-question"></i></a>
                     </div>
                 </div>
             </div>

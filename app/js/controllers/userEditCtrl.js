@@ -4,6 +4,20 @@ function ($scope, $location, $sce, User) {
 	$scope.actionMessage = null;
 	$scope.securityWarning = false;
 
+    $scope.ClearPassword = function () {
+        if ($scope.user.Password == "") {
+            $scope.user.Password = "";
+            $scope.user.ConfirmPassword = "";
+        }
+    }
+
+    $scope.ClearPasswordConfirm = function () {
+        if ($scope.user.ConfirmPassword == "") {
+            $scope.user.ConfirmPassword = "";
+            $scope.user.Password = "";
+        }
+    }
+
 	if($scope.user.Type != 'TempCustomer')
 		$scope.user.TempUsername = $scope.user.Username
 	$scope.getToken = function(){
@@ -44,6 +58,8 @@ function ($scope, $location, $sce, User) {
 				$scope.securityWarning = false;
 				$scope.displayLoadingIndicator = false;
 				$scope.actionMessage = 'Your changes have been saved';
+                $scope.user.Password = "";
+                $scope.user.ConfirmPassword = "";
 				$scope.user.TempUsername = u.Username;
 			},
 			function(ex) {

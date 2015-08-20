@@ -91,6 +91,10 @@ form[name="addToOrderForm"]  {
     margin: 5px 0 10px 7px;
 }
 
+.product-list-qualities-pdt{
+    padding-top: 25px;
+}
+
 .product-list-qualities-list li {
     min-height: 0 !important;
     margin: 5px 0 -10px 0;

@@ -23,17 +23,17 @@
                     <h2 id="451qa_prod_name" ng-bind-html="LineItem.Product.Name">
                     </h2>
                     <!--<h2 ng-show="LineItem.Variant.ExternalID">-->
-                        <!--{{LineItem.Variant.ExternalID}}-->
+                    <!--{{LineItem.Variant.ExternalID}}-->
                     <!--</h2>-->
                     <h2 class="text-success" ng-show="LineItem.PriceSchedule.PriceBreaks.length == 1" ng-if="!(user.Permissions.contains('HidePricing'))">
                         <small class="text-danger" ng-show="StaticSpecGroups && StaticSpecGroups.StrikeThroughPricing"><s>{{StaticSpecGroups.StrikeThroughPricing.Specs.StrikeThroughPrice.Value}}</s><br/></small>
                         {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
                     </h2>
                 </div>
-                <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1 && !LineItem.Product.productTabs">
+                <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1 && LineItem.Product.VariantCount > 0">
                     <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                 </div>
-                <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1 && !LineItem.Product.productTabs">
+                <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1 && LineItem.Product.VariantCount > 0">
                     <div class="col-sm-3 col-xs-12">
                         <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="width:100%;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                     </div>
@@ -96,7 +96,7 @@
                     <h2 id="451qa_prod_name" ng-bind-html="LineItem.Product.Name">
                     </h2>
                     <!--<h2 ng-show="LineItem.Variant.ExternalID">-->
-                        <!--{{LineItem.Variant.ExternalID}}-->
+                    <!--{{LineItem.Variant.ExternalID}}-->
                     <!--</h2>-->
                     <h4 ng-show="LineItem.Product.ExternalID && !LineItem.Variant.ExternalID" class="text-info">
                         {{'ID' | r | xlat}}: {{LineItem.Product.ExternalID}}
@@ -109,34 +109,24 @@
                         {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
                     </h2>
                 </div>
-                <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1 && !LineItem.Product.productTabs">
+                <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1 && LineItem.Product.VariantCount > 0">
                     <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                 </div>
-                <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1 && !LineItem.Product.productTabs">
+                <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1 && LineItem.Product.VariantCount > 0">
                     <div class="col-sm-3 col-xs-12">
                         <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="width:100%;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                     </div>
                 </div>
             </div>
             <!-- PRODUCT TABS! --->
-            <div ng-if="LineItem.Product.productTabs">
-                <tabset justified="true" class="newtabset">
-                    <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}" >
-                        <p ng-if="tab.Content"><div data-ng-bind-html="tab.Content"></div></p>
-                        <div ng-if="tab.Tags" ng-repeat="tag in tab.Tags" style="display:inline-flex;display:-webkit-inline-flex;padding:2px;">
-                            <small><a class="btn btn-small btn-gray" href="search/{{tag}}"> <i class="fa fa-tag"></i> {{tag}}</a> <br/></small>
-                        </div>
-                    </tab>
-                </tabset>
-                <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1">
-                    <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="z-index: 1000;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
-                </div>
-                <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1">
-                    <div class="col-sm-3 col-xs-12">
-                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="width:100%; z-index: 1000;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+            <tabset justified="true" class="newtabset" ng-if="LineItem.Product.productTabs">
+                <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}" >
+                    <p ng-if="tab.Content"><div data-ng-bind-html="tab.Content"></div></p>
+                    <div ng-if="tab.Tags" ng-repeat="tag in tab.Tags" style="display:inline-flex;display:-webkit-inline-flex;padding:2px;">
+                        <small><a class="btn btn-small btn-gray" href="search/{{tag}}"> <i class="fa fa-tag"></i> {{tag}}</a> <br/></small>
                     </div>
-                </div>
-            </div>
+                </tab>
+            </tabset>
 
             <!-- PRODUCT DESCRIPTION PANEL! --->
             <div class="panel panel-primary"  style="border-color: #ffffff; box-shadow: none; padding-bottom: 20px;">
@@ -199,7 +189,7 @@
                             <loadingindicator ng-show="searchIndicator" />
                             <li ng-repeat="v in LineItem.Product.Variants | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
                                 <div class="row">
-                                    <a ng-class="{'col-sm-3': allowAddFromVariantList, 'col-sm-9': !allowAddFromVariantList }" href=#/product/{{LineItem.Product.InteropID}}/{{v.InteropID}}>
+                                    <a ng-class="{'col-sm-9': allowAddFromVariantList, 'col-sm-11': !allowAddFromVariantList }" href=#/product/{{LineItem.Product.InteropID}}/{{v.InteropID}}>
                                         <h5>
                                             <strong>{{v.ExternalID}}</strong>
                                         </h5>
@@ -213,20 +203,20 @@
                                             <small><span class="text-info">{{'Total' | r | xlat}}</span><br /><span class=" text-success">{{variantLineItems[v.InteropID].LineTotal | culturecurrency}}</span></small>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3 view-form-icon" ng-show="allowAddFromVariantList && (!StaticSpecGroups.Qualities.Specs.DownloadOnly && !LineItem.PriceSchedule.DefaultQuantity)">
-                                        <quantityfield required="false" calculated="calcVariantLineItems" lineitem="variantLineItems[v.InteropID]" class="quantity" />
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()" ng-if="allowAddToOrder || (allowAddToOrder && LineItem.PriceSchedule.DefaultQuantity != 'null') && (!StaticSpecGroups.Qualities.Specs.DownloadOnly && LineItem.PriceSchedule.DefaultQuantity != 'null')" style="margin-top: 0; width: 100%;">
-                                            <loadingindicator ng-show="addToOrderIndicator" />
-                                            <i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
-                                            <i ng-show="lineItemErrors.length == 0" class="fa fa-shopping-cart"></i>
-                                            {{addToOrderText | r | xlat}}
-                                            <span id="451qa_lineitem_total" class="badge" ng-if="!(user.Permissions.contains('HidePricing')) && (LineItem.LineTotal || variantLineItemsOrderTotal) > 0">
-                                            {{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}
-                                            </span>
-                                        </button>
-                                    </div>
+                                    <!--<div class="col-sm-3 view-form-icon" ng-show="allowAddFromVariantList && (!StaticSpecGroups.Qualities.Specs.DownloadOnly && !LineItem.PriceSchedule.DefaultQuantity)">-->
+                                        <!--<quantityfield required="false" calculated="calcVariantLineItems" lineitem="variantLineItems[v.InteropID]" class="quantity" />-->
+                                    <!--</div>-->
+                                    <!--<div class="col-sm-3">-->
+                                        <!--<button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()" ng-if="allowAddToOrder || (allowAddToOrder && LineItem.PriceSchedule.DefaultQuantity != 'null') && (!StaticSpecGroups.Qualities.Specs.DownloadOnly && LineItem.PriceSchedule.DefaultQuantity != 'null')" style="margin-top: 0; width: 100%;">-->
+                                            <!--<loadingindicator ng-show="addToOrderIndicator" />-->
+                                            <!--<i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>-->
+                                            <!--<i ng-show="lineItemErrors.length == 0" class="fa fa-shopping-cart"></i>-->
+                                            <!--{{addToOrderText | r | xlat}}-->
+                                            <!--<span id="451qa_lineitem_total" class="badge" ng-if="!(user.Permissions.contains('HidePricing')) && (LineItem.LineTotal || variantLineItemsOrderTotal) > 0">-->
+                                            <!--{{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}-->
+                                            <!--</span>-->
+                                        <!--</button>-->
+                                    <!--</div>-->
                                     <div class="col-sm-1" ng-show="v.IsMpowerVariant">
                                         <button type="button" ng-click="deleteVariant(v, false)" class="btn btn-default btn-block">
                                             <i class="fa fa-trash-o text-warning"></i> <span class="visible-xs text-warning">{{'Delete' | r | xlat}}</span>
@@ -312,9 +302,9 @@
                 <!--</div>-->
 
                 <!--<div class="col-sm-8">-->
-                    <!--<div class="alert-info text-center">-->
-                        <!--TEST TEST TEST-->
-                    <!--</div>-->
+                <!--<div class="alert-info text-center">-->
+                <!--TEST TEST TEST-->
+                <!--</div>-->
                 <!--</div>-->
 
             </form>
