@@ -74,7 +74,7 @@ function LightboxCtrl($scope, Lightbox) {
             $scope.LineItem.images = [];
             var count = 0;
 
-            if ($scope.LineItem.Product.StaticSpecGroups[specGroupName]) {
+            if ($scope.LineItem.Product.StaticSpecGroups && $scope.LineItem.Product.StaticSpecGroups[specGroupName]) {
                 if (varSpecName) {
                     var specOption = $scope.LineItem.Specs[varSpecName].Value;
                 }
