@@ -136,7 +136,7 @@ function ($window, $scope, $route, $location, $451, User, Order, Security, Order
 
     $scope.showScrollUp = false;
     angular.element($window).bind("scroll", function(e) {
-        if (e.view.scrollY > 250) {
+        if (e.view && e.view.scrollY > 250) {
             $scope.showScrollUp = true;
         } else {
             $scope.showScrollUp = false;
