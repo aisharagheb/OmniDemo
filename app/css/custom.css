@@ -219,8 +219,9 @@ form[name='addToOrderForm'] {
     height: 87px;
 }
 
-.row.robyn-short-product .row.view-product {
-    margin-top: -30px;
+.galleryThumbs li a img {
+    max-height: 64px!important;
+    max-width: 64px!important;
 }
 
 .product-list-qualities-grid i.fa.fa-money, .product-list-qualities-pdt i.fa.fa-money {

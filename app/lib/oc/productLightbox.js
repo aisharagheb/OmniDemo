@@ -49,7 +49,7 @@ function productlightbox() {
             '</ul>',
             '</div>',
             '<div class="panel-footer">',
-            '<ul class="galleryThumbs">',
+            '<ul ng-hide="!LineItem.images.1" class="galleryThumbs">',
             '<li ng-repeat="image in LineItem.images">',
             '<a ng-click="$parent.index=$index" ng-class="{active: $index==$parent.index}">',
             '<img ng-src="{{image.url}}" class="img-thumbnail img-responsive" />',
