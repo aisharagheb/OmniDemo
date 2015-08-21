@@ -9,7 +9,9 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 
 	function _extend(order) {
 		order.isEditable = order.Status == 'Unsubmitted' || order.Status == 'Open' || order.Status == 'AwaitingApproval';
-		angular.forEach(order.LineItems, function(item) {
+		var staticimages = {};
+        var variableimages = {};
+        angular.forEach(order.LineItems, function(item) {
 			item.OriginalQuantity = item.Quantity; //needed to validate qty changes compared to available quantity
 			angular.forEach(item.Specs, function(spec) {
 				if (spec.ControlType == 'File' && spec.File && spec.File.Url.indexOf('auth') == -1) {
@@ -29,6 +31,21 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
             item.WebMerge = false;
             if ((item.Product.Specs && item.Product.Specs.WebMerge) || (item.Specs && item.Specs.WebMerge)) {
                 item.WebMerge = true;
+            }
+            if(!staticimages[item.Product.InteropID]){
+                staticimages[item.Product.InteropID] = item.Product.SmallImageUrl;
+            }
+            if(!item.Product.SmallImageUrl){
+                item.Product.SmallImageUrl = staticimages[item.Product.InteropID];
+            }
+            if (item.Variant)
+            {
+                if(!variableimages[item.Variant.InteropID]){
+                    variableimages[item.Variant.InteropID] = item.Variant.LargeImageUrl;
+                }
+                if(!item.Variant.LargeImageUrl){
+                    item.Variant.LargeImageUrl = variableimages[item.Variant.InteropID];
+                }
             }
 		});
 
