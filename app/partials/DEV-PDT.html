@@ -21,13 +21,11 @@
             <div class="panel-body">
                 <loadingindicator ng-show="loadingImage && LineItem.Variant.IsMpowerVariant" />
                 <figure>
-                    <!--normal-->
-                    <img ng-if="!StaticSpecGroups.images && !StaticSpecGroups.LightboxImages || (LineItem.Product.Type=='VariableText' && LineItem.Variant)" id="451_img_prod_lg" class="product-image-large img-responsive" ng-src="{{LineItem.Variant.PreviewUrl || LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" imageonload />
-                    <!--lightbox-->
-                    <div ng-show="StaticSpecGroups.LightboxImages.Specs" class="panel panel-no-panels" ng-controller="LightboxCtrl">
+                     <!--lightbox-->
+                    <div class="panel panel-no-panels" ng-if="!GalleryLightboxImages">
                         <productlightbox></productlightbox>
                     </div>
-                    <!--gallery-->
+                    <!--express gallery-->
                     <img ng-click="toggleLightbox(true)" ng-if="StaticSpecGroups.images && !LineItem.Variant" id="451_img_prod_lg" class="product-image-large img-responsive gallery-display" ng-src="{{GalleryLightboxImages.Images[defaultIndex].FileURL}}" imageonload />
                 </figure>
                 <div class="empty" ng-hide="LineItem.Variant.PreviewUrl || LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl">

@@ -18,7 +18,8 @@ angular.module('OrderCloud-ProductLightbox')
 function productlightbox() {
     var directive = {
         restrict: 'E',
-        template: template
+        template: template,
+        controller: 'LightboxCtrl'
     };
     return directive;
 
@@ -63,11 +64,11 @@ function productlightbox() {
 
 LightboxCtrl.$inject = ['$scope', 'Lightbox'];
 function LightboxCtrl($scope, Lightbox) {
+    var specGroupName = "LightboxImages";
     function LightboxImageScope($scope) {
         if ($scope.LineItem.Specs && $scope.LineItem.Specs.Color) {
             var varSpecName = "Color";
         }
-        var specGroupName = "LightboxImages";
 
         if ($scope.LineItem.Specs || $scope.LineItem.Product && $scope.LineItem.Product.StaticSpecGroups) {
 
@@ -108,6 +109,20 @@ function LightboxCtrl($scope, Lightbox) {
     $scope.$watch('LineItem.Product.StaticSpecGroups', function(n,o){
         if ( n!= o) {
             LightboxImageScope($scope);
+        }
+    });
+
+    $scope.$watch('LineItem.Product', function(newVal,oldVal) {
+        if (!newVal) return;
+        if (!$scope.LineItem.Product.StaticSpecGroups || !$scope.LineItem.Product.StaticSpecGroups[specGroupName]) {
+            $scope.LineItem.images = [];
+
+            var image = {};
+            image.Number = 1;
+            image.url = $scope.LineItem.Product.LargeImageUrl;
+            image.Selected = false;
+            $scope.LineItem.images.push(image);
+            $scope.imageLoaded = true;
         }
     });
 
@@ -270,9 +285,9 @@ function imagelightboxtemplate () {
         '<div class="modal-body" ng-swipe-left="Lightbox.nextImage()" ng-swipe-right="Lightbox.prevImage()">',
         '<div class="lightbox-nav">',
         '<div class="btn-group">',
-        '<a class="btn btn-xs btn-default" ng-click="Lightbox.prevImage()">‹ Previous</a>',
+        '<a class="btn btn-xs btn-default" ng-if="LineItem.images.1" ng-click="Lightbox.prevImage()">‹ Previous</a>',
         '<a ng-href="{{Lightbox.imageUrl}}" target="_blank" class="btn btn-xs btn-default" title="Open in new tab">Open image in new tab</a>',
-        '<a class="btn btn-xs btn-default" ng-click="Lightbox.nextImage()">Next ›</a>',
+        '<a class="btn btn-xs btn-default" ng-if="LineItem.images.1" ng-click="Lightbox.nextImage()">Next ›</a>',
         '<a class="btn btn-xs btn-default pull-right" aria-hidden="true" ng-click="$dismiss()">Close &times;</a>',
         '</div>',
         '</div>',
