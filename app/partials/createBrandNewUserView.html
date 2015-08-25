@@ -25,9 +25,15 @@
     <div class="view-form-icon">
         <div>
             <label for="field24856084">Phone</label>
-            <input type="tel" id="field24856084" name="field24856084" required class="fsField form-control" aria-required="true" />
+            <input type="text" ui-mask="(999) 999-9999" id="field24856084" name="field24856084" ng-model="number" required class="fsField form-control" aria-required="true" />
             <i class="fa fa-phone"></i>
         </div>
+        <!--<div class="row" style="padding-top: 15px;">-->
+        <!--<div class="col-md-12">-->
+        <!--<label>{{'Phone Number' | r | xlat}}</label>-->
+        <!--<input name="phone" class="form-control" type="text" ng-model="LineItem.Specs.PHONE.Value" ui-mask="(999) 999-9999" autocomplete="off" />-->
+        <!--</div>-->
+        <!--</div>-->
         <small class="text-danger">Please format like (555) 555-1212</small>
     </div>
     <div class="view-form-icon">
@@ -48,7 +54,7 @@
     <div class="view-form-icon">
         <div>
             <label for="field24856141">Franchise Number</label>
-            <input type="number" step="any" id="field24856141" name="field24856141" required class="fsField form-control" aria-required="true" />
+            <input type="text" step="any" id="field24856141" name="field24856141" required class="fsField form-control" aria-required="true"/>
             <i class="fa fa-asterisk"></i>
         </div>
     </div>
@@ -73,7 +79,7 @@
     <div class="view-form-icon">
         <div>
             <label for="field24856174">Number of Packs Needed</label>
-            <input type="number" step="any" id="field24856174" name="field24856174"  required class="fsField form-control" min="1" aria-required="true" />
+            <input type="number" step="any" id="field24856174" name="field24856174" class="fsField form-control" />
             <i class="fa fa-list-ol"></i>
         </div>
         <small class="text-danger">The Movin' on Up Quartly Flyer is provided in packages of 100.</small>
@@ -100,8 +106,8 @@
 
     <script type="text/javascript" src="//static.formstack.com/forms/js/3/jquery.min_1d14cd3798.js"></script>
     <script type="text/javascript" src="//static.formstack.com/forms/js/3/jquery-ui.min_42a497cb9f.js"></script>
-    <script type="text/javascript" src="//static.formstack.com/forms/js/3/scripts_6ad58dd3e8.js"></script>
-    <script type="text/javascript" src="//static.formstack.com/forms/js/3/analytics_f35d68aeed.js"></script>
+    <script type="text/javascript" src="//static.formstack.com/forms/js/3/scripts.js"></script>
+    <script type="text/javascript" src="//static.formstack.com/forms/js/3/analytics.js"></script>
     <script type="text/javascript">
         if(window.addEventListener) {
             window.addEventListener('load', loadFormstack, false);
