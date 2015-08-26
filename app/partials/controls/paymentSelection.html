@@ -16,7 +16,7 @@
         <button class="btn btn-default" type="button"
                 ng-if="user.Permissions.contains('PayByBudgetAccount') && (SpendingAccounts|filter:{ForPurchase:true}).length > 0"
                 ng-click="setBudgetAccount((SpendingAccounts|filter:{AccountType.PurchaseCredit:true}).length)">
-            <i ng-class="{'fa fa-check': currentOrder.PaymentMethod == 'BudgetAccount' }"></i>
+            <i ng-class="{'fa fa-check': currentOrder.PaymentMethod == 'BudgetAccount' || currentOrder.BudgetAccountID != null }"></i>
             {{'Spending Account' | r | xlat}}
         </button>
         <button class="btn btn-default" type="button"
