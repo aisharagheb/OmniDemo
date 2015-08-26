@@ -4,6 +4,7 @@
             {{item.ProductIDText}}
         </h3>
         <span>{{item.Product.Name}}</span>
+        <a class="pull-right" href="" title="{{'Download' | r | xlat}}" ng-click="downloadProof(item)" ng-if="item.Variant.IsMpowerVariant">Download Proof <i class="fa fa-download"></i></a>
         <ul ng-show="item.Specs | filter:{'CanSetForLineItem':true}.length > 0">
             <li class="text-center" ng-repeat="spec in item.Specs | onproperty:{Property: 'CanSetForLineItem', Value: true}" ng-if="spec.Name != 'WebMerge'">
                 <span class="text-info">{{spec.Name | specnametolabel:item.Specs}}</span>
