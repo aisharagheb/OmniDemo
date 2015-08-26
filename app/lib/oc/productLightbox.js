@@ -40,7 +40,7 @@ function productlightbox() {
             '<div class="panel-body">',
             '<ul class="galleryImages">',
             '<li ng-repeat="image in LineItem.images">',
-            '<a class="hidden-xs" ng-click="openLightboxModal($index)" ng-class="{active: $index==$parent.index}">',
+            '<a class="hidden-xs" ng-click="openLightboxModal($index)" ng-class="{active: image.Selected}">',
             '<img ng-src="{{image.url}}" class="product-image-large img-responsive" />',
             '</a>',
             '<a class="no-click visible-xs" ng-class="{active: $index==$parent.index}">',
@@ -52,7 +52,7 @@ function productlightbox() {
             '<div class="panel-footer">',
             '<ul ng-hide="!LineItem.images.1" class="galleryThumbs">',
             '<li ng-repeat="image in LineItem.images">',
-            '<a ng-click="$parent.index=$index" ng-class="{active: $index==$parent.index}">',
+            '<a ng-click="makeSelected(image.Name)" ng-class="{active: image.Selected}">',
             '<img ng-src="{{image.url}}" class="img-thumbnail img-responsive" />',
             '</a>',
             '</li>',
@@ -62,14 +62,13 @@ function productlightbox() {
     }
 }
 
-LightboxCtrl.$inject = ['$scope', 'Lightbox'];
-function LightboxCtrl($scope, Lightbox) {
+LightboxCtrl.$inject = ['$scope', 'Lightbox', 'Variant'];
+function LightboxCtrl($scope, Lightbox, Variant) {
     var specGroupName = "LightboxImages";
     function LightboxImageScope($scope) {
         if ($scope.LineItem.Specs && $scope.LineItem.Specs.Color) {
             var varSpecName = "Color";
         }
-
         if ($scope.LineItem.Specs || $scope.LineItem.Product && $scope.LineItem.Product.StaticSpecGroups) {
 
             $scope.LineItem.images = [];
@@ -92,6 +91,7 @@ function LightboxCtrl($scope, Lightbox) {
                     $scope.LineItem.images.push(image);
                     count++;
                 });
+
             }
             $scope.imageLoaded = true;
         }
@@ -112,6 +112,26 @@ function LightboxCtrl($scope, Lightbox) {
         }
     });
 
+    $scope.$watch('LineItem.Specs.Color', function(n, o) {
+        if (!n) return;
+        var count = 2;
+        angular.forEach($scope.LineItem.Specs.Color.Options, function(color) {
+            Variant.get({'ProductInteropID': $scope.LineItem.Product.InteropID, 'SpecOptionIDs': color.ID}, function(data, index){
+                if(!data.IsDefaultVariant) {
+                    var image = {};
+                    image.Number = count;
+                    image.url = data.LargeImageUrl;
+                    image.Selected = false;
+                    image.Name = color.Value;
+                    $scope.LineItem.images.push(image);
+                    count += 1;
+                }
+            }, function(ex){
+
+            });
+        });
+    })
+
     $scope.$watch('LineItem.Product', function(newVal,oldVal) {
         if (!newVal) return;
         if (!$scope.LineItem.Product.StaticSpecGroups || !$scope.LineItem.Product.StaticSpecGroups[specGroupName]) {
@@ -120,22 +140,46 @@ function LightboxCtrl($scope, Lightbox) {
             var image = {};
             image.Number = 1;
             image.url = $scope.LineItem.Product.LargeImageUrl;
-            image.Selected = false;
+            image.Selected = true;
+            console.log('Is this hit');
             $scope.LineItem.images.push(image);
             $scope.imageLoaded = true;
+        }
+        else if ($scope.LineItem.images) {
+            $scope.LineItem.images[0].Selected = true;
         }
     });
 
     $scope.$watch('LineItem.Specs.Color.Value', function(n,o){
         if ( n!= o) {
-            LightboxImageScope($scope);
-            angular.forEach ($scope.LineItem.images, function(img) {
+            //LightboxImageScope($scope);
+            /*angular.forEach ($scope.LineItem.images, function(img) {
                 if (img.Selected) {
                     $scope.index = img.Number;
+                    img.Selected = false;
                 }
-            });
+                if (img.Name === n) {
+                    img.Selected = true;
+                }
+            });*/
+            if ($scope.LineItem.images.length > 1) {
+                makeSelected(n);
+            }
         }
     });
+
+    function makeSelected(image) {
+        angular.forEach ($scope.LineItem.images, function(img) {
+            if (img.Selected) {
+                $scope.index = img.Number;
+                img.Selected = false;
+            }
+            if (img.Name === image) {
+                img.Selected = true;
+            }
+        });
+    }
+    $scope.makeSelected = makeSelected;
 }
 
 function Lightbox() {
@@ -285,9 +329,9 @@ function imagelightboxtemplate () {
         '<div class="modal-body" ng-swipe-left="Lightbox.nextImage()" ng-swipe-right="Lightbox.prevImage()">',
         '<div class="lightbox-nav">',
         '<div class="btn-group">',
-        '<a class="btn btn-xs btn-default" ng-if="LineItem.images.1" ng-click="Lightbox.prevImage()">‹ Previous</a>',
+        '<a class="btn btn-xs btn-default" ng-if="Lightbox.images.length > 1" ng-click="Lightbox.prevImage()">‹ Previous</a>',
         '<a ng-href="{{Lightbox.imageUrl}}" target="_blank" class="btn btn-xs btn-default" title="Open in new tab">Open image in new tab</a>',
-        '<a class="btn btn-xs btn-default" ng-if="LineItem.images.1" ng-click="Lightbox.nextImage()">Next ›</a>',
+        '<a class="btn btn-xs btn-default" ng-if="Lightbox.images.length > 1" ng-click="Lightbox.nextImage()">Next ›</a>',
         '<a class="btn btn-xs btn-default pull-right" aria-hidden="true" ng-click="$dismiss()">Close &times;</a>',
         '</div>',
         '</div>',
