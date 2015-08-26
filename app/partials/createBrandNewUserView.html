@@ -28,17 +28,11 @@
             <input type="text" ui-mask="(999) 999-9999" id="field24856084" name="field24856084" ng-model="number" class="fsField form-control" aria-required="true" />
             <i class="fa fa-phone"></i>
         </div>
-        <!--<div class="row" style="padding-top: 15px;">-->
-        <!--<div class="col-md-12">-->
-        <!--<label>{{'Phone Number' | r | xlat}}</label>-->
-        <!--<input name="phone" class="form-control" type="text" ng-model="LineItem.Specs.PHONE.Value" ui-mask="(999) 999-9999" autocomplete="off" />-->
-        <!--</div>-->
-        <!--</div>-->
         <small class="text-danger">Please format like (555) 555-1212</small>
     </div>
     <div class="view-form-icon">
         <div>
-            <label for="field24856133">Email<span class="fsRequiredMarker">*</span>                    </label>
+            <label for="field24856133">Email<span class="fsRequiredMarker">*</span></label>
             <input type="email" id="field24856133" name="field24856133"required="required" placeholder="@expresspros.com" title="@expresspros.com" class="fsField form-control" aria-required="true" />
             <i class="fa fa-envelope"></i>
         </div>
@@ -69,22 +63,21 @@
     <br/>
     <small><b>I want to receive the Movin' on Up Quarterly Flyer</b></small>
     <div class="radio">
-        <label class="fsOptionLabel vertical" for="field24856155_1"><input style="min-height: 0;" type="radio" id="field24856155_1" name="field24856155" value="Yes, please include me." class="fsField fsRequired vertical" aria-required="true" />Yes, please include me.</label>
+        <label class="fsOptionLabel vertical" for="field24856155_1"><input style="min-height: 0;" ng-model="flyerBoolean" type="radio" id="field24856155_1" name="field24856155" value="Yes, please include me." class="fsField fsRequired vertical" aria-required="true" />Yes, please include me.</label>
     </div>
     <div class="radio">
-        <label  class="fsOptionLabel vertical" for="field24856155_2"><input style="min-height: 0;" type="radio" id="field24856155_2" name="field24856155" value="No, I would like to opt out." class="fsField fsRequired vertical" aria-required="true" />No, I would like to opt out.</label>
+        <label  class="fsOptionLabel vertical" for="field24856155_2"><input style="min-height: 0;" ng-model="flyerBoolean" type="radio" id="field24856155_2" name="field24856155" value="No, I would like to opt out." class="fsField fsRequired vertical" aria-required="true" />No, I would like to opt out.</label>
     </div>
     <small class="text-danger">This free promotional tool highlights articles that draw attention to the job seeker and employee workforce. Available quarterly, use this flyer as a handout or paycheck stuffer. <strong>Each office is responsible for shipping costs.</strong></small>
 
-    <div class="view-form-icon">
-        <div>
+    <div class="view-form-icon" ng-show="flyerBoolean === 'Yes, please include me.'">
+        <div ng-init="initVal = 0">
             <label for="field24856174">Number of Packs Needed</label>
-            <input type="number" step="any" id="field24856174" name="field24856174" class="fsField form-control" />
+            <input type="number" step="any" ng-model="initVal" id="field24856174" name="field24856174" class="fsField form-control" />
             <i class="fa fa-list-ol"></i>
         </div>
         <small class="text-danger">The Movin' on Up Quartly Flyer is provided in packages of 100.</small>
     </div>
-
     <div id="fsSubmit1717943" >
         <input id="fsSubmitButton1717943"
                class="btn btn-primary btn-block"
