@@ -280,25 +280,3 @@ four51.app.filter('groupOptionsFilter', function(){
         return result;
     }
 });
-four51.app.filter('freightShipper', function() {
-    return function(shipper) {
-        var results = [];
-        var freight = [];
-
-        angular.forEach(shipper, function(s) {
-            if(s.Name.indexOf('Billed Later') != -1){
-                freight.push(s);
-            }
-            else{
-                results.push(s);
-            }
-        });
-
-        if(results.length > 0){
-            return results;
-        }
-        else{
-            return freight;
-        }
-    }
-});
