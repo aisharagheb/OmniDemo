@@ -17,7 +17,6 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 		if (!newVal) return;
 		angular.forEach($scope.StaticSpecGroups.Download.Specs, function(spec) {
 			$scope.numSpecs++;
-			console.log($scope.numSpecs);
 		})
 	});
 

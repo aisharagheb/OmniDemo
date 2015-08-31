@@ -141,7 +141,6 @@ function LightboxCtrl($scope, Lightbox, Variant) {
             image.Number = 1;
             image.url = $scope.LineItem.Product.LargeImageUrl;
             image.Selected = true;
-            console.log('Is this hit');
             $scope.LineItem.images.push(image);
             $scope.imageLoaded = true;
         }

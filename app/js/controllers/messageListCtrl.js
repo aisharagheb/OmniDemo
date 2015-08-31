@@ -23,7 +23,6 @@ four51.app.controller('MessageListCtrl', ['$scope', 'MessageList', function($sco
 	$scope.deleteSelected = function() {
 		$scope.displayLoadingIndicator = true;
 		MessageList.delete($scope.messages, function() {
-			console.log('get list');
 			GetList();
 		});
 	};
