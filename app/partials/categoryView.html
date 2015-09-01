@@ -27,6 +27,9 @@
             <div ng-if="currentCategory.InteropID == 'A37C3719-79D3-4DBE-A71B-A5EC94C68329'">
                 <broadcastview></broadcastview>
             </div>
+            <div class="description text-left">
+            	<p ng-bind-html="trusted(currentCategory.Description)"></p>
+            </div>
             <loadingindicator ng-show="productLoadingIndicator" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
             <productlistview ng-show="productListType == 'row' && (currentCategory.InteropID != 'eep-tropical-theme' && currentCategory.InteropID != 'eep-sports-theme' && currentCategory.InteropID != 'eep-service-lines' && currentCategory.InteropID != 'A37C3719-79D3-4DBE-A71B-A5EC94C68329' && currentCategory.InteropID != 'eep-service-lines--Featured' && currentCategory.InteropID != 'eep-sports-theme--Featured' && currentCategory.InteropID != 'eep-tropical-theme--Featured')"></productlistview>
             <productlistview-alt ng-show="productListType == 'inline' && (currentCategory.InteropID != 'eep-tropical-theme' && currentCategory.InteropID != 'eep-sports-theme' && currentCategory.InteropID != 'eep-service-lines' && currentCategory.InteropID != 'A37C3719-79D3-4DBE-A71B-A5EC94C68329' && currentCategory.InteropID != 'eep-service-lines--Featured' && currentCategory.InteropID != 'eep-sports-theme--Featured' && currentCategory.InteropID != 'eep-tropical-theme--Featured')"></productlistview-alt>
