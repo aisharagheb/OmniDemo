@@ -13,10 +13,9 @@
         <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
     </p>
     <div class="product-id" ng-bind-html="LineItem.Product.ExternalID"></div>
-    <form name="addToOrderForm" ng-submit="addToOrder()">
+    <div>
         <div class="view-form-icon" ng-show="allowAddToOrderInProductList && !StaticSpecGroups.Qualities.Specs.DownloadOnly">
             <div class="row">
-                <!--<quantityfield required="true" calculated="calcVariantLineItems" lineitem="LineItem" class="quantity"/>-->
                 <productlistaddtocart ng-show="!actionMessage"></productlistaddtocart>
                 <div class="view-response-message alert-info text-center" alert-show="actionMessage">
                     {{actionMessage | r | xlat}}
@@ -28,10 +27,12 @@
                 <a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Details' | r) | xlat}}</a>
             </div>
         </div>
-    </form>
+    </div>
+    <!--[if !IE 9]>-->
     <ul class="product-list-qualities-grid" ng-show="StaticSpecGroups.Qualities">
         <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" compile="Value.Value"></li>
     </ul>
+    <!--<![endif]-->
     <!-- <div class="col-xs-12 text-left">
          <div class="panel-body">
              <div>

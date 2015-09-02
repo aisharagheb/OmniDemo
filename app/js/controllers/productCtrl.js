@@ -1,5 +1,5 @@
-four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$location', '$451', 'Product', 'ProductDisplayService', 'Order', 'Variant', 'User',
-function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplayService, Order, Variant, User) {
+four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$location', '$451', 'Product', 'ProductDisplayService', 'Order', 'Variant', 'User', 'Browser',
+function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplayService, Order, Variant, User, Browser) {
     $scope.selected = 1;
     $scope.LineItem = {};
 	$scope.addToOrderText = "Add To Cart";
@@ -158,6 +158,9 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 					$scope.LineItem.Quantity = null;
                     $scope.LineItem.LineTotal = null;
 					$scope.TotalQty = quantity;
+                    if (Browser.msie && Browser.version <= 9) {
+                        alert(quantity + " " + (+(quantity) > 1 ? 'items' : 'item') + " added to your cart.");
+                    }
 
 				});
 			},

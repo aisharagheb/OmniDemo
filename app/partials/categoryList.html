@@ -19,7 +19,9 @@
 
                             <h5  class="451_lbl_subcatlist" ng-bind-html="c.Name | categoryNames" />
                             <div ng-show="isActive('catalog')" class="category-list-tree-sub">
+                                <!--[if !IE 9]>-->
                                 <categorylisttree tree='c.SubCategories' current='currentCategory'/>
+                                <!--<![endif]-->
                                 <a class="shop-all" ng-href="catalog/{{c.InteropID}}">
                                     <small><b>Shop All</b></small>
                                 </a>

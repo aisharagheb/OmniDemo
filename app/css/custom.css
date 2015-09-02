@@ -179,7 +179,7 @@ a {
 }
 
 .row.view-product {
-    padding-top: 35px;
+    top: -14px;
 }
 
 .row.view-product .btn {
@@ -211,12 +211,9 @@ a {
     height: 185px;
 }
 
-form[name='addToOrderForm'] div div .view-response-message.alert-info.text-center {
-    margin-top: 35px;
-}
-
 form[name='addToOrderForm'] {
     height: 87px;
+    margin-bottom: -20px;
 }
 
 .galleryThumbs li a img {
@@ -226,4 +223,9 @@ form[name='addToOrderForm'] {
 
 .product-list-qualities-grid i.fa.fa-money, .product-list-qualities-pdt i.fa.fa-money {
     margin-right: 4px;
+}
+
+.view-response-message.alert-info.text-center {
+    margin-top: -20px;
+    margin-bottom: 5px;
 }

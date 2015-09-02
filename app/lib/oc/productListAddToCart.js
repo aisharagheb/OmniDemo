@@ -41,8 +41,8 @@ function productlistaddtocart() {
     }
 }
 
-ProductListAddToCartCtrl.$inject = ['$scope', 'Order', 'User', '$timeout'];
-function ProductListAddToCartCtrl($scope, Order, User, $timeout) {
+ProductListAddToCartCtrl.$inject = ['$scope', 'Order', 'User', '$timeout', 'Browser'];
+function ProductListAddToCartCtrl($scope, Order, User, $timeout, Browser) {
 
     $scope.allowAddToOrderInProductList = $scope.allowAddToOrder && $scope.LineItem.Product.Type != 'VariableText' && $scope.LineItem.Product.SpecCount == 0;
     $scope.addToOrder = function(){
@@ -70,12 +70,19 @@ function ProductListAddToCartCtrl($scope, Order, User, $timeout) {
                 $scope.LineItem.Product.QuantityAvailable = $scope.LineItem.Product.QuantityAvailable - $scope.LineItem.Quantity;
                 User.save($scope.user, function(){
                     $scope.LineItem.Quantity = null;
+                    if (callback) callback();
+                    if (Browser.msie && Browser.version <= 9) {
+                        $scope.actionMessage = null;
+                        alert('Item has been added to your cart');
+                    }
+                    else{
+                        $scope.actionMessage = 'Item has been added to your cart!';
+                        $timeout(function () {
+                            $scope.actionMessage = null;
+                        }, 5000);
+                    }
                 });
-                if (callback) callback();
-                $scope.actionMessage = 'Item has been added to your cart!';
-                $timeout(function () {
-                    $scope.actionMessage = null;
-                }, 5000);
+
             },
             function (ex) {
                 $scope.displayLoadingIndicator = false;
