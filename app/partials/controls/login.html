@@ -77,7 +77,6 @@
                         <input ng-disabled="login_form.$invalid" class="btn btn-large btn-primary btn-block" id="451_btn_login" type="submit" value="{{buttonText}}" />
                     </div>
                     <div ng-show="!showEmailHelp && !PasswordReset" class="btn btn-info btn-block" ng-class="{'btn-blue': !showCreateNewUser, 'btn-warning': showCreateNewUser}" ng-click="showCreateNewUser = !showCreateNewUser">{{showCreateNewUser ? 'Cancel' : 'Create New User'}}</div>
-                    <ng-include ng-if="user.Type != 'Customer'" ng-show="showCreateNewUser" src="'partials/createBrandNewUserView.html'"></ng-include>
                 </form>
 
             </div>

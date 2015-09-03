@@ -21,13 +21,7 @@
         <div class="container">
             <div class="logo">
                 <a href="catalog">
-                    <!--[if !IE 9]>-->
-                    <img src="css/images/logo.png" />
-                    <!--<![endif]-->
-                    <!--[if IE 9]>
-                    <img src="css/images/logo.png" style="padding-bottom: 10px;"/>
-                    <![endif]-->
-
+                    <img ng-src="{{user.Company.LogoUrl}}}" />
                 </a>
             </div>
             <div class="search">
@@ -64,9 +58,6 @@
                             <dt>{{sa.Label}}</dt>
                             <dd>{{sa.Balance | currency}}</dd>
                         </dl>
-                    </div>
-                    <div class="row text-right text-info">
-                        <a ng-href="{{'http://cms.expresscompanystore.com/spending-accounts' + '?auth=' + AuthToken}}"><i class="fa fa-lg fa-question"></i></a>
                     </div>
                 </div>
             </div>
