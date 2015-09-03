@@ -82,9 +82,9 @@ form[name="addToOrderForm"]  {
 }
 
 .product-list-qualities-grid li {
-     min-height: 0 !important;
-     margin: 5px 0 -15px 7px;
- }
+    min-height: 0 !important;
+    margin: 5px 0 -15px 7px;
+}
 
 .product-list-qualities-pdt li {
     min-height: 0 !important;
@@ -185,8 +185,7 @@ a {
 .row.view-product .btn {
     padding: 15px;
     border-color: #dddddd;
-    color: #999;;
-    
+    color: #999;
 }
 
 .no-panels.robyn-product-list ul li ul li:not(product-list-qualities-grid), .robyn-product-list ul li ul li:not(product-list-qualities-grid) {
@@ -211,11 +210,6 @@ a {
     height: 185px;
 }
 
-form[name='addToOrderForm'] {
-    height: 87px;
-    margin-bottom: -20px;
-}
-
 .galleryThumbs li a img {
     max-height: 64px!important;
     max-width: 64px!important;
@@ -226,6 +220,6 @@ form[name='addToOrderForm'] {
 }
 
 .view-response-message.alert-info.text-center {
-    margin-top: -20px;
-    margin-bottom: 5px;
+    margin-top: -16px;
+    font-size: 80%;
 }

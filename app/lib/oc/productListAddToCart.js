@@ -27,7 +27,7 @@ function productlistaddtocart() {
                             '<quantityfield required="true" calculated="calcVariantLineItems" lineitem="LineItem" class="quantity"/>',
                         '</div>',
                         '<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">',
-                            '<button style="height:52px; font-size: 200%;" class="btn btn-default btn-block btn-md" type="submit" ng-disabled="addToOrderForm.$invalid">',
+                            '<button style="height:52px; font-size: 200%;" class="btn btn-default btn-block btn-md" id="addToCart" type="submit" ng-disabled="addToOrderForm.$invalid || displayLoadingIndicator">',
                                 '<loadingindicator  ng-show="displayLoadingIndicator" />',
                                 //'<i ng-show="lineItemErrors.length > 0" class="fa fa-warning" style="left: 0px;"></i>',
                                 '<i ng-show="lineItemErrors.length > 0" class="fa fa-shopping-cart" style="left: 0px; color: #aaaaaa;"></i>',
@@ -50,7 +50,6 @@ function ProductListAddToCartCtrl($scope, Order, User, $timeout, Browser) {
         $scope.actionMessage = null;
         $scope.errorMessage = null;
         $scope.user.CurrentOrderID ? addLineItemToCurrentOrder() : addLineItemToNewOrder();
-        $scope.displayLoadingIndicator = false;
     };
     var addLineItemToCurrentOrder = function(){
         Order.get($scope.user.CurrentOrderID, function(order){
@@ -70,18 +69,18 @@ function ProductListAddToCartCtrl($scope, Order, User, $timeout, Browser) {
                 $scope.LineItem.Product.QuantityAvailable = $scope.LineItem.Product.QuantityAvailable - $scope.LineItem.Quantity;
                 User.save($scope.user, function(){
                     $scope.LineItem.Quantity = null;
-                    if (callback) callback();
-                    if (Browser.msie && Browser.version <= 9) {
-                        $scope.actionMessage = null;
-                        alert('Item has been added to your cart');
-                    }
-                    else{
-                        $scope.actionMessage = 'Item has been added to your cart!';
-                        $timeout(function () {
-                            $scope.actionMessage = null;
-                        }, 5000);
-                    }
                 });
+                $scope.actionMessage = 'Item has been added to your cart!';
+                $timeout(function () {
+                    $scope.actionMessage = null;
+                    $scope.displayLoadingIndicator = false;
+                }, 5000);
+                if (callback) callback();
+                if (Browser.msie && Browser.version <= 9) {
+                    $scope.actionMessage = null;
+                    alert('Item has been added to your cart');
+                    $scope.displayLoadingIndicator = false;
+                }
 
             },
             function (ex) {
