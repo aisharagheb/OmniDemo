@@ -5,7 +5,7 @@
             <div id="login_form" class="animated bounceIn">
                 <form class="form-signin" ng-submit="login()" name="login_form">
                     <figure>
-                        <img src="css/images/logo.png" alt=""/>
+                        <img ng-src="{{user.Company.LogoUrl}}" alt=""/>
                     </figure>
                     <p id="451qa_msg_login" ng-show="loginMessage" ng-bind-html="loginMessage" class="alert alert-info"></p>
                     <div ng-hide="showCreateNewUser">
