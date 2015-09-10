@@ -53,7 +53,7 @@ function productlightbox() {
             '<ul ng-hide="!LineItem.images.1" class="galleryThumbs">',
             '<li ng-repeat="image in LineItem.images">',
             '<a ng-click="makeSelected(image.Name)" ng-class="{active: image.Selected}">',
-            '<img ng-src="{{image.url}}" class="img-thumbnail img-responsive" />',
+            '<img ng-src="{{image.url}}" class="img-thumbnail img-responsive" imageonload />',
             '</a>',
             '</li>',
             '</ul>',
@@ -153,14 +153,14 @@ function LightboxCtrl($scope, Lightbox, Variant) {
         if ( n!= o) {
             //LightboxImageScope($scope);
             /*angular.forEach ($scope.LineItem.images, function(img) {
-                if (img.Selected) {
-                    $scope.index = img.Number;
-                    img.Selected = false;
-                }
-                if (img.Name === n) {
-                    img.Selected = true;
-                }
-            });*/
+             if (img.Selected) {
+             $scope.index = img.Number;
+             img.Selected = false;
+             }
+             if (img.Name === n) {
+             img.Selected = true;
+             }
+             });*/
             if ($scope.LineItem.images.length > 1) {
                 makeSelected(n);
             }
@@ -336,7 +336,7 @@ function imagelightboxtemplate () {
         '</div>',
         '<div class="lightbox-image-container">',
         '<div class="lightbox-image-caption"><span>{{Lightbox.imageCaption}}</span></div>',
-        '<img lightbox-src="{{Lightbox.imageUrl}}" alt="">',
+        '<img lightbox-src="{{Lightbox.imageUrl}}" alt="" imageonload>',
         '</div>',
         '</div>',
         '</div>'
