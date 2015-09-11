@@ -1,6 +1,6 @@
 <div>
     <div class="minicart">
-        <i class="fa fa-shopping-cart"></i> Shopping Cart <span class="items-label">{{currentOrder.LineItems.length + ' Item(s)'}}</span> - {{currentOrder.Total | currency }} <i class="fa fa-caret-down"></i>
+        <i class="fa fa-shopping-cart"></i> {{'Shopping' | r | xlat}} {{'Cart' | r | xlat}}: <span class="items-label">{{currentOrder.LineItems.length}} {{'Item' | r | xlat}}(s)</span> - {{currentOrder.Total | currency }} <i class="fa fa-caret-down"></i>
         <div class="minicart-detail">
             <i class="fa fa-caret-up fa-2x"></i>
             <i class="fa fa-caret-up fa-2x"></i>
@@ -55,7 +55,7 @@
                 </li>
             </ul>
             <div class="row">
-                <div class="col-xs-8 text-right text-muted">Subtotal:</div>
+                <div class="col-xs-8 text-right text-muted">{{'Subotal' | r | xlat}}:</div>
                 <div class="col-xs-4 text-right text-muted">{{currentOrder.Subtotal | currency}}</div>
             </div>
             <!--<div class="row">
@@ -71,22 +71,15 @@
                 <div class="col-xs-4 text-right">{{currentOrder.TaxCost | culturecurrency}}</div>
             </div>
             <div class="row">
-                <div class="col-xs-8 text-right text-muted">Total:</div>
+                <div class="col-xs-8 text-right text-muted">{{'Total' | r | xlat}}:</div>
                 <div class="col-xs-4 text-right text-muted">{{currentOrder.Total | currency}}</div>
             </div>
             <div class="row">
-                <!--[if !IE 9]>-->
                 <div class="col-xs-6">
-                    <a class="btn btn-blue btn-block" ng-disabled="!cartCount" ng-click="preCartRedirect()">View Cart</a>
+                    <a class="btn btn-blue btn-block" ng-disabled="!cartCount" ng-click="preCartRedirect()">{{'View' | r | xlat}} {{'Cart' | r | xlat}}</a>
                 </div>
-                <!--<![endif]-->
-                <!--[if IE 9]>
                 <div class="col-xs-6">
-                    <a class="btn btn-blue btn-block" ng-disabled="!cartCount" href="#/cart">View Cart</a>
-                </div>
-                <![endif]-->
-                <div class="col-xs-6">
-                    <a class="btn btn-blue btn-block" ng-disabled="!cartCount" href="checkout">Checkout</a>
+                    <a class="btn btn-blue btn-block" ng-disabled="!cartCount" href="checkout">{{'Checkout' | r | xlat}}</a>
                 </div>
             </div>
         </div>

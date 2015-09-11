@@ -461,6 +461,7 @@ var XLATTables = {
         'user name': 'nombre de usuario',
         'variant': 'variante',
         'variants': 'variantes',
+        'view all': 'ver todos',
         'view orders': 'ver pedidos',
         'view pdf': 'ver PDF',
         'view product': 'ver producto',

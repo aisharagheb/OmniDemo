@@ -30,6 +30,60 @@
     </div>
 
     <div class="col-md-7 col-md-pull-5 col-collapse" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
+        <div class="panel panel-default panel-order" ng-if="user.Type == 'TempCustomer'" ng-show="!user.GuestCheckout">
+            <div class="panel-heading" ng-class="{'open': currentOrder.checkOutSection == 'options' }" ng-click="showSuccessAlert = false">
+                <div ng-click="currentOrder.checkOutSection = 'options'" class="panel-title panel-primary">
+                    <i class="pull-left" ng-class="{'fa fa-warning': cart_shipping.$invalid, 'fa fa-check-circle': !cart_shipping.$invalid }"></i>
+                    {{'Step 1: Checkout Options' | r | xlat}}
+                    <i class="pull-right" ng-class="{'fa fa-caret-up': currentOrder.checkOutSection == 'options', 'fa fa-caret-down': currentOrder.checkOutSection != 'options' }"></i>
+                </div>
+            </div>
+            <div class="panel-body" ng-show="currentOrder.checkOutSection == 'options'">
+                <div class="row">
+                    <div ng-show="!showCreateNewUser" class="col-sm-6">
+                        <div class="well aom-bordered-well">
+                            <p class="lead text-muted"><b>New Customer</b></p>
+                            <p class="text-muted">
+                                <small>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</small>
+                            </p>
+                            <form name="new_customer" ng-submit="newCustomerContinue(checkoutChoice)">
+                                <div class="radio">
+                                    <label>
+                                        <input style="min-height: 0" type="radio" ng-model="checkoutChoice" value="register">
+                                        Register Account
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input style="min-height: 0" type="radio" ng-model="checkoutChoice" value="guestcheckout">
+                                        Guest Checkout
+                                    </label>
+                                </div>
+                                <div ng-show="checkoutChoice == 'guestcheckout'">
+                                    <label>{{'Guest Checkout Email' | r | xlat}}</label>
+                                    <input class="form-control" type="email" ng-model="user.TempEmail" ng-required="checkoutChoice == 'guestcheckout'" placeholder="{{'Email Address' | r | xlat}}" ng-pattern="/^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/" /><br/>
+                                </div>
+                                <input class="btn btn-default" type="submit" ng-disabled="new_customer.$invalid || !checkoutChoice" id="451_btn_login_existing" value="{{'Continue' | r | xlat}}" />
+                            </form>
+                        </div>
+                    </div>
+                    <div ng-show="!showCreateNewUser" class="col-sm-6">
+                        <!--Existing User Login Form-->
+                        <div class="well aom-bordered-well" ng-controller="UserEditCtrl">
+                            <p class="lead text-muted"><b>Returning Customer</b></p>
+                            <form name="login_existing" ng-submit="loginExisting()">
+                                <div id="user_form">
+                                    <label>{{'Email' | r | xlat}}</label><input name="username" class="form-control" type="text" ng-model="loginasuser.Username" autocomplete="off" required placeholder="{{'Email' | r | xlat}}" /><br />
+                                    <label>{{'Password' | r | xlat}} <small><a href="admin">Forgot Password?</a></small></label><input name="password" class="form-control" type="password" ng-model="loginasuser.Password" autocomplete="off" required placeholder="{{'Password' | r | xlat}}" /><br/>
+                                    <input class="btn btn-default" type="submit" ng-disabled="login_existing.$invalid" id="451_btn_login_existing" value="{{'Login' | r | xlat}}" />
+                                    <inlineerror ng-show="loginAsExistingError" title="{{loginAsExistingError}}" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <orderdetails ng-show="hasOrderConfig" />
         <ordershipping />
         <orderbilling />
