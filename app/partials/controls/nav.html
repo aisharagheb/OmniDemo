@@ -1,6 +1,4 @@
 <header class="header navbar navbar-inner">
-
-
     <nav tolerance='20' offset='200' class="navbar navbar-default" role="navigation">
        
         <ng-include src="'partials/controls/dashboard.html'"></ng-include>
@@ -16,7 +14,7 @@
                     <li class="products" ng-class="{'active': isInPath('catalog') || isInPath('product') || isInPath('cart/default') || isInPath('search')}">
                         <a id="451qa_home_link" ng-show="Four51User.isAuthenticated()" href="catalog">
                             <i class="fa fa-home"></i>
-                            <span class="hidden-xs">{{'Products' | r | xlat}}</span>
+                            <span class="hidden-xs">{{'Home' | r | xlat}}</span>
                         </a>
                     </li>
                     <li class="dropdown admin-user visible-md visible-lg" ng-class="{'active': isActive(['order', 'favoriteorders'])}">
@@ -98,12 +96,12 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <!--<li>
                         <a id="451qa_acct_link" href="support" >
                             <i class="fa fa-phone-square"></i>
                             <span class="hidden-xs">{{'Support' | r | xlat}}</span>
                         </a>
-                    </li>
+                    </li>-->
                     <!--<li>
                         <a id="451qa_acct_link" ng-href="{{'http://cms.expresscompanystore.com/blog' + '?auth=' + AuthToken}}" >
                             <i class="fa fa-bookmark"></i>
