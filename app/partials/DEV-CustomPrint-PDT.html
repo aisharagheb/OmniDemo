@@ -22,9 +22,6 @@
                 <div class="col-xs-12">
                     <h2 id="451qa_prod_name" ng-bind-html="LineItem.Product.Name">
                     </h2>
-                    <!--<h2 ng-show="LineItem.Variant.ExternalID">-->
-                    <!--{{LineItem.Variant.ExternalID}}-->
-                    <!--</h2>-->
                     <h2 class="text-success" ng-show="LineItem.PriceSchedule.PriceBreaks.length == 1" ng-if="!(user.Permissions.contains('HidePricing'))">
                         <small class="text-danger" ng-show="StaticSpecGroups && StaticSpecGroups.StrikeThroughPricing"><s>{{StaticSpecGroups.StrikeThroughPricing.Specs.StrikeThroughPrice.Value}}</s><br/></small>
                         {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
@@ -213,20 +210,6 @@
                                             <small><span class="text-info">{{'Total' | r | xlat}}</span><br /><span class=" text-success">{{variantLineItems[v.InteropID].LineTotal | culturecurrency}}</span></small>
                                         </div>
                                     </div>
-                                    <!--<div class="col-sm-3 view-form-icon" ng-show="allowAddFromVariantList && (!StaticSpecGroups.Qualities.Specs.DownloadOnly && !LineItem.PriceSchedule.DefaultQuantity)">-->
-                                    <!--<quantityfield required="false" calculated="calcVariantLineItems" lineitem="variantLineItems[v.InteropID]" class="quantity" />-->
-                                    <!--</div>-->
-                                    <!--<div class="col-sm-3">-->
-                                    <!--<button class="btn btn-blue btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()" ng-if="allowAddToOrder || (allowAddToOrder && LineItem.PriceSchedule.DefaultQuantity != 'null') && (!StaticSpecGroups.Qualities.Specs.DownloadOnly && LineItem.PriceSchedule.DefaultQuantity != 'null')" style="margin-top: 0; width: 100%;">-->
-                                    <!--<loadingindicator ng-show="addToOrderIndicator" />-->
-                                    <!--<i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>-->
-                                    <!--<i ng-show="lineItemErrors.length == 0" class="fa fa-shopping-cart"></i>-->
-                                    <!--{{addToOrderText | r | xlat}}-->
-                                    <!--<span id="451qa_lineitem_total" class="badge" ng-if="!(user.Permissions.contains('HidePricing')) && (LineItem.LineTotal || variantLineItemsOrderTotal) > 0">-->
-                                    <!--{{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}-->
-                                    <!--</span>-->
-                                    <!--</button>-->
-                                    <!--</div>-->
                                     <div class="col-sm-1" ng-show="v.IsMpowerVariant">
                                         <button type="button" ng-click="deleteVariant(v, false)" class="btn btn-default btn-block">
                                             <i class="fa fa-trash-o text-warning"></i> <span class="visible-xs text-warning">{{'Delete' | r | xlat}}</span>
@@ -308,15 +291,6 @@
                         </div>
                     </div>
                 </div>
-                <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="col-sm-8">-->
-                <!--<div class="alert-info text-center">-->
-                <!--TEST TEST TEST-->
-                <!--</div>-->
-                <!--</div>-->
-
             </form>
 
         </div>
