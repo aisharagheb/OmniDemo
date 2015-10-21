@@ -1,0 +1,92 @@
+.container .navbar-nav li.active a:hover  {background-color: #00853e;}
+.container .navbar-nav li.active a:focus  {background-color: #00853e;}
+.navbar-default .navbar-nav .open > a  {background-color: #00853e;}
+.navbar-default .navbar-nav .open > a:hover  {background-color: #00853e;}
+.navbar-default .navbar-nav .open > a:focus  {background-color: #00853e;}
+.navbar-nav li.dropdown li > a:hover  {background-color: #00853e;}
+.navbar-nav li.dropdown li > a:focus  {background-color: #00853e;}
+.navbar .container .navbar-nav li.active .fa-caret-down  {color: #00853e;}
+.navbar-nav li.dropdown li > a  {color: #333333;}
+.navbar-nav li.dropdown li > a:hover  {color: #000000;}
+.navbar .container .navbar-nav.pull-right li a i:first-of-type  {border-color: #000000;}
+.badge  {background-color: #FFFFFF;}
+.badge  {color: #FFFFFF;}
+.navbar-default  {background-color: #34b948;}
+.container .navbar-nav li a  {color: #000000;}
+.container .navbar-nav li.active > a  {background-color: #00853e;}
+.container .navbar-nav li.active > a  {color: #FFFFFF;}
+.navbar-default, .dropdown-mega  {border-color: #FFFFFF;}
+body  {background-color: #ffffff;}
+body  {color: #333333;}
+.text-primary  {color: #0C2A3A;}
+.text-info  {color: #31708F;}
+body a  {color: #0C2A3A;}
+.btn-primary  {background-color: #0C2A3A;}
+.btn-primary, .btn-primary:hover  {color: #FFFFFF;}
+.btn-primary  {border-color: #081B24;}
+.btn-primary:hover  {background-color: #051118;}
+.btn-default  {background-color: #FFFFFF;}
+.btn-default, .btn-default:hover  {color: #333333;}
+.btn-default  {border-color: #CCCCCC;}
+.btn-default:hover  {background-color: #EBEBEB;}
+.btn-info  {background-color: #cccccc;}
+.btn-info, .btn-info:hover  {color: #FFFFFF;}
+.btn-info  {border-color: #cccccc;}
+.btn-info:hover  {background-color: #39B3D7;}
+.btn-success  {background-color: #5CB85C;}
+.btn-success, .btn-success:hover  {color: #FFFFFF;}
+.btn-success  {border-color: #4CAE4C;}
+.btn-success:hover  {background-color: #47A447;}
+.btn-warning  {background-color: #f0ad4e;}
+.btn-warning, .btn-warning:hover  {color: #FFFFFF;}
+.btn-warning  {border-color: #EEA236;}
+.btn-warning:hover  {background-color: #ED9C28;}
+.btn-danger  {background-color: #D9534F;}
+.btn-danger, .btn-danger:hover  {color: #FFFFFF;}
+.btn-danger  {border-color: #D43F3A;}
+.btn-danger:hover  {background-color: #D2322D;}
+.jumbotron  {background-color: #FFFFFF;}
+h2 .jumbotron  {color: #333333;}
+.panel-primary .panel-heading .panel-title  {background-color: #0C2A3A;}
+.panel-primary .panel-heading .panel-title  {color: #FFFFFF;}
+.panel-default .panel-heading .panel-title  {background-color: #F5F5F5;}
+.panel-default .panel-heading .panel-title  {color: #333333;}
+.panel  {background-color: #FFFFFF;}
+.panel-footer  {background-color: #F5F5F5;}
+.panel-category-list .well  {background-color: #FFFFFF;}
+.panel-category-list .well h5  {color: #333333;}
+.panel-category-list .well  {border-color: #F0F0F0;}
+.panel-product-list .well  {background-color: #FFFFFF;}
+.panel-product-list .well  {color: #333333;}
+.panel-product-list .well  {border-color: #F0F0F0;}
+
+
+
+.order-cloud-image { background-color: #00853e; }
+.btn-blue, .btn.btn-blue { background-color: #34b948; border-color: #34b948;  }
+.minicart .items-label {background-color: #34b948; }
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus,
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.navbar-default .navbar-nav > li > a:focus,
+.container .navbar-nav li a:hover {
+    background-color: #00853e!important;
+}
+
+.logo a img {
+    max-width: 80%!important;
+    margin-top: -15px!important;
+}
+
+.navbar .container .navbar-nav.pull-left li.fadeInLeft a i, .navbar .container-view .navbar-nav.pull-left li.fadeInLeft a i {
+    color: #ffffff;
+}
+
+.panel-nav ul li.active a {
+    color: #00853e;
+}
+
+.category-list-tree-sub > a.shop-all:hover{
+    background-color: #34b948;
+}
