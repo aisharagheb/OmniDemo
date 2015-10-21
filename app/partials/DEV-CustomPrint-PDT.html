@@ -31,11 +31,11 @@
                     </h2>
                 </div>
                 <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1 && LineItem.Product.VariantCount > 0">
-                    <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                    <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-default" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                 </div>
                 <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1 && LineItem.Product.VariantCount > 0">
                     <div class="col-sm-3 col-xs-12">
-                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="width:100%;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-default" style="width:100%;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                     </div>
                 </div>
             </div>
@@ -110,11 +110,11 @@
                     </h2>
                 </div>
                 <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1 && !LineItem.Product.productTabs">
-                    <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                    <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-default" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                 </div>
                 <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1 && !LineItem.Product.productTabs">
                     <div class="col-sm-3 col-xs-12">
-                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="width:100%;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-default" style="width:100%;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                     </div>
                 </div>
             </div>
@@ -124,16 +124,16 @@
                     <tab ng-repeat="tab in LineItem.Product.productTabs" heading="{{tab.Title}}" >
                         <p ng-if="tab.Content"><div data-ng-bind-html="tab.Content"></div></p>
                         <div ng-if="tab.Tags" ng-repeat="tag in tab.Tags" style="display:inline-flex;display:-webkit-inline-flex;padding:2px;">
-                            <small><a class="btn btn-small btn-gray" href="search/{{tag}}"> <i class="fa fa-tag"></i> {{tag}}</a> <br/></small>
+                            <small><a class="btn btn-small btn-default" href="search/{{tag}}"> <i class="fa fa-tag"></i> {{tag}}</a> <br/></small>
                         </div>
                     </tab>
                 </tabset>
                 <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1">
-                    <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="z-index: 1000;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                    <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-default" style="z-index: 1000;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                 </div>
                 <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1">
                     <div class="col-sm-3 col-xs-12">
-                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="width:100%; z-index: 1000;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-default" style="width:100%; z-index: 1000;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                     </div>
                 </div>
             </div>
@@ -280,31 +280,31 @@
                         </div>
                     </div>
                     <div class="btn-group" ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs !==1 && LineItem.Product.VariantCount == 0 && !LineItem.Specs.State && !LineItem.Specs.Language">
-                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                        <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-default" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                     </div>
                     <div ng-show="StaticSpecGroups.Download && !LineItem.Variant && numSpecs === 1 && LineItem.Product.VariantCount == 0 && !LineItem.Specs.State && !LineItem.Specs.Language && !LineItem.Specs.Region">
                         <div class="col-sm-4">
-                            <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-gray" style="width:100%; left: -2px;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
+                            <a ng-href="{{downloadSpec.FileURL}}" class="btn btn-default" style="width:100%; left: -2px;" ng-repeat="downloadSpec in StaticSpecGroups.Download.Specs"><i class="fa fa-download"></i> {{downloadSpec.Name}}</a>
                         </div>
                     </div>
                     <div ng-show="LineItem.Specs.State.Value != 'null' && LineItem.Specs.Language == 'null'">
                         <div class="col-sm-4">
-                            <a ng-href="{{spec.FileURL}}" class="btn btn-gray" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | filterbyspec:LineItem.Specs.State.Value"><i class="fa fa-download"></i> {{spec.Name}}</a>
+                            <a ng-href="{{spec.FileURL}}" class="btn btn-default" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | filterbyspec:LineItem.Specs.State.Value"><i class="fa fa-download"></i> {{spec.Name}}</a>
                         </div>
                     </div>
                     <div ng-show="LineItem.Specs.Language.Value != 'null' && LineItem.Specs.State">
                         <div class="col-sm-4">
-                            <a ng-href="{{spec.FileURL}}" class="btn btn-gray" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | dynamicspecs:LineItem.Specs"><i class="fa fa-download"></i> {{spec.Name}}</a>
+                            <a ng-href="{{spec.FileURL}}" class="btn btn-default" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | dynamicspecs:LineItem.Specs"><i class="fa fa-download"></i> {{spec.Name}}</a>
                         </div>
                     </div>
                     <div ng-show="LineItem.Specs.Language.Value != 'null' && !LineItem.Specs.State">
                         <div class="col-sm-4">
-                            <a ng-href="{{spec.FileURL}}" class="btn btn-gray" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | filterbyspec:LineItem.Specs.Language.Value"><i class="fa fa-download"></i> {{spec.Name}}</a>
+                            <a ng-href="{{spec.FileURL}}" class="btn btn-default" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | filterbyspec:LineItem.Specs.Language.Value"><i class="fa fa-download"></i> {{spec.Name}}</a>
                         </div>
                     </div>
                     <div ng-show="LineItem.Specs.Language.Value != 'null' && LineItem.Specs.Region">
                         <div class="col-sm-4">
-                            <a ng-href="{{spec.FileURL}}" class="btn btn-gray" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | dynamicspecs2:LineItem.Specs"><i class="fa fa-download"></i> {{spec.Name}}</a>
+                            <a ng-href="{{spec.FileURL}}" class="btn btn-default" style="width:100%; left: -2px;" ng-repeat="spec in StaticSpecGroups.Download.Specs | dynamicspecs2:LineItem.Specs"><i class="fa fa-download"></i> {{spec.Name}}</a>
                         </div>
                     </div>
                 </div>
