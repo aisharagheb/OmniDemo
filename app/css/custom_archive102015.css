@@ -1,0 +1,225 @@
+/*
+Static file for Theme changes
+Theme name: My SPA Theme
+Version: 1.0
+Template: Howdy
+*/
+
+.panel-category-list ul li a .empty {
+    min-height: 150px;
+}
+
+.support-info   {
+    height: 100px;
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.support-info h4 {
+    position: relative;
+    top: 35%;
+    -webkit-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+    transform:translateY(-50%);
+    vertical-align: top;
+}
+
+form[name="addToOrderForm"]  {
+    font-size: 80%;
+    margin-top: -50px;
+}
+
+
+.spending-account {
+    margin-left: 0;
+}
+
+@media (max-width: 768px) {
+    .spending-account {
+        padding: 10px;
+    }
+    .ng-hidden-xs {
+        display: none !important;
+    }
+    .primary-dashboard .container .logo a img, .primary-dashboard .container-view .logo a img {
+        margin-top: 20%;
+    }
+    ul .inline.minimal {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .ng-visible-xs {
+        display: none !important;
+    }
+    ul .inline.minimal {
+        width: 33% !important;
+    }
+}
+
+.spending-account-xs {
+    padding: 5px;
+    height: auto;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: #0787c4;
+    text-align: center;
+}
+
+.product-list-qualities-grid {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.product-list-qualities-grid li {
+    min-height: 0 !important;
+    margin: 5px 0 -15px 7px;
+}
+
+.product-list-qualities-pdt li {
+    min-height: 0 !important;
+    margin: 5px 0 10px 7px;
+}
+
+.product-list-qualities-pdt{
+    padding-top: 25px;
+}
+
+.product-list-qualities-list li {
+    min-height: 0 !important;
+    margin: 5px 0 -10px 0;
+}
+
+.product-list-qualities-list li a, .product-list-qualities-grid li a, .product-list-qualities-pdt li a {
+    display: inline !important;
+    text-decoration: underline !important;
+    color: green;
+}
+
+.product-list-qualities-list li, .product-list-qualities-grid li, .product-list-qualities-pdt li {
+    color: green;
+    font-size: 80%;
+}
+
+.breadcrumb a, .breadcrumb a:visited {
+    text-decoration: none !important;
+}
+
+.breadcrumb li:last-child a {
+    color: #000;
+    text-transform: none;
+    cursor: default;
+}
+
+.breadcrumb li {
+    display: inline;
+}
+
+.breadcrumb li a {
+    padding: 5px;
+}
+
+.product-list-view-express {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+ul .inline.minimal,
+ul .inline.inline-search.minimal {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+ul .inline.minimal .well {
+    width: 100%;
+}
+
+.navbar .nav > li > a {
+    text-decoration:none;
+}
+
+a {
+    text-decoration:none!important;
+}
+
+.pre-cart-message div img {
+    padding: 5px;
+}
+
+.product-detail-default .view-response-message.alert-info.text-center {
+    margin-top: 35px;
+}
+
+.view-response-message.ng-hide-add {
+    padding: 18px;
+}
+
+.no-panels.robyn-product-list .well, .robyn-product-list .well {
+    border-width: 0;
+}
+
+.panel-category-list:not(.no-panels), .panel-product-list:not(.no-panels) {
+    padding-left: 0;
+}
+
+.row.view-product {
+    top: -14px;
+}
+
+.row.view-product .btn {
+    padding: 15px;
+    border-color: #dddddd;
+    color: #999;
+}
+
+.no-panels.robyn-product-list ul li ul li:not(product-list-qualities-grid), .robyn-product-list ul li ul li:not(product-list-qualities-grid) {
+    min-height: 30px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.no-panels.robyn-product-list .inline .product-name, .robyn-product-list .inline .product-name {
+    justify-content: flex-start;
+}
+
+.no-panels.robyn-product-list .inline .product-name, .robyn-product-list .inline .product-name {
+    height: 40px;
+}
+
+.category-display-box {
+    padding-left: 10px;
+}
+
+.empty {
+    height: 185px;
+}
+
+.galleryThumbs li a img {
+    max-height: 64px!important;
+    max-width: 64px!important;
+}
+
+.product-list-qualities-grid i.fa.fa-money, .product-list-qualities-pdt i.fa.fa-money {
+    margin-right: 4px;
+}
+
+.view-response-message.alert-info.text-center {
+    margin-top: -16px;
+    font-size: 80%;
+}
