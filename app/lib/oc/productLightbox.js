@@ -1,7 +1,3 @@
-/**
- * Created by mirandaposthumus on 6/29/15.
- */
-
 angular.module('OrderCloud-ProductLightbox', [
     'ngTouch',
     'ui.bootstrap'

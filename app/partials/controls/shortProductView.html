@@ -9,11 +9,7 @@
             </div>
         </a>
     </div>
-   <script>
-
-   </script>
     <div class="col-sm-8 text-left">
-
         <div class="panel-body">
             <p class="product-name" ng-bind-html="LineItem.Product.Name"></p>
             <small class="pull-right text-info">{{LineItem.Product.ExternalID}}</small>
@@ -44,28 +40,31 @@
 
                 .newtabset .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus{
                     margin-bottom: -11px;
-                    background-color:#0787C4;
+                    /*background-color:#0787C4;*/
+                    background-color:#ccc;
                     color: #ffffff;
                 }
 
-/*spans don't 1531 this specification because it will affect the rest of the app.*/
+                /*spans don't 1531 this specification because it will affect the rest of the app.*/
             </style>
             <p class="product-description" ng-class="{'expanded':someVar}"><small ng-bind-html="trustedDescription(LineItem.Product)"></small></p>
             <div class="row hidden-xs"  ng-show="LineItem.Product.productTabs[0].Title == 'Description'" ng-bind-html="LineItem.Product.productTabs[0].Content">
                 <div class="col-lg-12 col-sm-12 col-xs-9">
                     <small>{{LineItem.Product.productTabs[0].Content}}</small> </div>
-                </div>
             </div>
+        </div>
         <ul class="product-list-qualities-list" ng-show="StaticSpecGroups.Qualities">
             <li ng-repeat="(Specs, Value) in StaticSpecGroups.Qualities.Specs" compile="Value.Value"></li>
         </ul>
 
-            <a class="pull-right" style="font-size:11px; font-weight:bold; background-color:#0787C4; color:#ffffff; padding:2px;" ng-show="LineItem.Product.Description.length >= 475" class="btn-link" ng-click="someVar = !someVar">More/Less</a>
-            <!--<a class="btn btn-blue" href="product/{{LineItem.Product.InteropID}}"><i class="fa fa-shopping-cart"></i></a>-->
-            <p class="price">
-                <small class="text-danger" ng-show="StaticSpecGroups && StaticSpecGroups.StrikeThroughPricing"><s>{{StaticSpecGroups.StrikeThroughPricing.Specs.StrikeThroughPrice.Value}}</s><br/></small>
-                <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
-            </p>
+        <a class="pull-right" style="font-size:11px; font-weight:bold; /*background-color:#0787C4;*/  background-color:#ccc; color:#ffffff; padding:2px;" ng-show="LineItem.Product.Description.length >= 475" class="btn-link" ng-click="someVar = !someVar">
+            More/Less
+        </a>
+        <!--<a class="btn btn-primary" href="product/{{LineItem.Product.InteropID}}"><i class="fa fa-shopping-cart"></i></a>-->
+        <p class="price">
+            <small class="text-danger" ng-show="StaticSpecGroups && StaticSpecGroups.StrikeThroughPricing"><s>{{StaticSpecGroups.StrikeThroughPricing.Specs.StrikeThroughPrice.Value}}</s><br/></small>
+            <b>{{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}</b>
+        </p>
         <div>
             <div class="view-form-icon" ng-show="allowAddToOrderInProductList && !StaticSpecGroups.Qualities.Specs.DownloadOnly">
                 <div class="row">
@@ -80,7 +79,6 @@
                     <a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Details' | r) | xlat}}</a>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 </div>
